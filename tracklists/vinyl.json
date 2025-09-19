@@ -1,0 +1,68 @@
+[
+  {
+    "file": "./music/vinyl/Buck Owens And The Buckeroos - Act Naturally.flac",
+    "title": "Act Naturally",
+    "artist": "Buck Owens And The Buckeroos",
+    "cover": "./covers/vinyl/actnaturally.jfif"
+  },
+  {
+    "file": "./music/vinyl/Jack Shaindlin - Let_s Go Sunning.flac",
+    "title": "Let's Go Sunning",
+    "artist": "Jack Shaindlin",
+    "cover": "./covers/vinyl/letsgosunning.jfif"
+  },
+  {
+    "file": "./music/vinyl/Johnny Cash - So Doggone Lonesome (Remastered 2022).flac",
+    "title": "So Doggone Lonesome",
+    "artist": "Johnny Cash",
+    "cover": "./covers/vinyl/sodoggonelonesome.jfif"
+  },
+  {
+    "file": "./music/vinyl/Nat King Cole - I Don't Want To See Tomorrow.flac",
+    "title": "I Don't Want To See Tomorrow",
+    "artist": "Nat King Cole",
+    "cover": "./covers/vinyl/idontwanttoseetomorrow.jfif"
+  },
+  {
+    "file": "./music/vinyl/Nat King Cole - Orange Colored Sky.flac",
+    "title": "Orange Colored Sky",
+    "artist": "Nat King Cole",
+    "cover": "./covers/vinyl/orangecoloredsky.jfif"
+  },
+  {
+    "file": "./music/vinyl/Perry Como - Don't Let The Stars Get In Your Eyes.flac",
+    "title": "Don't Let The Stars Get In Your Eyes",
+    "artist": "Perry Como",
+    "cover": "./covers/vinyl/dontletthestarsgetinyoureyes.jfif"
+  },
+  {
+    "file": "./music/vinyl/Scatman Crothers - Keep That Coffee Hot.flac",
+    "title": "Keep That Coffee Hot",
+    "artist": "Scatman Crothers",
+    "cover": "./covers/vinyl/keepthatcoffeehot.jfif"
+  },
+  {
+    "file": "./music/vinyl/The Castells - Some Enchanted Evening.flac",
+    "title": "Some Enchanted Evening",
+    "artist": "The Castells",
+    "cover": "./covers/vinyl/someenchantedevening.jfif"
+  },
+  {
+    "file": "./music/vinyl/The Ink Spots - I Don't Want To Set The World On Fire (Single Version).flac",
+    "title": "I Don't Want To Set The World On Fire",
+    "artist": "The Ink Spots",
+    "cover": "./covers/vinyl/theinkspots.jfif"
+  },
+  {
+    "file": "./music/vinyl/The Ink Spots - Into Each Life Some Rain Must Fall (Single Version).flac",
+    "title": "Into Each Life Some Rain Must Fall",
+    "artist": "The Ink Spots",
+    "cover": "./covers/vinyl/theinkspots.jfif"
+  },
+  {
+    "file": "./music/vinyl/インク・スポッツ - Maybe.flac",
+    "title": "Maybe",
+    "artist": "The Ink Spots",
+    "cover": "./covers/vinyl/maybe.jfif"
+  }
+]

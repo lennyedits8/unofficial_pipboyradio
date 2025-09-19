@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PipBoy Radio</title>
+    <meta name="description" content="Fallout-inspired retro terminal radio player with classic 1940s music">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+  <div class="background">
+
+    <!-- Theme Toggle at top of page, inline -->
+    <div class="theme-toggle-wrapper">
+      <label class="theme-toggle">
+        <input type="checkbox" id="themeSwitch">
+        <span class="slider"></span>
+        <span class="label-text" id="themeLabel">Fallout 4</span>
+      </label>
+    </div>
+
+    <header class="system-header">
+      <h1 class="main-title">Fallout Prime TV</h1>
+      <p class="subtitle">> ACCESSING AUDIO PLAYBACK MODULE...</p>
+    </header>
+
+    <main class="terminal-window">
+      <div class="terminal-content">
+        <header class="terminal-header">
+          <h2>ROBCO INDUSTRIES UNIFIED OPERATING SYSTEM</h2>
+          <p class="copyright">COPYRIGHT 2077-2087 ROBCO INDUSTRIES</p>
+        </header>
+
+                <!-- NOW PLAYING -->
+                <section class="now-playing">
+                    <h3 class="section-title">> NOW PLAYING</h3>
+                    <div class="player-info">
+                        <img src="album-cover.jpg" alt="Album cover" class="album-cover">
+                        <div class="track-info">
+                            <div class="track-title">--</div>
+                            <div class="artist-name">--</div>
+                        </div>
+                    </div>
+
+                    <div class="player-controls">
+<!-- Progress -->
+<div class="progress-section">
+  <div class="time-display">
+    <span class="current-time">0:00</span>
+    <span class="total-time">0:00</span>
+  </div>
+  <input type="range" class="progress-slider" id="progressSlider" min="0" max="100" value="0" step="0.1">
+</div>
+
+
+                        
+<!-- Play controls -->
+<div class="control-buttons">
+  <!-- Previous -->
+  <button class="control-btn" id="prevBtn" aria-label="Previous track">
+    <img src="images/previous.svg" alt="Previous">
+  </button>
+
+  <!-- Play / Pause -->
+  <button class="control-btn" id="playBtn" aria-label="Play/Pause">
+    <img src="images/play.svg" alt="Play" id="playIcon">
+  </button>
+
+  <!-- Next -->
+  <button class="control-btn" id="nextBtn" aria-label="Next track">
+    <img src="images/previous.svg" alt="Next" style="transform: scaleX(-1);">
+  </button>
+</div>
+
+
+
+
+
+                                <!-- Volume -->
+<div class="volume-section">
+  <img src="images/max.svg" alt="Volume" class="volume-icon" id="volumeIcon">
+  <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="100" step="1" aria-label="Volume">
+  <span class="volume-display" id="volumeDisplay">100%</span>
+</div>
+
+
+
+                <!-- TRACKLIST -->
+                <section class="tracklist">
+                    <h3 class="section-title"> RADIO TRACKLIST</h3>
+                    <ol class="track-list">
+                        <!-- JS will populate dynamically -->
+                    </ol>
+                </section>
+
+
+                <!-- RADIO STATIONS -->
+                <section class="radio-stations">
+                <h3 class="section-title">> RADIO STATIONS</h3>
+                <div class="station-grid">
+                    <a href="fallout76.html" class="station-tile">
+                    <img src="images/fallout76.jpeg" alt="Fallout 76" class="station-cover">
+                    <span class="station-name">FALLOUT 76</span>
+                    <div class="glow-overlay"></div>
+                    </a>
+                    <a href="index.html" class="station-tile">
+                    <img src="images/fallout4.jpg" alt="Fallout 4" class="station-cover">
+                    <span class="station-name">FALLOUT 4</span>
+                    <div class="glow-overlay"></div>
+                    </a>
+                    <a href="fallout3.html" class="station-tile">
+                    <img src="images/fallout3.jpg" alt="Fallout 3" class="station-cover">
+                    <span class="station-name">FALLOUT 3</span>
+                    <div class="glow-overlay"></div>
+                    </a>
+                    <a href="newvegas.html" class="station-tile">
+                    <img src="images/fnv.jpg" alt="New Vegas" class="station-cover">
+                    <span class="station-name">NEW VEGAS</span>
+                    <div class="glow-overlay"></div>
+                    </a>
+                    <a href="falloutprime.html" class="station-tile">
+                    <img src="images/falloutprime.jpg" alt="Prime" class="station-cover">
+                    <span class="station-name">Fallout Prime</span>
+                    <div class="glow-overlay"></div>
+                    </a>
+                    <a href="soothingsoundsoftheapocalypse.html" class="station-tile">
+                    <img src="images/vinyl.jpg" alt="Vinyl" class="station-cover">
+                    <span class="station-name">Fallout Vinyl</span>
+                    <div class="glow-overlay"></div>
+                    </a>
+                </div>
+                </section>
+
+
+
+
+                <footer class="system-status">
+                    <p>> SYSTEM STATUS: OPERATIONAL</p>
+                </footer>
+            </div>
+        </main>
+
+        
+
+        <footer class="terminal-version">
+            <p>FALLOUT TERMINAL V2.1.7 - MUSIC PLAYER MODULE ACTIVE</p>
+        </footer>
+    </div>
+
+
+
+
+    <!-- Audio element -->
+    <audio id="audioPlayer"></audio>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>
