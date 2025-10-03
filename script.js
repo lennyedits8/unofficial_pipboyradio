@@ -353,9 +353,37 @@ progressSlider.addEventListener("touchend", finishDrag);
 function clamp(n, min = 0, max = 100) { return Math.max(min, Math.min(max, n)); }
 function applyVolumeToOutput(vol) {
   const v = clamp(Number(vol)) / 100;
-  if (usingGain) gainNode.gain.value = v;
-  else audio.volume = v;
+
+  if (usingGain) {
+    // Web Audio API (desktop / Android)
+    gainNode.gain.value = v;
+  } else {
+    // iOS Safari ignores audio.volume → fallback to GainNode
+    try {
+      audio.volume = v; // might be blocked on iOS
+    } catch (e) {
+      console.warn("iOS blocks audio.volume");
+    }
+
+    // Create GainNode if not already done
+    if (!audioCtx) {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      if (AudioContext) {
+        audioCtx = new AudioContext();
+        gainNode = audioCtx.createGain();
+        sourceNode = audioCtx.createMediaElementSource(audio);
+        sourceNode.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+      }
+    }
+
+    // Apply software gain as a fallback
+    if (gainNode) {
+      gainNode.gain.value = v;
+    }
+  }
 }
+
 
 function updateVolumeUI(vol) {
   vol = clamp(Math.round(Number(vol)));
