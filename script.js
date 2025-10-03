@@ -57,9 +57,7 @@ let playedTracks = new Set(); // tracks played in shuffle mode
 // Web Audio API Setup
 // ========================
 let audioCtx, gainNode, sourceNode;
-// Disable Web Audio on iOS so lockscreen playback works
-let usingGain = true;
-
+let usingGain = true; // always use GainNode
 
 function initAudioContext() {
   if (!audioCtx) {
@@ -73,6 +71,9 @@ function initAudioContext() {
     // Route through GainNode
     sourceNode.connect(gainNode);
     gainNode.connect(audioCtx.destination);
+
+    // ALSO connect audio element directly → keeps iOS lockscreen working
+    sourceNode.connect(audioCtx.destination);
 
     usingGain = true;
   }
