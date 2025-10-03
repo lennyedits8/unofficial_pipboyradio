@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
-<body>
+<body data-station="fallouttv">
   <div class="background">
 
     <!-- Theme Toggle at top of page, inline -->
@@ -17,12 +17,12 @@
       <label class="theme-toggle">
         <input type="checkbox" id="themeSwitch">
         <span class="slider"></span>
-        <span class="label-text" id="themeLabel">Fallout 4</span>
+        <span class="label-text" id="themeLabel">Fallout Prime TV</span>
       </label>
     </div>
 
     <header class="system-header">
-      <h1 class="main-title">Fallout Prime TV</h1>
+      <h1 class="main-title">FALLOUT PRIME TV</h1>
       <p class="subtitle">> ACCESSING AUDIO PLAYBACK MODULE...</p>
     </header>
 
@@ -56,26 +56,32 @@
 
 
                         
-<!-- Play controls -->
-<div class="control-buttons">
-  <!-- Previous -->
-  <button class="control-btn" id="prevBtn" aria-label="Previous track">
-    <img src="images/previous.svg" alt="Previous">
+<div class="controls-wrapper">
+  <!-- Centered play controls -->
+  <div class="control-buttons">
+    <button class="control-btn" id="prevBtn" aria-label="Previous track">
+      <img src="images/previous.svg" alt="Previous">
+    </button>
+
+    <button class="control-btn" id="playBtn" aria-label="Play/Pause">
+      <img src="images/play.svg" alt="Play" id="playIcon">
+    </button>
+
+    <button class="control-btn" id="nextBtn" aria-label="Next track">
+      <img src="images/previous.svg" alt="Next" style="transform: scaleX(-1);">
+    </button>
+  </div>
+
+  <!-- Independent shuffle -->
+  <button class="control-btn shuffle-btn" id="shuffleBtn" aria-label="Shuffle">
+    <img src="images/shuffle.svg" alt="Shuffle" id="shuffleIcon">
   </button>
 
-  <!-- Play / Pause -->
-  <button class="control-btn" id="playBtn" aria-label="Play/Pause">
-    <img src="images/play.svg" alt="Play" id="playIcon">
-  </button>
-
-  <!-- Next -->
-  <button class="control-btn" id="nextBtn" aria-label="Next track">
-    <img src="images/previous.svg" alt="Next" style="transform: scaleX(-1);">
+  <!-- Independent loop (styled same as shuffle) -->
+  <button class="control-btn loop-btn" id="loopBtn" aria-label="Loop">
+    <img src="images/loop.svg" alt="Loop" id="loopIcon">
   </button>
 </div>
-
-
-
 
 
                                 <!-- Volume -->
@@ -122,12 +128,12 @@
                     </a>
                     <a href="falloutprime.html" class="station-tile">
                     <img src="images/falloutprime.jpg" alt="Prime" class="station-cover">
-                    <span class="station-name">Fallout Prime</span>
+                    <span class="station-name">FALLOUT PRIME TV</span>
                     <div class="glow-overlay"></div>
                     </a>
                     <a href="soothingsoundsoftheapocalypse.html" class="station-tile">
                     <img src="images/vinyl.jpg" alt="Vinyl" class="station-cover">
-                    <span class="station-name">Fallout Vinyl</span>
+                    <span class="station-name">FALLOUT VINYL</span>
                     <div class="glow-overlay"></div>
                     </a>
                 </div>
@@ -153,7 +159,15 @@
 
 
     <!-- Audio element -->
-    <audio id="audioPlayer"></audio>
+<audio 
+  id="audioPlayer" 
+  preload="auto" 
+  controls 
+  playsinline 
+  style="display:none">
+</audio>
+
+
 
     <!-- Script -->
     <script src="script.js"></script>
