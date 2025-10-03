@@ -79,7 +79,7 @@
   },
   {
     "file": "./music/fallout76/Ernest Tubb - Walking The Floor Over You (1941 Single Version).flac",
-    "title": "Walking The Floor Over You (1941 Single Version)",
+    "title": "Walking The Floor Over You",
     "artist": "Ernest Tubb",
     "cover": "./covers/fallout76/ernesttubb-walkingtheflooroveryou(1941singleversion).jfif"
   },
@@ -121,7 +121,7 @@
   },
   {
     "file": "./music/fallout76/John Denver - Take Me Home, Country Roads  (Original Version) (1).flac",
-    "title": "Take Me Home, Country Roads  (Original Version)",
+    "title": "Take Me Home, Country Roads",
     "artist": "John Denver",
     "cover": "./covers/fallout76/johndenver-takemehome,countryroads(originalversion)(1).jfif"
   },
@@ -240,6 +240,12 @@
     "cover": "./covers/fallout76/theinkspots-it_salloverbutthecrying.jfif"
   },
   {
+    "file": "./music/fallout76/The Ink Spots - Maybe.flac",
+    "title": "Maybe",
+    "artist": "The Ink Spots",
+    "cover": "./covers/fallout76/theinkspots-maybe.jfif"
+  },
+  {
     "file": "./music/fallout76/The Ink Spots - We Three (My Echo, My Shadow, And Me).flac",
     "title": "We Three (My Echo, My Shadow, And Me)",
     "artist": "The Ink Spots",
@@ -262,12 +268,6 @@
     "title": "Don't Fence Me In",
     "artist": "Vic Schoen & His Orchestra",
     "cover": "./covers/fallout76/vicschoen&hisorchestra-don'tfencemein(singleversion).jfif"
-  },
-  {
-    "file": "./music/fallout76/インク・スポッツ - Maybe.flac",
-    "title": "Maybe",
-    "artist": "インク・スポッツ",
-    "cover": "./covers/fallout76/インク・スポッツ-maybe.jfif"
   },
   {
     "file": "./music/fallout76/チック・ウェッブ - When I Get Low I Get High  (Remastered).flac",

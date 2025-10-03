@@ -120,15 +120,15 @@
     "cover": "./covers/fallout3/theinkspots-intoeachlifesomerainmustfall(singleversion).jfif"
   },
   {
+    "file": "./music/fallout3/The Ink Spots - Maybe.flac",
+    "title": "Maybe",
+    "artist": "The Ink Spots",
+    "cover": "./covers/fallout3/theinkspots-maybe.jfif"
+  },
+  {
     "file": "./music/fallout3/Various Interprets - Butcher Pete Part 1 & 2.flac",
     "title": "Butcher Pete Part 1 & 2",
     "artist": "Various Interprets",
     "cover": "./covers/fallout3/variousinterprets-butcherpetepart1&2.jfif"
-  },
-  {
-    "file": "./music/fallout3/インク・スポッツ - Maybe.flac",
-    "title": "Maybe",
-    "artist": "インク・スポッツ",
-    "cover": "./covers/fallout3/インク・スポッツ-maybe.jfif"
   }
 ]

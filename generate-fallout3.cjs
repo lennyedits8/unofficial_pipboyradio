@@ -8,10 +8,11 @@ const outputFile  = path.join(__dirname, "tracklists", "fallout3.json");
 
 function cleanTitle(title) {
   return title
-    .replace(/\s*\((album|single) version\)/ig, "")
-    .replace(/\s*\(\d{4}\s*remastered\)/ig, "")
-    .replace(/\s*\(remastered\s*\d{4}\)/ig, "")
-    .replace(/\s*\(remastered\)/ig, "")
+    .replace(/\s*\((album|single|original) version\)/ig, "")       // removes (album version), (single version), (original version)
+    .replace(/\s*\(\d{4}\s*single version\)/ig, "")                // removes (1999 single version)
+    .replace(/\s*\(\d{4}\s*remastered\)/ig, "")                    // removes (1999 remastered)
+    .replace(/\s*\(remastered\s*\d{4}\)/ig, "")                    // removes (remastered 1999)
+    .replace(/\s*\(remastered\)/ig, "")                            // removes (remastered)
     .trim();
 }
 

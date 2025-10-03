@@ -162,6 +162,12 @@
     "cover": "./covers/fallout4/theinkspots-it_salloverbutthecrying.jfif"
   },
   {
+    "file": "./music/fallout4/The Ink Spots - Maybe.flac",
+    "title": "Maybe",
+    "artist": "The Ink Spots",
+    "cover": "./covers/fallout4/theinkspots-maybe.jfif"
+  },
+  {
     "file": "./music/fallout4/The Three Suns - Worry Worry Worry.flac",
     "title": "Worry Worry Worry",
     "artist": "The Three Suns",
@@ -190,12 +196,6 @@
     "title": "Grandma Plays the Numbers",
     "artist": "Wynonie Harris",
     "cover": "./covers/fallout4/wynonieharris-grandmaplaysthenumbers.jfif"
-  },
-  {
-    "file": "./music/fallout4/インク・スポッツ - Maybe.flac",
-    "title": "Maybe",
-    "artist": "インク・スポッツ",
-    "cover": "./covers/fallout4/インク・スポッツ-maybe.jfif"
   },
   {
     "file": "./music/fallout4/チック・ウェッブ - Undecided  (Remastered).flac",
