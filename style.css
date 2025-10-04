@@ -720,7 +720,7 @@ body[data-theme="vegas"] {
 /* Radio Stations*/
 .station-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* max 4 per row */
+  grid-template-columns: repeat(3, 1fr); /* max 4 per row */
   gap: 10px;
   margin-top: 10px;
 }

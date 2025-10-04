@@ -1,302 +1,296 @@
 [
   {
-    "file": "./music/fallout76/Ben Selvin & His Orchestra - Happy Days Are Here Again.flac",
-    "title": "Happy Days Are Here Again",
-    "artist": "Ben Selvin & His Orchestra",
-    "cover": "./covers/fallout76/benselvin&hisorchestra-happydaysarehereagain.jfif"
+    "file": "./music/fallout76/mus_radio_76_general_andrewssisters_straightenupandflyright.wav",
+    "title": "Straighten Up and Fly Right",
+    "artist": "The Andrews Sisters",
+    "cover": "./covers/fallout76/mus_radio_76_general_andrewssisters_straightenupandflyright.jpg"
   },
   {
-    "file": "./music/fallout76/Billie Holiday - Crazy He Calls Me (Single Version).flac",
+    "file": "./music/fallout76/mus_radio_76_general_beachboys_wouldntitbenice.wav",
+    "title": "Wouldn’t It Be Nice",
+    "artist": "The Beach Boys",
+    "cover": "./covers/fallout76/mus_radio_76_general_beachboys_wouldntitbenice.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_benselvin_happydaysarehereagain.wav",
+    "title": "Happy Days Are Here Again",
+    "artist": "Ben Selvin and His Orchestra",
+    "cover": "./covers/fallout76/mus_radio_76_general_benselvin_happydaysarehereagain.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_billieholidaycrazyhecallsme.wav",
     "title": "Crazy He Calls Me",
     "artist": "Billie Holiday",
-    "cover": "./covers/fallout76/billieholiday-crazyhecallsme(singleversion).jfif"
+    "cover": "./covers/fallout76/mus_radio_76_general_billieholidaycrazyhecallsme.jpg"
   },
   {
-    "file": "./music/fallout76/Bob Crosby & The Bob Cats - Dear Hearts and Gentle People.flac",
+    "file": "./music/fallout76/mus_radio_76_general_bingcrosbyandrewssisters_dontfencemein.wav",
+    "title": "Don’t Fence Me In",
+    "artist": "Bing Crosby",
+    "cover": "./covers/fallout76/mus_radio_76_general_bingcrosbyandrewssisters_dontfencemein.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_bingcrosbyandrewssisters_pistolpackinmama.wav",
+    "title": "Pistol Packin' Mama",
+    "artist": "Bing Crosby",
+    "cover": "./covers/fallout76/mus_radio_76_general_bingcrosbyandrewssisters_pistolpackinmama.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_blindwilliejohnson_nobodysfaultbutmine.wav",
+    "title": "It's Nobody's Fault but Mine",
+    "artist": "Blind Willie Johnson",
+    "cover": "./covers/fallout76/mus_radio_76_general_blindwilliejohnson_nobodysfaultbutmine.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_bobcrosby_dearheartsandgentlepeople.wav",
     "title": "Dear Hearts and Gentle People",
-    "artist": "Bob Crosby & The Bob Cats",
-    "cover": "./covers/fallout76/bobcrosby&thebobcats-dearheartsandgentlepeople.jfif"
+    "artist": "Bob Crosby and the Bob Cats",
+    "cover": "./covers/fallout76/mus_radio_76_general_bobcrosby_dearheartsandgentlepeople.jpg"
   },
   {
-    "file": "./music/fallout76/Bob Crosby & The Bob Cats - Happy Times.flac",
-    "title": "Happy Times",
-    "artist": "Bob Crosby & The Bob Cats",
-    "cover": "./covers/fallout76/bobcrosby&thebobcats-happytimes.jfif"
+    "file": "./music/fallout76/mus_radio_76_general_bobwillis_bubblesinmybeers.wav",
+    "title": "Bubbles in My Beer",
+    "artist": "Bob Wills and His Texas Playboys",
+    "cover": "./covers/fallout76/mus_radio_76_general_bobwillis_bubblesinmybeers.jpg"
   },
   {
-    "file": "./music/fallout76/Bob Wills And His Texas Playboys - Steel Guitar Rag.flac",
+    "file": "./music/fallout76/mus_radio_76_general_bobwills_steelguitarrag.wav",
     "title": "Steel Guitar Rag",
-    "artist": "Bob Wills And His Texas Playboys",
-    "cover": "./covers/fallout76/bobwillsandhistexasplayboys-steelguitarrag.jfif"
+    "artist": "Bob Wills and His Texas Playboys",
+    "cover": "./covers/fallout76/mus_radio_76_general_bobwills_steelguitarrag.jpg"
   },
   {
-    "file": "./music/fallout76/Cass Daley - A Good Man Is Hard to Find.flac",
+    "file": "./music/fallout76/mus_radio_76_general_cassdaley_agoodmanishardtofind.wav",
     "title": "A Good Man Is Hard to Find",
-    "artist": "Cass Daley",
-    "cover": "./covers/fallout76/cassdaley-agoodmanishardtofind.jfif"
+    "artist": "Wingy Manone and His Orchestra",
+    "cover": "./covers/fallout76/mus_radio_76_general_cassdaley_agoodmanishardtofind.jpg"
   },
   {
-    "file": "./music/fallout76/Chick Webb - I Can't Dance (I Got Ants in My Pants)  (Remastered).flac",
-    "title": "I Can'T Dance (I Got Ants in My Pants)",
-    "artist": "Chick Webb",
-    "cover": "./covers/fallout76/chickwebb-ican'tdance(igotantsinmypants)(remastered).jfif"
+    "file": "./music/fallout76/mus_radio_76_general_chickwebb_icantdanceigotantsinmypants.wav",
+    "title": "I Can’t Dance, I Got Ants in My Pants",
+    "artist": "Chick Webb’s Savoy Orchestra",
+    "cover": "./covers/fallout76/mus_radio_76_general_chickwebb_icantdanceigotantsinmypants.jpg"
   },
   {
-    "file": "./music/fallout76/Chick Webb - Midnight in a Madhouse  (Remastered).flac",
+    "file": "./music/fallout76/mus_radio_76_general_chickwebb_midniteinamadhouse.wav",
     "title": "Midnight in a Madhouse",
     "artist": "Chick Webb",
-    "cover": "./covers/fallout76/chickwebb-midnightinamadhouse(remastered).jfif"
+    "cover": "./covers/fallout76/mus_radio_76_general_chickwebb_midniteinamadhouse.jpg"
   },
   {
-    "file": "./music/fallout76/Cole Porter with Vince Giordano & The Nighthawks - Anything Goes.flac",
-    "title": "Anything Goes",
-    "artist": "Cole Porter with Vince Giordano & The Nighthawks",
-    "cover": "./covers/fallout76/coleporterwithvincegiordano&thenighthawks-anythinggoes.jfif"
+    "file": "./music/fallout76/mus_radio_76_general_chickwebb_whenigetlowigethigh.wav",
+    "title": "When I Get Low I Get High",
+    "artist": "Ella Fitzgerald & Chick Webb",
+    "cover": "./covers/fallout76/mus_radio_76_general_chickwebb_whenigetlowigethigh.jpg"
   },
   {
-    "file": "./music/fallout76/Count Basie - Jumpin' At The Woodside (Album Version).flac",
-    "title": "Jumpin' At The Woodside",
-    "artist": "Count Basie",
-    "cover": "./covers/fallout76/countbasie-jumpin'atthewoodside(albumversion).jfif"
-  },
-  {
-    "file": "./music/fallout76/Danny Kaye - Civilization (Bongo, Bongo, Bongo) (Single Version).flac",
-    "title": "Civilization (Bongo, Bongo, Bongo)",
-    "artist": "Danny Kaye",
-    "cover": "./covers/fallout76/dannykaye-civilization(bongo,bongo,bongo)(singleversion).jfif"
-  },
-  {
-    "file": "./music/fallout76/Eddy Duchin - Ol' Man Mose (Album Version).flac",
-    "title": "Ol' Man Mose",
-    "artist": "Eddy Duchin",
-    "cover": "./covers/fallout76/eddyduchin-ol'manmose(albumversion).jfif"
-  },
-  {
-    "file": "./music/fallout76/Ella Mae Morse - Pig Foot Pete (Remastered 2005).flac",
-    "title": "Pig Foot Pete",
-    "artist": "Ella Mae Morse",
-    "cover": "./covers/fallout76/ellamaemorse-pigfootpete(remastered2005).jfif"
-  },
-  {
-    "file": "./music/fallout76/Ernest Tubb - Walking The Floor Over You (1941 Single Version).flac",
-    "title": "Walking The Floor Over You",
-    "artist": "Ernest Tubb",
-    "cover": "./covers/fallout76/ernesttubb-walkingtheflooroveryou(1941singleversion).jfif"
-  },
-  {
-    "file": "./music/fallout76/Freddie Slack & HIS Orchestra - Mister Five By Five.flac",
-    "title": "Mister Five By Five",
-    "artist": "Freddie Slack & HIS Orchestra",
-    "cover": "./covers/fallout76/freddieslack&hisorchestra-misterfivebyfive.jfif"
-  },
-  {
-    "file": "./music/fallout76/Freddie Slack And His Orchestra - Two Left Hands (Remastered 2005).flac",
-    "title": "Two Left Hands",
-    "artist": "Freddie Slack And His Orchestra",
-    "cover": "./covers/fallout76/freddieslackandhisorchestra-twolefthands(remastered2005).jfif"
-  },
-  {
-    "file": "./music/fallout76/Glenn Miller & His Orchestra - Jukebox Saturday Night.flac",
-    "title": "Jukebox Saturday Night",
-    "artist": "Glenn Miller & His Orchestra",
-    "cover": "./covers/fallout76/glennmiller&hisorchestra-jukeboxsaturdaynight.jfif"
-  },
-  {
-    "file": "./music/fallout76/Henry King & His Orchestra - Just A Fair Weather Friend (feat. Joe Sudy).flac",
-    "title": "Just A Fair Weather Friend (feat. Joe Sudy)",
-    "artist": "Henry King & His Orchestra",
-    "cover": "./covers/fallout76/henryking&hisorchestra-justafairweatherfriend(feat.joesudy).jfif"
-  },
-  {
-    "file": "./music/fallout76/Isham Jones And His Orchestra - Doin' the Uptown Lowdown.flac",
-    "title": "Doin' the Uptown Lowdown",
-    "artist": "Isham Jones And His Orchestra",
-    "cover": "./covers/fallout76/ishamjonesandhisorchestra-doin'theuptownlowdown.jfif"
-  },
-  {
-    "file": "./music/fallout76/Jerry Irby - Answer to Drivin' Nails in My Coffin.flac",
-    "title": "Answer to Drivin' Nails in My Coffin",
-    "artist": "Jerry Irby",
-    "cover": "./covers/fallout76/jerryirby-answertodrivin'nailsinmycoffin.jfif"
-  },
-  {
-    "file": "./music/fallout76/John Denver - Take Me Home, Country Roads  (Original Version) (1).flac",
-    "title": "Take Me Home, Country Roads",
-    "artist": "John Denver",
-    "cover": "./covers/fallout76/johndenver-takemehome,countryroads(originalversion)(1).jfif"
-  },
-  {
-    "file": "./music/fallout76/JOHNNY BOND - Headin' Down The Wrong Highway.flac",
-    "title": "Headin' Down The Wrong Highway",
-    "artist": "JOHNNY BOND",
-    "cover": "./covers/fallout76/johnnybond-headin'downthewronghighway.jfif"
-  },
-  {
-    "file": "./music/fallout76/Johnny Cash - Ring of Fire (Album Version).flac",
-    "title": "Ring of Fire",
-    "artist": "Johnny Cash",
-    "cover": "./covers/fallout76/johnnycash-ringoffire(albumversion).jfif"
-  },
-  {
-    "file": "./music/fallout76/Johnny Long - A Shanty in Old Shanty Town.flac",
-    "title": "A Shanty in Old Shanty Town",
-    "artist": "Johnny Long",
-    "cover": "./covers/fallout76/johnnylong-ashantyinoldshantytown.jfif"
-  },
-  {
-    "file": "./music/fallout76/Kay Kyser and His Orchestra - Praise The Lord And Pass The Ammunition (Album Version).flac",
-    "title": "Praise The Lord And Pass The Ammunition",
-    "artist": "Kay Kyser and His Orchestra",
-    "cover": "./covers/fallout76/kaykyserandhisorchestra-praisethelordandpasstheammunition(albumversion).jfif"
-  },
-  {
-    "file": "./music/fallout76/Louis Jordan - Salt Pork West Virginia.flac",
-    "title": "Salt Pork West Virginia",
-    "artist": "Louis Jordan",
-    "cover": "./covers/fallout76/louisjordan-saltporkwestvirginia.jfif"
-  },
-  {
-    "file": "./music/fallout76/Milton Brown - Keep a-Knockin'.flac",
-    "title": "Keep a-Knockin'",
-    "artist": "Milton Brown",
-    "cover": "./covers/fallout76/miltonbrown-keepa-knockin'.jfif"
-  },
-  {
-    "file": "./music/fallout76/Nat King Cole - Orange Colored Sky.flac",
-    "title": "Orange Colored Sky",
-    "artist": "Nat King Cole",
-    "cover": "./covers/fallout76/natkingcole-orangecoloredsky.jfif"
-  },
-  {
-    "file": "./music/fallout76/Patsy Montana - I Didn't Know the Gun Was Loaded  (Remastered).flac",
-    "title": "I Didn't Know the Gun Was Loaded",
-    "artist": "Patsy Montana",
-    "cover": "./covers/fallout76/patsymontana-ididn'tknowthegunwasloaded(remastered).jfif"
-  },
-  {
-    "file": "./music/fallout76/Sons Of The Pioneers - Ghost Riders in the Sky.flac",
-    "title": "Ghost Riders in the Sky",
-    "artist": "Sons Of The Pioneers",
-    "cover": "./covers/fallout76/sonsofthepioneers-ghostridersinthesky.jfif"
-  },
-  {
-    "file": "./music/fallout76/Tennessee Ernie Ford - Dark as a Dungeon (Remastered).flac",
-    "title": "Dark as a Dungeon",
-    "artist": "Tennessee Ernie Ford",
-    "cover": "./covers/fallout76/tennesseeernieford-darkasadungeon(remastered).jfif"
-  },
-  {
-    "file": "./music/fallout76/Tennessee Ernie Ford - Shenandoah.flac",
-    "title": "Shenandoah",
-    "artist": "Tennessee Ernie Ford",
-    "cover": "./covers/fallout76/tennesseeernieford-shenandoah.jfif"
-  },
-  {
-    "file": "./music/fallout76/Tennessee Ernie Ford - Sixteen Tons (Remastered 2000).flac",
-    "title": "Sixteen Tons",
-    "artist": "Tennessee Ernie Ford",
-    "cover": "./covers/fallout76/tennesseeernieford-sixteentons(remastered2000).jfif"
-  },
-  {
-    "file": "./music/fallout76/The Andrews Sisters - Straighten Up And Fly Right (Single Version).flac",
-    "title": "Straighten Up And Fly Right",
-    "artist": "The Andrews Sisters",
-    "cover": "./covers/fallout76/theandrewssisters-straightenupandflyright(singleversion).jfif"
-  },
-  {
-    "file": "./music/fallout76/The Beach Boys - Wouldn't It Be Nice (Remastered 1999).flac",
-    "title": "Wouldn't It Be Nice",
-    "artist": "The Beach Boys",
-    "cover": "./covers/fallout76/thebeachboys-wouldn'titbenice(remastered1999).jfif"
-  },
-  {
-    "file": "./music/fallout76/The Chordettes - Mr Sandman  (Remastered).flac",
-    "title": "Mr Sandman",
+    "file": "./music/fallout76/mus_radio_76_general_chordettes_mrsandman.wav",
+    "title": "Mr. Sandman",
     "artist": "The Chordettes",
-    "cover": "./covers/fallout76/thechordettes-mrsandman(remastered).jfif"
+    "cover": "./covers/fallout76/mus_radio_76_general_chordettes_mrsandman.jpg"
   },
   {
-    "file": "./music/fallout76/The Commodores - Uranium.flac",
+    "file": "./music/fallout76/mus_radio_76_general_coleporter_anythinggoes.wav",
+    "title": "Anything Goes",
+    "artist": "Cole Porter",
+    "cover": "./covers/fallout76/mus_radio_76_general_coleporter_anythinggoes.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_commodores_uranium.wav",
     "title": "Uranium",
     "artist": "The Commodores",
-    "cover": "./covers/fallout76/thecommodores-uranium.jfif"
+    "cover": "./covers/fallout76/mus_radio_76_general_commodores_uranium.jpg"
   },
   {
-    "file": "./music/fallout76/The Five Stars - Atom Bomb Baby.flac",
+    "file": "./music/fallout76/mus_radio_76_general_copilot_countryroads.wav",
+    "title": "Take Me Home, Country Roads",
+    "artist": "Spank Live",
+    "cover": "./covers/fallout76/mus_radio_76_general_copilot_theringoffire.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_copilot_theringoffire.wav",
+    "title": "The Ring of Fire",
+    "artist": "Spank Live",
+    "cover": "./covers/fallout76/mus_radio_76_general_copilot_theringoffire.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_countbasie_jumpinatthewoodside.wav",
+    "title": "Jumpin' at the Woodside",
+    "artist": "Count Basie & His Orchestra",
+    "cover": "./covers/fallout76/mus_radio_76_general_countbasie_jumpinatthewoodside.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_dannykayeandrewssisters_civilization.wav",
+    "title": "Civilization (Bongo, Bongo, Bongo)",
+    "artist": "Danny Kaye - Andrews Sisters with Vic Schoen and His Orchestra",
+    "cover": "./covers/fallout76/mus_radio_76_general_dannykayeandrewssisters_civilization.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_eddyduchin_olmanmose.wav",
+    "title": "Ol' Man Mose",
+    "artist": "Eddy Duchin",
+    "cover": "./covers/fallout76/mus_radio_76_general_eddyduchin_olmanmose.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_ernesttubb_walkingtheflooroveryou.wav",
+    "title": "Walkin' the Floor Over You",
+    "artist": "Ernest Tubb",
+    "cover": "./covers/fallout76/mus_radio_76_general_ernesttubb_walkingtheflooroveryou.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_fatswaller_aintmisbehavin.wav",
+    "title": "Ain't Misbehavin'",
+    "artist": "Fats Waller and His Rhythm",
+    "cover": "./covers/fallout76/mus_radio_76_general_fatswaller_aintmisbehavin.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_fivestars_atombombbaby.wav",
     "title": "Atom Bomb Baby",
     "artist": "The Five Stars",
-    "cover": "./covers/fallout76/thefivestars-atombombbaby.jfif"
+    "cover": "./covers/fallout76/mus_radio_76_general_fivestars_atombombbaby.jpg"
   },
   {
-    "file": "./music/fallout76/The Ink Spots - I Don_t Want To Set The World On Fire (Single Version).flac",
-    "title": "I Don't Want To Set The World On Fire",
+    "file": "./music/fallout76/mus_radio_76_general_freddieslackandhisorchestra_misterfivebyfive.wav",
+    "title": "Mr. Five by Five",
+    "artist": "Ella Mae Morse",
+    "cover": "./covers/fallout76/mus_radio_76_general_freddieslackandhisorchestra_misterfivebyfive.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_freddieslackandhisorchestra_pigfootpete.wav",
+    "title": "Pig Foot Pete",
+    "artist": "Freddie Slack",
+    "cover": "./covers/fallout76/mus_radio_76_general_freddieslackandhisorchestra_pigfootpete.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_freddieslackandhisorchestra_twolefthands.wav",
+    "title": "Two Left Hands",
+    "artist": "Freddie Slack",
+    "cover": "./covers/fallout76/mus_radio_76_general_freddieslackandhisorchestra_twolefthands.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_glennmiller_jukeboxsaturdaynight.wav",
+    "title": "Juke Box Saturday Night",
+    "artist": "Glenn Miller",
+    "cover": "./covers/fallout76/mus_radio_76_general_glennmiller_jukeboxsaturdaynight.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_henrykingorchestra_justafairweatherfriend.wav",
+    "title": "Fair Weather Friend",
+    "artist": "Buddy Tate and His Orchestra",
+    "cover": "./covers/fallout76/mus_radio_76_general_henrykingorchestra_justafairweatherfriend.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_inkspots_idontwanttosettheworldonfire.wav",
+    "title": "I Don't Want to Set the World on Fire",
     "artist": "The Ink Spots",
-    "cover": "./covers/fallout76/theinkspots-idon_twanttosettheworldonfire(singleversion).jfif"
+    "cover": "./covers/fallout76/mus_radio_76_general_inkspots_idontwanttosettheworldonfire.jpg"
   },
   {
-    "file": "./music/fallout76/The Ink Spots - It_s All over but the Crying.flac",
-    "title": "It's All over but the Crying",
+    "file": "./music/fallout76/mus_radio_76_general_inkspots_itsalloverbutthecrying.wav",
+    "title": "It’s All Over but the Crying",
     "artist": "The Ink Spots",
-    "cover": "./covers/fallout76/theinkspots-it_salloverbutthecrying.jfif"
+    "cover": "./covers/fallout76/mus_radio_76_general_inkspots_itsalloverbutthecrying.jpg"
   },
   {
-    "file": "./music/fallout76/The Ink Spots - Maybe.flac",
+    "file": "./music/fallout76/mus_radio_76_general_inkspots_maybe.wav",
     "title": "Maybe",
-    "artist": "The Ink Spots",
-    "cover": "./covers/fallout76/theinkspots-maybe.jfif"
+    "artist": "Ink Spots",
+    "cover": "./covers/fallout76/mus_radio_76_general_inkspots_maybe.jpg"
   },
   {
-    "file": "./music/fallout76/The Ink Spots - We Three (My Echo, My Shadow, And Me).flac",
-    "title": "We Three (My Echo, My Shadow, And Me)",
+    "file": "./music/fallout76/mus_radio_76_general_inkspots_wethree.wav",
+    "title": "We Three (My Echo, My Shadow and Me)",
     "artist": "The Ink Spots",
-    "cover": "./covers/fallout76/theinkspots-wethree(myecho,myshadow,andme).jfif"
+    "cover": "./covers/fallout76/mus_radio_76_general_inkspots_wethree.jpg"
   },
   {
-    "file": "./music/fallout76/Tommy Dorsey - Opus No 1.flac",
-    "title": "Opus No 1",
+    "file": "./music/fallout76/mus_radio_76_general_ishamjones_dointheuptownlowdown.wav",
+    "title": "Doin’ the Uptown Lowdown",
+    "artist": "Isham Jones and His Orchestra",
+    "cover": "./covers/fallout76/mus_radio_76_general_ishamjones_dointheuptownlowdown.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_jerryirby_answertodrivinnailsinmycoffin.wav",
+    "title": "Drivin’ Nails in My Coffin",
+    "artist": "Jerry Irby",
+    "cover": "./covers/fallout76/mus_radio_76_general_jerryirby_answertodrivinnailsinmycoffin.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_johnnybond_headindownthewronghighway.wav",
+    "title": "Headin' Down the Wrong Highway",
+    "artist": "Johnny Bond feat. The Red River Valley Boys",
+    "cover": "./covers/fallout76/mus_radio_76_general_johnnybond_headindownthewronghighway.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_johnnylong_inashantyinoldshantytown.wav",
+    "title": "A Shanty in Old Shanty Town",
+    "artist": "Johnny Long",
+    "cover": "./covers/fallout76/mus_radio_76_general_johnnylong_inashantyinoldshantytown.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_kaykyserorchestra_praisethelordandpasstheammunition.wav",
+    "title": "Praise the Lord and Pass the Ammunition",
+    "artist": "Kay Kyser",
+    "cover": "./covers/fallout76/mus_radio_76_general_kaykyserorchestra_praisethelordandpasstheammunition.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_louisjordan_saltporkwestvirginia.wav",
+    "title": "Salt Pork, W. VA",
+    "artist": "Louis Jordan",
+    "cover": "./covers/fallout76/mus_radio_76_general_louisjordan_saltporkwestvirginia.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_miltonbrown_keepknockingbutyoucantcomein.wav",
+    "title": "Keep a Knockin'",
+    "artist": "Milton Brown and His Musical Brownies",
+    "cover": "./covers/fallout76/mus_radio_76_general_miltonbrown_keepknockingbutyoucantcomein.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_natkingcole_orangecoloredsky.wav",
+    "title": "Orange Colored Sky",
+    "artist": "Nat King Cole",
+    "cover": "./covers/fallout76/mus_radio_76_general_natkingcole_orangecoloredsky.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_patsymontana_ididntknowthegunwasloaded.wav",
+    "title": "I Didn't Know the Gun Was Loaded",
+    "artist": "The Andrews Sisters",
+    "cover": "./covers/fallout76/mus_radio_76_general_patsymontana_ididntknowthegunwasloaded.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_roybrown_butcherpetepart1.wav",
+    "title": "Butcher Pete (Part 1)",
+    "artist": "Roy Brown and His Mighty-Mighty Men",
+    "cover": "./covers/fallout76/mus_radio_76_general_roybrown_butcherpetepart1.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_sonsofthepioneers_ridersinthesky.wav",
+    "title": "Riders in the Sky",
+    "artist": "Sons of the Pioneers",
+    "cover": "./covers/fallout76/mus_radio_76_general_sonsofthepioneers_ridersinthesky.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_tenneseeernieford_darkasadungeon.wav",
+    "title": "Dark as a Dungeon",
+    "artist": "Tennessee Ernie Ford",
+    "cover": "./covers/fallout76/mus_radio_76_general_tenneseeernieford_darkasadungeon.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_tenneseeernieford_shenandoah.wav",
+    "title": "Shenandoah",
+    "artist": "Tennessee Ernie Ford",
+    "cover": "./covers/fallout76/mus_radio_76_general_tenneseeernieford_shenandoah.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_tenneseeernieford_sixteentons.wav",
+    "title": "Sixteen Tons",
+    "artist": "Tennessee Ernie Ford",
+    "cover": "./covers/fallout76/mus_radio_76_general_tenneseeernieford_sixteentons.jpg"
+  },
+  {
+    "file": "./music/fallout76/mus_radio_76_general_tommydorsey_opusno1.wav",
+    "title": "Opus One",
     "artist": "Tommy Dorsey",
-    "cover": "./covers/fallout76/tommydorsey-opusno1.jfif"
-  },
-  {
-    "file": "./music/fallout76/Various Interprets - Butcher Pete Part 1 & 2.flac",
-    "title": "Butcher Pete Part 1 & 2",
-    "artist": "Various Interprets",
-    "cover": "./covers/fallout76/variousinterprets-butcherpetepart1&2.jfif"
-  },
-  {
-    "file": "./music/fallout76/Vic Schoen & His Orchestra - Don't Fence Me In (Single Version).flac",
-    "title": "Don't Fence Me In",
-    "artist": "Vic Schoen & His Orchestra",
-    "cover": "./covers/fallout76/vicschoen&hisorchestra-don'tfencemein(singleversion).jfif"
-  },
-  {
-    "file": "./music/fallout76/チック・ウェッブ - When I Get Low I Get High  (Remastered).flac",
-    "title": "When I Get Low I Get High",
-    "artist": "チック・ウェッブ",
-    "cover": "./covers/fallout76/チック・ウェッブ-whenigetlowigethigh(remastered).jfif"
-  },
-  {
-    "file": "./music/fallout76/ビング・クロスビー - Pistol Packin' Mama (Single Version).flac",
-    "title": "Pistol Packin' Mama",
-    "artist": "ビング・クロスビー",
-    "cover": "./covers/fallout76/ビング・クロスビー-pistolpackin'mama(singleversion).jfif"
-  },
-  {
-    "file": "./music/fallout76/ファッツ・ウォーラー - Ain't Misbehavin'  (Remastered).flac",
-    "title": "Ain't Misbehavin'",
-    "artist": "ファッツ・ウォーラー",
-    "cover": "./covers/fallout76/ファッツ・ウォーラー-ain'tmisbehavin'(remastered).jfif"
-  },
-  {
-    "file": "./music/fallout76/ブラインド・ウィリー・ジョンソン - It's Nobody's Fault But Mine (Album Version).flac",
-    "title": "It's Nobody's Fault But Mine",
-    "artist": "ブラインド・ウィリー・ジョンソン",
-    "cover": "./covers/fallout76/ブラインド・ウィリー・ジョンソン-it'snobody'sfaultbutmine(albumversion).jfif"
-  },
-  {
-    "file": "./music/fallout76/ボブ・ウィルス - Bubbles In My Beer.flac",
-    "title": "Bubbles In My Beer",
-    "artist": "ボブ・ウィルス",
-    "cover": "./covers/fallout76/ボブ・ウィルス-bubblesinmybeer.jfif"
+    "cover": "./covers/fallout76/mus_radio_76_general_tommydorsey_opusno1.jpg"
   }
 ]
