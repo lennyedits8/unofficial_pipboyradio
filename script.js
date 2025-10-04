@@ -354,14 +354,13 @@ progressSlider.addEventListener("input", () => {
 function finishDrag() {
   if (isDragging && audio.duration) {
     const newTime = (progressSlider.value / 100) * audio.duration;
-    if (audio.readyState > 0 && !audio.paused) {
-      audio.currentTime = newTime;
-    } else {
-      pendingSeek = newTime;
-    }
+    audio.currentTime = newTime;   // always apply, regardless of play state
+    pendingSeek = null;            // clear any stale pending seek
+    currentTimeEl.textContent = formatTime(newTime);
   }
   isDragging = false;
 }
+
 
 
 // ========================
@@ -453,6 +452,8 @@ async function loadPlaylist() {
   } catch (err) { console.error("Failed to load playlist:", err); }
 }
 
+progressSlider.addEventListener("mouseup", finishDrag);
+progressSlider.addEventListener("touchend", finishDrag);
 
 function buildTrackList() {
   trackListEl.innerHTML = "";
