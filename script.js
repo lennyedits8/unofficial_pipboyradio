@@ -57,46 +57,24 @@ let playedTracks = new Set(); // tracks played in shuffle mode
 // Web Audio API Setup
 // ========================
 let audioCtx, gainNode, sourceNode;
-let usingGain = false; // dynamically set later
+// Disable Web Audio on iOS so lockscreen playback works
+let usingGain = !isIOS;
 
-function isIOS() {
-  return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-}
+function initAudioContext() {
+  if (isIOS) return false; // skip Web Audio on iOS
 
-function initAudioContext(audio) {
-  if (isIOS()) {
-    // iOS: NO Web Audio → lockscreen works
-    usingGain = false;
-    return false;
-  }
-
-  // Other platforms: use Web Audio
   if (!audioCtx) {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     if (!AudioContext) return false;
-
     audioCtx = new AudioContext();
     gainNode = audioCtx.createGain();
     sourceNode = audioCtx.createMediaElementSource(audio);
-
-    // Route through GainNode
     sourceNode.connect(gainNode);
     gainNode.connect(audioCtx.destination);
-
     usingGain = true;
   }
   return usingGain;
 }
-
-// Volume handler (works for both cases)
-function setVolume(value) {
-  if (usingGain && gainNode) {
-    gainNode.gain.value = value; // 0.0 → 1.0
-  } else {
-    audio.volume = value; // fallback for iOS
-  }
-}
-
 
 
 function ensureAudioContextResumed() {

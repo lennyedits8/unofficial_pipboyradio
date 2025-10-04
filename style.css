@@ -841,3 +841,9 @@ body[data-theme="vegas"] {
 }
 
 
+/* Hide volume controls on touch/mobile devices */
+@media (pointer: coarse) {
+  .volume-section {
+    display: none !important;
+  }
+}
