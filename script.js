@@ -165,12 +165,18 @@ function loadTrack(index) {
 }
 
 function playTrack() {
-  if (pendingSeek !== null) { audio.currentTime = pendingSeek; pendingSeek = null; }
+  if (pendingSeek !== null) {
+    if (audio.duration) {
+      audio.currentTime = (pendingSeek / 100) * audio.duration;
+    }
+    pendingSeek = null;
+  }
   initAudioContext();
   ensureAudioContextResumed();
   audio.play();
   document.getElementById("playIcon").src = "images/pause.svg";
 }
+
 
 function pauseTrack() {
   audio.pause();
@@ -220,6 +226,8 @@ function loadTrack(index, recordHistory = true) {
   currentTrack = index;
   const track = tracks[index];
   audio.src = track.file;
+  audio.load(); // <-- ensures metadata is fetched immediately
+
   trackTitleEl.textContent = track.title;
   artistNameEl.textContent = track.artist;
   albumCoverEl.src = track.cover || "album-cover.jpg";
@@ -227,6 +235,7 @@ function loadTrack(index, recordHistory = true) {
   document.querySelectorAll(".track-item").forEach((el, i) => el.classList.toggle("active", i === index));
   updateMediaSession(track);
 }
+
 
 function nextTrack(manual = false) {
   // Single-track loop
@@ -331,14 +340,19 @@ progressSlider.addEventListener("mousedown", () => isDragging = true);
 progressSlider.addEventListener("touchstart", () => isDragging = true);
 
 progressSlider.addEventListener("input", () => {
+  const percent = progressSlider.value;
+  setProgressFill(percent);
+
   if (audio.duration) {
-    const percent = progressSlider.value;
-    setProgressFill(percent);
     const newTime = (percent / 100) * audio.duration;
     currentTimeEl.textContent = formatTime(newTime);
     audio.currentTime = newTime;
+  } else {
+    // If metadata not ready, store a pending seek
+    pendingSeek = percent;
   }
 });
+
 
 function finishDrag() {
   if (isDragging && audio.duration) audio.currentTime = (progressSlider.value / 100) * audio.duration;
@@ -426,6 +440,8 @@ async function loadPlaylist() {
     tracks = await res.json();
     buildTrackList();
     loadTrack(0);
+
+    initAudioContext(); // <-- added here
     const initialVol = parseInt(volumeSlider.value, 10) || 100;
     applyVolumeToOutput(initialVol);
     updateVolumeUI(initialVol);
@@ -433,6 +449,7 @@ async function loadPlaylist() {
     setVolumeFill(volumeSlider.value);
   } catch (err) { console.error("Failed to load playlist:", err); }
 }
+
 
 function buildTrackList() {
   trackListEl.innerHTML = "";
