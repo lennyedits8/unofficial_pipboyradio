@@ -165,16 +165,12 @@ function loadTrack(index) {
 }
 
 function playTrack() {
-  if (pendingSeek !== null) {
-    audio.currentTime = pendingSeek;
-    pendingSeek = null;
-  }
+  if (pendingSeek !== null) { audio.currentTime = pendingSeek; pendingSeek = null; }
   initAudioContext();
   ensureAudioContextResumed();
   audio.play();
   document.getElementById("playIcon").src = "images/pause.svg";
 }
-
 
 function pauseTrack() {
   audio.pause();
@@ -340,28 +336,16 @@ progressSlider.addEventListener("input", () => {
     setProgressFill(percent);
     const newTime = (percent / 100) * audio.duration;
     currentTimeEl.textContent = formatTime(newTime);
-
-    if (audio.readyState > 0 && !audio.paused) {
-      // If already playing/loaded, seek immediately
-      audio.currentTime = newTime;
-    } else {
-      // Otherwise, store it to apply on play
-      pendingSeek = newTime;
-    }
+    audio.currentTime = newTime;
   }
 });
 
 function finishDrag() {
-  if (isDragging && audio.duration) {
-    const newTime = (progressSlider.value / 100) * audio.duration;
-    audio.currentTime = newTime;   // always apply, regardless of play state
-    pendingSeek = null;            // clear any stale pending seek
-    currentTimeEl.textContent = formatTime(newTime);
-  }
+  if (isDragging && audio.duration) audio.currentTime = (progressSlider.value / 100) * audio.duration;
   isDragging = false;
 }
-
-
+progressSlider.addEventListener("mouseup", finishDrag);
+progressSlider.addEventListener("touchend", finishDrag);
 
 // ========================
 // Volume Control
@@ -442,8 +426,6 @@ async function loadPlaylist() {
     tracks = await res.json();
     buildTrackList();
     loadTrack(0);
-
-    initAudioContext(); // <-- added here
     const initialVol = parseInt(volumeSlider.value, 10) || 100;
     applyVolumeToOutput(initialVol);
     updateVolumeUI(initialVol);
@@ -451,9 +433,6 @@ async function loadPlaylist() {
     setVolumeFill(volumeSlider.value);
   } catch (err) { console.error("Failed to load playlist:", err); }
 }
-
-progressSlider.addEventListener("mouseup", finishDrag);
-progressSlider.addEventListener("touchend", finishDrag);
 
 function buildTrackList() {
   trackListEl.innerHTML = "";
