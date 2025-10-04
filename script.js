@@ -165,12 +165,16 @@ function loadTrack(index) {
 }
 
 function playTrack() {
-  if (pendingSeek !== null) { audio.currentTime = pendingSeek; pendingSeek = null; }
+  if (pendingSeek !== null) {
+    audio.currentTime = pendingSeek;
+    pendingSeek = null;
+  }
   initAudioContext();
   ensureAudioContextResumed();
   audio.play();
   document.getElementById("playIcon").src = "images/pause.svg";
 }
+
 
 function pauseTrack() {
   audio.pause();
@@ -336,16 +340,29 @@ progressSlider.addEventListener("input", () => {
     setProgressFill(percent);
     const newTime = (percent / 100) * audio.duration;
     currentTimeEl.textContent = formatTime(newTime);
-    audio.currentTime = newTime;
+
+    if (audio.readyState > 0 && !audio.paused) {
+      // If already playing/loaded, seek immediately
+      audio.currentTime = newTime;
+    } else {
+      // Otherwise, store it to apply on play
+      pendingSeek = newTime;
+    }
   }
 });
 
 function finishDrag() {
-  if (isDragging && audio.duration) audio.currentTime = (progressSlider.value / 100) * audio.duration;
+  if (isDragging && audio.duration) {
+    const newTime = (progressSlider.value / 100) * audio.duration;
+    if (audio.readyState > 0 && !audio.paused) {
+      audio.currentTime = newTime;
+    } else {
+      pendingSeek = newTime;
+    }
+  }
   isDragging = false;
 }
-progressSlider.addEventListener("mouseup", finishDrag);
-progressSlider.addEventListener("touchend", finishDrag);
+
 
 // ========================
 // Volume Control
