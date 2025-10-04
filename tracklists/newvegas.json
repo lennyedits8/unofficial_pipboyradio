@@ -1,98 +1,290 @@
 [
   {
-    "file": "./music/newvegas/Ain't that a Kick in the Head (Remastered 1997).flac",
-    "title": "エイント・ザット・ア・キック・イン・ザ・ヘッド",
-    "artist": "ディーン・マーティン",
-    "cover": "./covers/newvegas/ain'tthatakickinthehead(remastered1997).jfif"
+    "file": "./music/newvegas/MUS_Aint_That_A_Kick_In_the_Head.mp3",
+    "title": "Ain’t That a Kick in the Head",
+    "artist": "Dean Martin",
+    "cover": "./covers/newvegas/mus_aint_that_a_kick_in_the_head.jpg"
   },
   {
-    "file": "./music/newvegas/Bing Crosby - Something's Gotta Give.flac",
-    "title": "Something's Gotta Give",
-    "artist": "Bing Crosby",
-    "cover": "./covers/newvegas/bingcrosby-something'sgottagive.jfif"
-  },
-  {
-    "file": "./music/newvegas/Carmen Dragon and His Orchestra - Mad About The Boy.flac",
-    "title": "Mad About The Boy",
-    "artist": "Carmen Dragon and His Orchestra",
-    "cover": "./covers/newvegas/carmendragonandhisorchestra-madabouttheboy.jfif"
-  },
-  {
-    "file": "./music/newvegas/Frank Sinatra - Blue Moon (1999 Remastered).flac",
-    "title": "Blue Moon",
-    "artist": "Frank Sinatra",
-    "cover": "./covers/newvegas/franksinatra-bluemoon(1999remastered).jfif"
-  },
-  {
-    "file": "./music/newvegas/Gerhard Trede - Manhattan.flac",
-    "title": "Manhattan",
+    "file": "./music/newvegas/MUS_American_Swing.mp3",
+    "title": "American Swing",
     "artist": "Gerhard Trede",
-    "cover": "./covers/newvegas/gerhardtrede-manhattan.jfif"
+    "cover": "./covers/newvegas/mus_american_swing.jpg"
   },
   {
-    "file": "./music/newvegas/Gerhard Trede - Wonderland Romance.flac",
-    "title": "Wonderland Romance",
-    "artist": "Gerhard Trede",
-    "cover": "./covers/newvegas/gerhardtrede-wonderlandromance.jfif"
-  },
-  {
-    "file": "./music/newvegas/Gerhard Trede, THE GERHARD TREDE FILM ORCHESTRA - American Swing.flac",
-    "title": "Gentle Guys",
-    "artist": "Gerhard Trede, THE GERHARD TREDE FILM ORCHESTRA",
-    "cover": "./covers/newvegas/gerhardtrede,thegerhardtredefilmorchestra-americanswing.jfif"
-  },
-  {
-    "file": "./music/newvegas/Guy Mitchell - Heartaches By the Number.flac",
-    "title": "Heartaches By the Number",
-    "artist": "Guy Mitchell",
-    "cover": "./covers/newvegas/guymitchell-heartachesbythenumber.jfif"
-  },
-  {
-    "file": "./music/newvegas/Hal David - Where Have You Been All My Life_.flac",
-    "title": "Where Have You Been All My Life?",
-    "artist": "Hal David",
-    "cover": "./covers/newvegas/haldavid-wherehaveyoubeenallmylife_.jfif"
-  },
-  {
-    "file": "./music/newvegas/Kay Kyser and His Orchestra - (I Got Spurs That) Jingle, Jangle, Jingle (Album Version).flac",
-    "title": "(I Got Spurs That) Jingle, Jangle, Jingle",
-    "artist": "Kay Kyser and His Orchestra",
-    "cover": "./covers/newvegas/kaykyserandhisorchestra-(igotspursthat)jingle,jangle,jingle(albumversion).jfif"
-  },
-  {
-    "file": "./music/newvegas/Laurie Stras - Sit And Dream.flac",
-    "title": "Sit And Dream",
-    "artist": "Various Artists",
-    "cover": "./covers/newvegas/lauriestras-sitanddream.jfif"
-  },
-  {
-    "file": "./music/newvegas/Marty Robbins - Big Iron (Album Version).flac",
+    "file": "./music/newvegas/MUS_Big_Iron.mp3",
     "title": "Big Iron",
     "artist": "Marty Robbins",
-    "cover": "./covers/newvegas/martyrobbins-bigiron(albumversion).jfif"
+    "cover": "./covers/newvegas/mus_big_iron.jpg"
   },
   {
-    "file": "./music/newvegas/Nat King Cole - Love Me As Though There Were No Tomorrow (Remastered 2001).flac",
-    "title": "Love Me As Though There Were No Tomorrow",
-    "artist": "Nat King Cole",
-    "cover": "./covers/newvegas/natkingcole-lovemeasthoughtherewerenotomorrow(remastered2001).jfif"
+    "file": "./music/newvegas/MUS_Blues_For_You.mp3",
+    "title": "Blues for You",
+    "artist": "Gabriel Pares",
+    "cover": "./covers/newvegas/mus_blues_for_you.jpg"
   },
   {
-    "file": "./music/newvegas/Peggy Lee - Johnny Guitar (Single Version).flac",
-    "title": "Johnny Guitar",
-    "artist": "Peggy Lee",
-    "cover": "./covers/newvegas/peggylee-johnnyguitar(singleversion).jfif"
+    "file": "./music/newvegas/MUS_Blue_Moon.mp3",
+    "title": "Blue Moon",
+    "artist": "Frank Sinatra",
+    "cover": "./covers/newvegas/mus_blue_moon.jpg"
   },
   {
-    "file": "./music/newvegas/Peggy Lee - Why Don't You Do Right (Get Me Some Money Too).flac",
-    "title": "Why Don't You Do Right (Get Me Some Money Too)",
-    "artist": "Peggy Lee",
-    "cover": "./covers/newvegas/peggylee-whydon'tyoudoright(getmesomemoneytoo).jfif"
+    "file": "./music/newvegas/MUS_Cobwebs_and_Rainbows.mp3",
+    "title": "Cobwebs and Rainbows",
+    "artist": "Joshua Sawyer",
+    "cover": "./covers/newvegas/mus_cobwebs_and_rainbows.jpg"
   },
   {
-    "file": "./music/newvegas/The Ink Spots - It's a Sin to Tell a Lie.flac",
+    "file": "./music/newvegas/MUS_Concerto_For_2_Vl_Str_In_D_Minor.mp3",
+    "title": "Concerto for 2 Violins in D Minor – 2: Allegro Ma Non Troppo",
+    "artist": "Johann Sebastian Bach",
+    "cover": "./covers/newvegas/mus_concerto_for_2_vl_str_in_d_minor.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Concerto_Grosso_In_B_Minor_Allegro_01.mp3",
+    "title": "Concerto in B minor Op. 3/10: Allegro",
+    "artist": "Antonio Vivaldi",
+    "cover": "./covers/newvegas/mus_concerto_grosso_in_b_minor_allegro_01.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Concerto_Grosso_In_B_Minor_Allegro_02.mp3",
+    "title": "Concerto in B minor Op. 3/10: Allegro",
+    "artist": "Antonio Vivaldi",
+    "cover": "./covers/newvegas/mus_concerto_grosso_in_b_minor_allegro_02.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_EddyArnold_Rca_ItsASin.mp3",
+    "title": "It’s a Sin",
+    "artist": "Eddy Arnold",
+    "cover": "./covers/newvegas/mus_eddyarnold_rca_itsasin.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Flower_Duet_Lakm_KPM.mp3",
+    "title": "“Flower Duet” From Lakmé",
+    "artist": "Léo Delibes",
+    "cover": "./covers/newvegas/mus_flower_duet_lakm_kpm.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Four_Seasons_No_4_The_Winter.mp3",
+    "title": "Concerto No. 4 f-moll, Op. 8, RV 297 \"Winter\": II. Largo",
+    "artist": "Antonio Vivaldi",
+    "cover": "./covers/newvegas/mus_four_seasons_no_4_the_winter.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Goin_Under.mp3",
+    "title": "Goin’ Under",
+    "artist": "Darrel Wayne Perry",
+    "cover": "./covers/newvegas/mus_goin_under.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Hallo_Mister_X.mp3",
+    "title": "Hallo Mister X",
+    "artist": "Gerhard Trede",
+    "cover": "./covers/newvegas/mus_hallo_mister_x.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Happy_Times.mp3",
+    "title": "Happy Times",
+    "artist": "Bert Weedon",
+    "cover": "./covers/newvegas/mus_happy_times.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Heartaches_by_the_Number.mp3",
+    "title": "Heartaches by the Numbers",
+    "artist": "Guy Mitchell",
+    "cover": "./covers/newvegas/mus_heartaches_by_the_number.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_HomeOnTheWastes.mp3",
+    "title": "Home on the Wastes",
+    "artist": "J.E. Sawyer & Nathaniel Chapman",
+    "cover": "./covers/newvegas/mus_homeonthewastes.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_In_The_Shadow_Of_The_Valley.mp3",
+    "title": "In the Shadow of the Valley",
+    "artist": "Bing Nathan",
+    "cover": "./covers/newvegas/mus_in_the_shadow_of_the_valley.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Its_A_Sin_To_Tell_A_Lie.mp3",
     "title": "It's a Sin to Tell a Lie",
     "artist": "The Ink Spots",
-    "cover": "./covers/newvegas/theinkspots-it'sasintotellalie.jfif"
+    "cover": "./covers/newvegas/mus_its_a_sin_to_tell_a_lie.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_I_m_Movin_Out.mp3",
+    "title": "I’m Movin’ Out",
+    "artist": "Rouse Brothers",
+    "cover": "./covers/newvegas/mus_i_m_movin_out.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_I_m_So_Blue.mp3",
+    "title": "I’m So Blue",
+    "artist": "Katie Thompson",
+    "cover": "./covers/newvegas/mus_i_m_so_blue.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Jazz_Blues_GT.mp3",
+    "title": "Jazz Blues",
+    "artist": "Gerhard Trede",
+    "cover": "./covers/newvegas/mus_jazz_blues_gt.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Jazz_Club_Blues_CAS.mp3",
+    "title": "Jazz Club Blues",
+    "artist": "Harry Bluestone",
+    "cover": "./covers/newvegas/mus_jazz_club_blues_cas.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Jingle_Jangle_Jingle.mp3",
+    "title": "(I Got Spurs That) Jingle, Jangle, Jingle",
+    "artist": "Kay Kyser",
+    "cover": "./covers/newvegas/mus_jingle_jangle_jingle.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Joe_Cool_CAS.mp3",
+    "title": "Joe Cool",
+    "artist": "Nino Nardini",
+    "cover": "./covers/newvegas/mus_joe_cool_cas.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Johnny_Guitar.mp3",
+    "title": "Johnny Guitar",
+    "artist": "Peggy Lee",
+    "cover": "./covers/newvegas/mus_johnny_guitar.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Lazy_Day_Blues.mp3",
+    "title": "Lazy Day Blues",
+    "artist": "Bert Weedon",
+    "cover": "./covers/newvegas/mus_lazy_day_blues.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Let_s_Ride_Into_The_Sunset_Together.mp3",
+    "title": "Let’s Ride Into the Sunset Together",
+    "artist": "Burnham",
+    "cover": "./covers/newvegas/mus_let_s_ride_into_the_sunset_together.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Lone_Star.mp3",
+    "title": "Lone Star",
+    "artist": "Zeke Clements and His Western Swing Gang",
+    "cover": "./covers/newvegas/mus_lone_star.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Love_Me_As_Though_No_Tomorrow.mp3",
+    "title": "Love Me as Though There Were No Tomorrow",
+    "artist": "Nat King Cole",
+    "cover": "./covers/newvegas/mus_love_me_as_though_no_tomorrow.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Mad_About_The_Boy.mp3",
+    "title": "Mad About the Boy",
+    "artist": "Helen Forrest",
+    "cover": "./covers/newvegas/mus_mad_about_the_boy.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Manhattan.mp3",
+    "title": "Manhattan",
+    "artist": "Gerhard Trede",
+    "cover": "./covers/newvegas/mus_manhattan.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_NewVegasValley.mp3",
+    "title": "New Vegas Valley",
+    "artist": "J.E. Sawyer & James Melilli",
+    "cover": "./covers/newvegas/mus_newvegasvalley.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Piano_Concerto_No_21__Elvira_Madigan.mp3",
+    "title": "Piano Concerto No. 21 in C Major – 2: Andante",
+    "artist": "Wolfgang Amadeus Mozart",
+    "cover": "./covers/newvegas/mus_piano_concerto_no_21__elvira_madigan.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Ride_Of_The_Valkyries_01.mp3",
+    "title": "Ride of the Valkyries",
+    "artist": "Richard Wagner",
+    "cover": "./covers/newvegas/mus_ride_of_the_valkyries_01.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Roundhouse_Rock.mp3",
+    "title": "Roundhouse Rock",
+    "artist": "Bert Weedon",
+    "cover": "./covers/newvegas/mus_roundhouse_rock.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Sit_And_Dream.mp3",
+    "title": "Sit and Dream",
+    "artist": "Pete Thomas",
+    "cover": "./covers/newvegas/mus_sit_and_dream.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Sleepy_Town_Blues_CAS.mp3",
+    "title": "Sleepy Town Blues",
+    "artist": "Harry Lubin",
+    "cover": "./covers/newvegas/mus_sleepy_town_blues_cas.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Slow_Bounce.mp3",
+    "title": "Slow Bounce",
+    "artist": "Gerhard Trede",
+    "cover": "./covers/newvegas/mus_slow_bounce.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Slow_Sax_KOS.mp3",
+    "title": "Slow Sax",
+    "artist": "Christof Dejean",
+    "cover": "./covers/newvegas/mus_slow_sax_kos.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Somethings_Gotta_Give.mp3",
+    "title": "Something’s Gotta Give",
+    "artist": "Bing Crosby",
+    "cover": "./covers/newvegas/mus_somethings_gotta_give.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Spring_Song_KPMC.mp3",
+    "title": "Spring Song Frühlingslied",
+    "artist": "Felix Mendelssohn",
+    "cover": "./covers/newvegas/mus_spring_song_kpmc.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Stars_Of_The_Midnight_Range.mp3",
+    "title": "Stars of the Midnight Range",
+    "artist": "Johnny Bond",
+    "cover": "./covers/newvegas/mus_stars_of_the_midnight_range.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Strahlende_Trompete.mp3",
+    "title": "Strahlende Trompete",
+    "artist": "Gerhard Trede",
+    "cover": "./covers/newvegas/mus_strahlende_trompete.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_StreetsOfNewReno.mp3",
+    "title": "Streets of New Reno",
+    "artist": "J.E. Sawyer & Nathaniel Chapman",
+    "cover": "./covers/newvegas/mus_streetsofnewreno.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Von_Spanien_Nach_S_damerika.mp3",
+    "title": "Von Spanien Nach Südamerika",
+    "artist": "Gerhard Trede",
+    "cover": "./covers/newvegas/mus_von_spanien_nach_s_damerika.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Where_Have_You_Been_All_My_Life.mp3",
+    "title": "Where Have You Been All My Life?",
+    "artist": "John Cacavas",
+    "cover": "./covers/newvegas/mus_where_have_you_been_all_my_life.jpg"
+  },
+  {
+    "file": "./music/newvegas/MUS_Why_Dont_You_Do_Right.mp3",
+    "title": "Why Don’t You Do Right?",
+    "artist": "Peggy Lee",
+    "cover": "./covers/newvegas/mus_why_dont_you_do_right.jpg"
   }
 ]
