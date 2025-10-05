@@ -3,7 +3,8 @@
     "file": "./music/newvegas/MUS_Aint_That_A_Kick_In_the_Head.mp3",
     "title": "Ain’t That a Kick in the Head",
     "artist": "Dean Martin",
-    "cover": "./covers/newvegas/mus_aint_that_a_kick_in_the_head.jpg"
+    "cover": "./covers/newvegas/mus_aint_that_a_kick_in_the_head.jpg",
+    "slug": "aintthatakickinthehead"
   },
   {
     "file": "./music/newvegas/MUS_American_Swing.mp3",
@@ -27,7 +28,8 @@
     "file": "./music/newvegas/MUS_Blue_Moon.mp3",
     "title": "Blue Moon",
     "artist": "Frank Sinatra",
-    "cover": "./covers/newvegas/mus_blue_moon.jpg"
+    "cover": "./covers/newvegas/mus_blue_moon.jpg",
+    "slug": "bluemoon"
   },
   {
     "file": "./music/newvegas/MUS_Cobwebs_and_Rainbows.mp3",
@@ -93,7 +95,8 @@
     "file": "./music/newvegas/MUS_Heartaches_by_the_Number.mp3",
     "title": "Heartaches by the Numbers",
     "artist": "Guy Mitchell",
-    "cover": "./covers/newvegas/mus_heartaches_by_the_number.jpg"
+    "cover": "./covers/newvegas/mus_heartaches_by_the_number.jpg",
+    "slug": "heartachesbythenumber"
   },
   {
     "file": "./music/newvegas/MUS_HomeOnTheWastes.mp3",
@@ -111,7 +114,8 @@
     "file": "./music/newvegas/MUS_Its_A_Sin_To_Tell_A_Lie.mp3",
     "title": "It's a Sin to Tell a Lie",
     "artist": "The Ink Spots",
-    "cover": "./covers/newvegas/mus_its_a_sin_to_tell_a_lie.jpg"
+    "cover": "./covers/newvegas/mus_its_a_sin_to_tell_a_lie.jpg",
+    "slug": "itsasintotellalie"
   },
   {
     "file": "./music/newvegas/MUS_I_m_Movin_Out.mp3",
@@ -141,7 +145,8 @@
     "file": "./music/newvegas/MUS_Jingle_Jangle_Jingle.mp3",
     "title": "(I Got Spurs That) Jingle, Jangle, Jingle",
     "artist": "Kay Kyser",
-    "cover": "./covers/newvegas/mus_jingle_jangle_jingle.jpg"
+    "cover": "./covers/newvegas/mus_jingle_jangle_jingle.jpg",
+    "slug": "jinglejanglejingle"
   },
   {
     "file": "./music/newvegas/MUS_Joe_Cool_CAS.mp3",
@@ -153,7 +158,8 @@
     "file": "./music/newvegas/MUS_Johnny_Guitar.mp3",
     "title": "Johnny Guitar",
     "artist": "Peggy Lee",
-    "cover": "./covers/newvegas/mus_johnny_guitar.jpg"
+    "cover": "./covers/newvegas/mus_johnny_guitar.jpg",
+    "slug": "johnnyguitar"
   },
   {
     "file": "./music/newvegas/MUS_Lazy_Day_Blues.mp3",
@@ -177,13 +183,15 @@
     "file": "./music/newvegas/MUS_Love_Me_As_Though_No_Tomorrow.mp3",
     "title": "Love Me as Though There Were No Tomorrow",
     "artist": "Nat King Cole",
-    "cover": "./covers/newvegas/mus_love_me_as_though_no_tomorrow.jpg"
+    "cover": "./covers/newvegas/mus_love_me_as_though_no_tomorrow.jpg",
+    "slug": "lovemeasthoughtherewerenotomorrow"
   },
   {
     "file": "./music/newvegas/MUS_Mad_About_The_Boy.mp3",
     "title": "Mad About the Boy",
     "artist": "Helen Forrest",
-    "cover": "./covers/newvegas/mus_mad_about_the_boy.jpg"
+    "cover": "./covers/newvegas/mus_mad_about_the_boy.jpg",
+    "slug": "madabouttheboy"
   },
   {
     "file": "./music/newvegas/MUS_Manhattan.mp3",
@@ -243,7 +251,8 @@
     "file": "./music/newvegas/MUS_Somethings_Gotta_Give.mp3",
     "title": "Something’s Gotta Give",
     "artist": "Bing Crosby",
-    "cover": "./covers/newvegas/mus_somethings_gotta_give.jpg"
+    "cover": "./covers/newvegas/mus_somethings_gotta_give.jpg",
+    "slug": "somethingsgottagive"
   },
   {
     "file": "./music/newvegas/MUS_Spring_Song_KPMC.mp3",

@@ -1,6 +1,6 @@
 {
   "station": "newvegas",
-  "probability": 0.5,
+  "probability": 1.0,
 
     "intermission": {
     "title": "Intermission",

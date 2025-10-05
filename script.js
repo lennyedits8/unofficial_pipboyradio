@@ -63,6 +63,14 @@ function formatTime(sec) {
 
 function clamp(n, min = 0, max = 100) { return Math.max(min, Math.min(max, n)); }
 
+// Add slugify here
+function slugify(str) {
+  return str
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "") // remove spaces, punctuation, apostrophes, etc
+    .trim();
+}
+
 // ========================
 // Theme
 // ========================
@@ -185,6 +193,7 @@ function updateMediaSession(track) {
   }
 }
 
+
 // ========================
 // Controls
 // ========================
@@ -207,6 +216,23 @@ function updateLoopIcon() {
 // ========================
 // Next / Prev Tracks
 // ========================
+
+// Helper: peek at what the next track *would* be
+function peekNextTrackIndex() {
+  if (loopState === 2) return currentTrack; // loop single
+  if (shuffleEnabled) {
+    // simulate shuffle choice without consuming it
+    const available = tracks.map((_, i) => i)
+      .filter(i => !playedTracks.has(i) || playedTracks.size === tracks.length);
+    if (available.length === 0) return null;
+    return available[Math.floor(Math.random() * available.length)];
+  } else {
+    if (currentTrack + 1 < tracks.length) return currentTrack + 1;
+    if (loopState === 1) return 0;
+    return null;
+  }
+}
+
 async function nextTrack(manual=false, triggerScenario=false) {
   if(loopState===2){ audio.currentTime=0; playTrack(); return; }
 
@@ -435,23 +461,49 @@ async function runScenario(id=null, autoNext=true){
   artistNameEl.textContent = intermissionMeta.artist;
   albumCoverEl.src = intermissionMeta.cover;
 
-  try{
-    for(const folder of sequence){
-      if(scenarioInterrupted) break;
-      const pool = voicelines[folder];
-      if(!pool?.length) continue;
-      const choice = pool[Math.floor(Math.random()*pool.length)];
+  try {
+    for (const folder of sequence) {
+      if (scenarioInterrupted) break;
+      let pool = voicelines[folder];
+      if (!pool?.length) continue;
+
+if (folder === "musicintrospecific") {
+  const nextIndex = peekNextTrackIndex();
+  if (nextIndex !== null && tracks[nextIndex].slug) {
+    const nextSlug = tracks[nextIndex].slug;
+    pool = pool.filter(file => {
+      const base = file.replace(/\.[^/.]+$/, ""); // strip .ogg
+      return base === nextSlug;
+    });
+    if (!pool.length) continue; // no match, skip this folder
+  } else {
+    continue; // nothing coming up or missing slug
+  }
+}
+
+
+
+      const choice = pool[Math.floor(Math.random() * pool.length)];
       audio.src = `voicelines/${station}/${folder}/${choice}`;
-      await new Promise((resolve,reject)=>{ audio.onended=resolve; audio.onerror=reject; playTrack(); });
+      await new Promise((resolve, reject) => {
+        audio.onended = resolve;
+        audio.onerror = reject;
+        playTrack();
+      });
     }
-  }catch(e){ console.warn("Scenario interrupted", e); }
-  finally{
+  } catch(e) {
+    console.warn("Scenario interrupted", e);
+  } finally {
     audio.onended = null;
-    if(!audio._hasHandler){ audio.addEventListener("ended", handleAudioEnded); audio._hasHandler=true; }
+    if(!audio._hasHandler){
+      audio.addEventListener("ended", handleAudioEnded);
+      audio._hasHandler=true;
+    }
     inScenario=false;
     if(!scenarioInterrupted && autoNext) nextTrack(false);
   }
 }
+
 
 
 function handleAudioEnded() {
