@@ -1,6 +1,6 @@
 {
   "station": "newvegas",
-  "probability": 1.0,
+  "probability": 0.5,
 
     "intermission": {
     "title": "Intermission",
@@ -206,15 +206,16 @@
 
 
 
-  "scenarios": {
-    "1": ["radiohello", "newsintro", "newsstory1", "newstransition", "newsstory2", "newsoutro"],
-    "2": ["radiohello", "newsintro", "newsstory1", "newsoutro"],
-    "3": ["radiohello", "musicintrogeneral"],
-    "4": ["radiohello", "musicintrospecific"],
-    "5": ["radiohello", "newsintro", "newsstory1", "newstransition", "newsstory2", "newsoutro", "musicintrogeneral"],
-    "6": ["radiohello", "newsintro", "newsstory1", "newstransition", "newsstory2", "newsoutro", "musicintrospecific"],
-    "7": ["radiohello", "musicintrogeneral", "newsintro", "newsstory1", "newstransition", "newsstory2", "newsoutro"],
-    "8": ["radiohello", "musicintrospecific", "newsintro", "newsstory1", "newstransition", "newsstory2", "newsoutro"]
-  }
+"scenarios": {
+  "1": {"sequence":["radiohello","newsintro","newsstory1","newstransition","newsstory2","newsoutro"],"probability":0.4},
+  "2": {"sequence":["radiohello","newsintro","newsstory1","newsoutro"],"probability":0.6},
+  "3": {"sequence":["radiohello","musicintrogeneral"],"probability":1.0},
+  "4": {"sequence":["radiohello","musicintrospecific"],"probability":1.0},
+  "5": {"sequence":["radiohello","newsintro","newsstory1","newstransition","newsstory2","newsoutro","musicintrogeneral"],"probability":0.2},
+  "6": {"sequence":["radiohello","newsintro","newsstory1","newstransition","newsstory2","newsoutro","musicintrospecific"],"probability":0.2},
+  "7": {"sequence":["radiohello","musicintrogeneral","newsintro","newsstory1","newstransition","newsstory2","newsoutro"],"probability":0.1},
+  "8": {"sequence":["radiohello","musicintrospecific","newsintro","newsstory1","newstransition","newsstory2","newsoutro"],"probability":0.1}
+}
+
 }
 

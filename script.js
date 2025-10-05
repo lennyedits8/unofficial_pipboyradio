@@ -304,9 +304,11 @@ nextBtn.addEventListener("click", async () => {
     return;
   }
 
-  // Normal next track
-  await nextTrack(true, station === "newvegas");
+  // Normal skip — use probability like auto-next
+  const shouldRunScenario = (Object.keys(scenarios).length > 0) && (Math.random() < stationProbability);
+  await nextTrack(true, shouldRunScenario);
 });
+
 
 
 prevBtn.addEventListener("click", () => {
@@ -379,38 +381,59 @@ let voicelines = {};
 let scenarios = {};
 let inScenario = false;
 let scenarioInterrupted = false;
+let stationProbability = 1.0; // default always trigger scenarios
 
 async function loadStationVoicelines() {
-  try{
+  try {
     const res = await fetch(`tracklists/${station}_voicelines.json`);
     const data = await res.json();
     voicelines = data.voicelines || {};
     scenarios = data.scenarios || {};
-    stationIntermission = data.intermission || null; // <--- assign intermission metadata from JSON
-    console.log("Loaded station voicelines:", station);
-  }catch(err){ console.log("No voicelines for station:", station); }
+    stationIntermission = data.intermission || null;
+    stationProbability = data.probability || 1.0; // 👈 NEW
+    console.log(`Loaded voicelines for ${station}, probability=${stationProbability}`);
+  } catch (err) {
+    console.log("No voicelines for station:", station);
+    voicelines = {};
+    scenarios = {};
+    stationProbability = 0; // no voicelines = never trigger scenarios
+  }
 }
+
 
 async function runScenario(id=null, autoNext=true){
   if(!Object.keys(scenarios).length) return;
-  if(!id){ const keys=Object.keys(scenarios); id=keys[Math.floor(Math.random()*keys.length)]; }
-  const sequence=scenarios[id];
-  if(!sequence) return;
+  
+  if(!id){
+    const keys = Object.keys(scenarios);
+    // Weighted random selection
+    let total = keys.reduce((sum,k)=>sum+(scenarios[k].probability||1),0);
+    let r = Math.random()*total;
+    for(const k of keys){
+      r -= scenarios[k].probability||1;
+      if(r <= 0){ id = k; break; }
+    }
+  }
 
-  inScenario=true; scenarioInterrupted=false;
+  const scenarioObj = scenarios[id];
+  if(!scenarioObj) return;
+  const sequence = scenarioObj.sequence;
+  if(!sequence?.length) return;
+
+  inScenario = true; 
+  scenarioInterrupted = false;
   pauseTrack();
   audio.removeEventListener("ended", handleAudioEnded);
 
-const intermissionMeta = stationIntermission || {
-  title: "Intermission",
-  artist: "DJ Three Dog",
-  cover: "images/intermission.jpg"
-};
+  const intermissionMeta = stationIntermission || {
+    title: "Intermission",
+    artist: "DJ Three Dog",
+    cover: "images/intermission.jpg"
+  };
 
-trackTitleEl.textContent = intermissionMeta.title;
-artistNameEl.textContent = intermissionMeta.artist;
-albumCoverEl.src = intermissionMeta.cover;
-
+  trackTitleEl.textContent = intermissionMeta.title;
+  artistNameEl.textContent = intermissionMeta.artist;
+  albumCoverEl.src = intermissionMeta.cover;
 
   try{
     for(const folder of sequence){
@@ -423,22 +446,29 @@ albumCoverEl.src = intermissionMeta.cover;
     }
   }catch(e){ console.warn("Scenario interrupted", e); }
   finally{
-    audio.onended=null;
+    audio.onended = null;
     if(!audio._hasHandler){ audio.addEventListener("ended", handleAudioEnded); audio._hasHandler=true; }
     inScenario=false;
     if(!scenarioInterrupted && autoNext) nextTrack(false);
   }
 }
 
+
 function handleAudioEnded() {
   if (inScenario) return; // scenario controls itself
 
-  if (station === "newvegas" && Object.keys(scenarios).length > 0) {
-    runScenario();
-  } else {
-    nextTrack(false);
+  if (Object.keys(scenarios).length > 0) {
+    if (Math.random() < stationProbability) {
+      runScenario(); // only start scenario if probability hits
+      return;
+    }
   }
+
+  // Otherwise just go to next song normally
+  nextTrack(false);
 }
+
+
 
 // Attach once on page load
 audio.onended = handleAudioEnded;
@@ -454,3 +484,10 @@ updateShuffleIconColor();
 updateLoopIcon();
 loadPlaylist();
 loadStationVoicelines();
+
+
+// Toggle tracklist visibility
+document.querySelector(".tracklist .section-title")
+  .addEventListener("click", () => {
+    document.querySelector(".tracklist").classList.toggle("collapsed");
+  });
