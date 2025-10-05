@@ -308,8 +308,14 @@ function prevTrack(manual = true) {
   playTrack(); // always auto-play
 }
 
-nextBtn.addEventListener("click", () => nextTrack(true));
-prevBtn.addEventListener("click", () => prevTrack(true));
+nextBtn.addEventListener("click", async () => {
+  if (!inScenario) {
+    pauseTrack();          
+    await runScenario(null, false); // false = don't auto-next again
+  }
+  nextTrack(true);
+});
+
 
 
 // ========================
@@ -394,12 +400,12 @@ volumeSlider.addEventListener("keydown", e => {
 // ========================
 audio.addEventListener("ended", () => {
   if (!inScenario) {
-    // Run a scenario instead of immediately starting next song
-    runScenario();
+    runScenario(); // still defaults to autoNext = true
   } else {
     nextTrack(false);
   }
 });
+
 
 
 
@@ -472,27 +478,10 @@ document.querySelector(".tracklist .section-title")
   });
 
 
+//////////////////////////////Voicelines///////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  let voicelines = {};
+let voicelines = {};
 let scenarios = {};
 let inScenario = false;
 
@@ -533,7 +522,7 @@ function playVoicelineFrom(folder) {
 }
 
 // Run a scenario by ID (sequence of folders)
-async function runScenario(id) {
+async function runScenario(id, autoNext = true) {
   // If no id passed, pick a random one
   if (!id) {
     const keys = Object.keys(scenarios);
@@ -554,8 +543,9 @@ async function runScenario(id) {
   }
 
   inScenario = false;
-  nextTrack(false); // resume music
+  if (autoNext) nextTrack(false); // only auto-next if desired
 }
+
 
 
 // Load JSON on page start
