@@ -389,7 +389,18 @@ volumeSlider.addEventListener("keydown", e => {
 // ========================
 // Auto-next track
 // ========================
-audio.addEventListener("ended", () => nextTrack(false));
+// ========================
+// Auto-next track + scenarios
+// ========================
+audio.addEventListener("ended", () => {
+  if (!inScenario) {
+    // Run a scenario instead of immediately starting next song
+    runScenario();
+  } else {
+    nextTrack(false);
+  }
+});
+
 
 
 // ========================
@@ -459,3 +470,93 @@ document.querySelector(".tracklist .section-title")
   .addEventListener("click", () => {
     document.querySelector(".tracklist").classList.toggle("collapsed");
   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  let voicelines = {};
+let scenarios = {};
+let inScenario = false;
+
+const voice = new Audio();
+voice.volume = audio.volume;
+
+// Load the combined JSON (voicelines + scenarios in one file)
+async function loadData() {
+  try {
+    const res = await fetch("tracklists/newvegas_voicelines.json");
+    const data = await res.json();
+
+    voicelines = data.voicelines || {};
+    scenarios = data.scenarios || {};
+    console.log("Loaded station:", data.station);
+    console.log("Probability:", data.probability);
+    console.log("Voicelines:", voicelines);
+    console.log("Scenarios:", scenarios);
+
+  } catch (err) {
+    console.error("Failed to load newvegas_voicelines.json:", err);
+  }
+}
+
+// Pick a random voiceline from a folder
+function playVoicelineFrom(folder) {
+  return new Promise((resolve) => {
+    const pool = voicelines[folder];
+    if (!pool || pool.length === 0) {
+      resolve();
+      return;
+    }
+    const choice = pool[Math.floor(Math.random() * pool.length)];
+    voice.src = `voicelines/newvegas/${folder}/${choice}`;
+    voice.onended = resolve;
+    voice.play();
+  });
+}
+
+// Run a scenario by ID (sequence of folders)
+async function runScenario(id) {
+  // If no id passed, pick a random one
+  if (!id) {
+    const keys = Object.keys(scenarios);
+    id = keys[Math.floor(Math.random() * keys.length)];
+  }
+
+  const sequence = scenarios[id];
+  if (!sequence) {
+    console.warn(`Scenario '${id}' not found`);
+    return;
+  }
+
+  inScenario = true;
+  pauseTrack(); // stop music during DJ/news
+
+  for (const folder of sequence) {
+    await playVoicelineFrom(folder);
+  }
+
+  inScenario = false;
+  nextTrack(false); // resume music
+}
+
+
+// Load JSON on page start
+loadData();
