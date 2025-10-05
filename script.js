@@ -1,4 +1,4 @@
-// Vault Radio Player - Updated for tracklist loop/shuffle + 3-state loop
+// Vault Radio Player - Updated for tracklist loop/shuffle + station-specific voicelines
 
 // ========================
 // Elements
@@ -24,48 +24,20 @@ const shuffleIcon = document.getElementById("shuffleIcon");
 const loopBtn = document.getElementById("loopBtn");
 const loopIcon = document.getElementById("loopIcon");
 
-let shuffleEnabled = false; // tracks shuffle state
-let loopState = 0;          // 0 = no loop, 1 = loop tracklist, 2 = loop single track
-
-// Detect iOS devices to handle background audio restrictions
+let shuffleEnabled = false;
+let loopState = 0; // 0=no loop, 1=loop tracklist, 2=loop single track
 const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
 // ========================
-// Shuffle function
-// ========================
-function shuffle(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
-
-// ========================
-// Playlist
-// ========================
-let tracks = [];
-const station = document.body.dataset.station; // HTML-defined station
-
-let currentTrack = 0;
-let pendingSeek = null;
-let isDragging = false;
-let lastVolume = 100;
-let playedTracks = new Set(); // tracks played in shuffle mode
-
-// ========================
-// Web Audio API Setup
+// Audio Context
 // ========================
 let audioCtx, gainNode, sourceNode;
-// Disable Web Audio on iOS so lockscreen playback works
 let usingGain = !isIOS;
 
 function initAudioContext() {
-  if (isIOS) return false; // skip Web Audio on iOS
-
+  if (isIOS) return false;
   if (!audioCtx) {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContext) return false;
     audioCtx = new AudioContext();
     gainNode = audioCtx.createGain();
     sourceNode = audioCtx.createMediaElementSource(audio);
@@ -76,11 +48,8 @@ function initAudioContext() {
   return usingGain;
 }
 
-
 function ensureAudioContextResumed() {
-  if (audioCtx && audioCtx.state === "suspended") {
-    audioCtx.resume().catch(e => console.warn("AudioContext resume failed:", e));
-  }
+  if (audioCtx && audioCtx.state === "suspended") audioCtx.resume().catch(e => console.warn(e));
 }
 
 // ========================
@@ -92,23 +61,19 @@ function formatTime(sec) {
   return `${m}:${s}`;
 }
 
+function clamp(n, min = 0, max = 100) { return Math.max(min, Math.min(max, n)); }
+
 // ========================
 // Theme
 // ========================
 function updateThemeLabel() {
-  if (document.body.getAttribute("data-theme") === "vegas") themeLabel.textContent = "New Vegas";
-  else themeLabel.textContent = "Fallout 4";
+  themeLabel.textContent = document.body.getAttribute("data-theme") === "vegas" ? "New Vegas" : "Fallout 4";
 }
 updateThemeLabel();
 
 themeSwitch.addEventListener("change", () => {
-  if (themeSwitch.checked) {
-    document.body.setAttribute("data-theme", "vegas");
-    localStorage.setItem("theme", "vegas");
-  } else {
-    document.body.removeAttribute("data-theme");
-    localStorage.setItem("theme", "fallout4");
-  }
+  if (themeSwitch.checked) document.body.setAttribute("data-theme","vegas"), localStorage.setItem("theme","vegas");
+  else document.body.removeAttribute("data-theme"), localStorage.setItem("theme","fallout4");
   setProgressFill(progressSlider.value);
   setVolumeFill(volumeSlider.value);
   updateThemeLabel();
@@ -132,27 +97,52 @@ function setVolumeFill(vol) {
 }
 
 // ========================
-// Media Session
+// Playlist & Station
 // ========================
-function updateMediaSession(track) {
-  if ("mediaSession" in navigator) {
-    navigator.mediaSession.metadata = new MediaMetadata({
-      title: track.title,
-      artist: track.artist,
-      album: "Pip-Boy Radio",
-      artwork: [{ src: track.cover || "album-cover.jpg", sizes: "512x512", type: "image/jpeg" }]
-    });
-    navigator.mediaSession.setActionHandler("play", playTrack);
-    navigator.mediaSession.setActionHandler("pause", pauseTrack);
-    navigator.mediaSession.setActionHandler("previoustrack", () => { prevTrack(); playTrack(); });
-    navigator.mediaSession.setActionHandler("nexttrack", () => { nextTrack(); playTrack(); });
-  }
+let tracks = [];
+let currentTrack = 0;
+let trackHistory = [];
+let playedTracks = new Set();
+let pendingSeek = null;
+let isDragging = false;
+let lastVolume = 100;
+const station = document.body.dataset.station;
+let stationIntermission = null;  // This will hold intermission metadata from JSON
+
+
+// ========================
+// Load Playlist
+// ========================
+async function loadPlaylist() {
+  try {
+    const res = await fetch(`tracklists/${station}.json`);
+    tracks = await res.json();
+    buildTrackList();
+    loadTrack(0);
+    const initialVol = parseInt(volumeSlider.value, 10) || 100;
+    applyVolumeToOutput(initialVol);
+    updateVolumeUI(initialVol);
+    setProgressFill(progressSlider.value);
+    setVolumeFill(volumeSlider.value);
+  } catch(err) { console.error("Failed to load playlist:", err); }
+}
+
+function buildTrackList() {
+  trackListEl.innerHTML = "";
+  tracks.forEach((track, i) => {
+    const li = document.createElement("li");
+    li.textContent = `${track.artist} - ${track.title}`;
+    li.classList.add("track-item");
+    li.addEventListener("click", () => { loadTrack(i); playTrack(); });
+    trackListEl.appendChild(li);
+  });
 }
 
 // ========================
-// Track Handling
+// Load / Play / Pause
 // ========================
-function loadTrack(index) {
+function loadTrack(index, recordHistory = true) {
+  if (recordHistory && currentTrack !== index && currentTrack !== null) trackHistory.push(currentTrack);
   currentTrack = index;
   const track = tracks[index];
   audio.src = track.file;
@@ -178,253 +168,282 @@ function pauseTrack() {
 }
 
 // ========================
+// Media Session
+// ========================
+function updateMediaSession(track) {
+  if ("mediaSession" in navigator) {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: track.title,
+      artist: track.artist,
+      album: "Pip-Boy Radio",
+      artwork: [{ src: track.cover || "album-cover.jpg", sizes: "512x512", type: "image/jpeg" }]
+    });
+    navigator.mediaSession.setActionHandler("play", playTrack);
+    navigator.mediaSession.setActionHandler("pause", pauseTrack);
+    navigator.mediaSession.setActionHandler("previoustrack", () => { prevTrack(); playTrack(); });
+    navigator.mediaSession.setActionHandler("nexttrack", () => { nextTrack(); playTrack(); });
+  }
+}
+
+// ========================
 // Controls
 // ========================
 playBtn.addEventListener("click", () => audio.paused ? playTrack() : pauseTrack());
 
-// Shuffle button
 shuffleBtn.addEventListener("click", () => { shuffleEnabled = !shuffleEnabled; playedTracks.clear(); updateShuffleIconColor(); });
 function updateShuffleIconColor() {
   const iconFilter = getComputedStyle(document.body).getPropertyValue("--icon-filter").trim();
   shuffleIcon.style.filter = shuffleEnabled ? iconFilter : "brightness(0) saturate(0%) invert(100%) sepia(64%) saturate(0%) hue-rotate(360deg)";
 }
 
-// Loop button (3-state: no loop → loop tracklist → loop single track)
-loopBtn.addEventListener("click", () => {
-  loopState = (loopState + 1) % 3; // cycle 0 → 1 → 2 → 0
-  updateLoopIcon();
-});
-
+loopBtn.addEventListener("click", () => { loopState = (loopState+1)%3; updateLoopIcon(); });
 function updateLoopIcon() {
   const iconFilter = getComputedStyle(document.body).getPropertyValue("--icon-filter").trim();
-  if (loopState === 0) {
-    loopIcon.src = "images/loop.svg";
-    loopIcon.style.filter = "brightness(0) saturate(0%) invert(100%) sepia(64%) saturate(0%) hue-rotate(360deg)";
-  } else if (loopState === 1) {
-    loopIcon.src = "images/loop.svg";
-    loopIcon.style.filter = iconFilter;
-  } else if (loopState === 2) {
-    loopIcon.src = "images/loop1.svg";
-    loopIcon.style.filter = iconFilter;
+  if(loopState===0){ loopIcon.src="images/loop.svg"; loopIcon.style.filter="brightness(0) saturate(0%) invert(100%) sepia(64%) saturate(0%) hue-rotate(360deg)";}
+  else if(loopState===1){ loopIcon.src="images/loop.svg"; loopIcon.style.filter=iconFilter;}
+  else { loopIcon.src="images/loop1.svg"; loopIcon.style.filter=iconFilter; }
+}
+
+// ========================
+// Next / Prev Tracks
+// ========================
+async function nextTrack(manual=false, triggerScenario=false) {
+  if(loopState===2){ audio.currentTime=0; playTrack(); return; }
+
+  let nextIndex = null;
+
+  if(shuffleEnabled){
+    if(Number.isInteger(currentTrack) && currentTrack>=0) playedTracks.add(currentTrack);
+    if(playedTracks.size===tracks.length){
+      if(loopState===1) playedTracks.clear();
+      else if(manual) nextIndex=0;
+      else return;
+    }
+    if(nextIndex===null){
+      if(tracks.length===1) nextIndex=0;
+      else{
+        let attempts=0;
+        do{ nextIndex=Math.floor(Math.random()*tracks.length); attempts++; } 
+        while(playedTracks.has(nextIndex) && playedTracks.size<tracks.length && attempts<50);
+      }
+    }
+  } else{
+    if(Number.isInteger(currentTrack) && currentTrack+1<tracks.length) nextIndex=currentTrack+1;
+    else if(loopState===1) nextIndex=0;
+    else if(manual) nextIndex=0;
+    else return;
   }
+
+  if(nextIndex===null) return;
+
+  if(triggerScenario && Object.keys(scenarios).length>0) await runScenario(null, true);
+
+  loadTrack(nextIndex);
+  if(shuffleEnabled) playedTracks.add(nextIndex);
+  playTrack();
 }
 
-// ========================
-// Next / Prev with loop states
-// ========================
-let trackHistory = []; // store history of played tracks
+function prevTrack(manual = true) {
+  // If we are inside a scenario OR last played track was a scenario clip
+  if (inScenario || audio.src.includes(`voicelines/${station}/`)) {
+    // Jump to previous main track
+    if (trackHistory.length > 0) {
+      const lastIndex = trackHistory.pop();
+      loadTrack(lastIndex, false);
+    } else if (loopState === 1) {
+      loadTrack(tracks.length - 1, false);
+    } else {
+      loadTrack(0, false);
+    }
+    playTrack();
+    return;
+  }
 
-function loadTrack(index, recordHistory = true) {
-  if (recordHistory && currentTrack !== index) trackHistory.push(currentTrack);
+  // Normal prev logic
+  const restartThreshold = 3;
+  const atStart = audio.currentTime < restartThreshold;
 
-  currentTrack = index;
-  const track = tracks[index];
-  audio.src = track.file;
-  trackTitleEl.textContent = track.title;
-  artistNameEl.textContent = track.artist;
-  albumCoverEl.src = track.cover || "album-cover.jpg";
-
-  document.querySelectorAll(".track-item").forEach((el, i) => el.classList.toggle("active", i === index));
-  updateMediaSession(track);
-}
-
-function nextTrack(manual = false) {
-  // Single-track loop
   if (loopState === 2) {
     audio.currentTime = 0;
     playTrack();
     return;
   }
 
-  if (shuffleEnabled) {
-    playedTracks.add(currentTrack);
+  if (!atStart && manual) {
+    audio.currentTime = 0;
+    playTrack();
+    return;
+  }
 
-    // All tracks played?
-    if (playedTracks.size === tracks.length) {
-      if (loopState === 1) {
-        playedTracks.clear(); // reset for tracklist loop
-      } else if (manual) {
-        playedTracks.clear(); // reset so manual next works
-        loadTrack(0);
-        pauseTrack();
-        return;
-      } else {
-        return; // auto-next stops
-      }
-    }
-
-    // Pick a random unplayed track
-    let nextIndex;
-    do {
-      nextIndex = Math.floor(Math.random() * tracks.length);
-    } while (playedTracks.has(nextIndex) && playedTracks.size < tracks.length);
-
-    loadTrack(nextIndex);
+  if (trackHistory.length > 0) {
+    const lastIndex = trackHistory.pop();
+    loadTrack(lastIndex, false);
+  } else if (loopState === 1) {
+    loadTrack(tracks.length - 1, false);
   } else {
-    // Sequential mode
-    if (currentTrack + 1 < tracks.length) {
-      loadTrack(currentTrack + 1);
-    } else if (loopState === 1) {
-      loadTrack(0); // tracklist loop
-    } else if (manual) {
-      loadTrack(0);
-      pauseTrack();
-      return;
-    } else {
-      return; // auto-next stops
-    }
+    loadTrack(0, false);
   }
 
   playTrack();
 }
 
-function prevTrack(manual = true) {
-  const restartThreshold = 3; // seconds
-  const atStart = audio.currentTime < restartThreshold;
-
-  if (loopState === 2) { // single-track loop
-    audio.currentTime = 0;
-    playTrack();
-    return;
-  }
-
-  if (!atStart && manual) {
-    // first click restarts current track
-    audio.currentTime = 0;
-    playTrack();
-    return;
-  }
-
-  // Go to last played track from history
-  if (trackHistory.length > 0) {
-    const lastIndex = trackHistory.pop();
-    loadTrack(lastIndex, false); // don't push to history
-  } else if (loopState === 1) {
-    loadTrack(tracks.length - 1, false); // wrap to last track
-  } else {
-    loadTrack(0, false); // stay on first track
-  }
-
-  playTrack(); // always auto-play
-}
 
 nextBtn.addEventListener("click", async () => {
-  if (!inScenario) {
-    pauseTrack();          
-    await runScenario(null, false); // false = don't auto-next again
+  if (inScenario) {
+    // Skip the entire scenario
+    scenarioInterrupted = true;
+    inScenario = false;
+    audio.pause();
+
+    // Reattach the normal ended handler
+    audio.onended = handleAudioEnded;
+    audio._hasHandler = true;
+
+    // Move to next track, but don't trigger a new scenario immediately
+    await nextTrack(true, false);
+    return;
   }
-  nextTrack(true);
+
+  // Normal next track
+  await nextTrack(true, station === "newvegas");
+});
+
+
+prevBtn.addEventListener("click", () => {
+  if (inScenario) {
+    // Skip scenario immediately and go to previous main track
+    scenarioInterrupted = true;
+    audio.pause();
+    audio.onended = null;
+    inScenario = false;
+
+    // Reattach main ended handler if missing
+    if (!audio._hasHandler) {
+      audio.addEventListener("ended", handleAudioEnded);
+      audio._hasHandler = true;
+    }
+
+    // Jump to previous track in main playlist
+    prevTrack(true);
+    return;
+  }
+
+  // Normal prev logic (unchanged for pages without scenarios)
+  prevTrack(true);
 });
 
 
 
 // ========================
-// Progress Bar
+// Progress
 // ========================
-function updateProgress() {
-  if (audio.duration && !isDragging) {
-    const percent = (audio.currentTime / audio.duration) * 100;
-    progressSlider.value = percent;
+function updateProgress(){
+  if(audio.duration && !isDragging){
+    const percent = (audio.currentTime/audio.duration)*100;
+    progressSlider.value=percent;
     setProgressFill(percent);
-    currentTimeEl.textContent = formatTime(audio.currentTime);
-    totalTimeEl.textContent = formatTime(audio.duration);
+    currentTimeEl.textContent=formatTime(audio.currentTime);
+    totalTimeEl.textContent=formatTime(audio.duration);
   }
   requestAnimationFrame(updateProgress);
 }
 requestAnimationFrame(updateProgress);
 
-progressSlider.addEventListener("mousedown", () => isDragging = true);
-progressSlider.addEventListener("touchstart", () => isDragging = true);
-
-progressSlider.addEventListener("input", () => {
-  if (audio.duration) {
-    const percent = progressSlider.value;
+progressSlider.addEventListener("mousedown", ()=>isDragging=true);
+progressSlider.addEventListener("touchstart", ()=>isDragging=true);
+progressSlider.addEventListener("input", ()=>{ 
+  if(audio.duration){ 
+    const percent=progressSlider.value;
     setProgressFill(percent);
-    const newTime = (percent / 100) * audio.duration;
-    currentTimeEl.textContent = formatTime(newTime);
-    audio.currentTime = newTime;
+    const newTime=(percent/100)*audio.duration;
+    currentTimeEl.textContent=formatTime(newTime);
+    audio.currentTime=newTime;
   }
 });
+function finishDrag(){ if(isDragging && audio.duration) audio.currentTime=(progressSlider.value/100)*audio.duration; isDragging=false; }
+progressSlider.addEventListener("mouseup",finishDrag);
+progressSlider.addEventListener("touchend",finishDrag);
 
-function finishDrag() {
-  if (isDragging && audio.duration) audio.currentTime = (progressSlider.value / 100) * audio.duration;
-  isDragging = false;
+// ========================
+// Volume
+// ========================
+function applyVolumeToOutput(vol){ const v=clamp(Number(vol))/100; usingGain?gainNode.gain.value=v:audio.volume=v; }
+function updateVolumeUI(vol){ vol=clamp(Math.round(Number(vol))); if(String(volumeSlider.value)!==String(vol)) volumeSlider.value=vol; setVolumeFill(vol); volumeDisplay.textContent=`${vol}%`; if(vol===0) volumeIcon.src="images/mute.svg"; else if(vol<=40) volumeIcon.src="images/min.svg"; else volumeIcon.src="images/max.svg"; }
+volumeSlider.addEventListener("input", e=>{ const vol=Number(e.target.value); applyVolumeToOutput(vol); updateVolumeUI(vol); if(vol>0) lastVolume=vol; });
+volumeIcon.addEventListener("click", ()=>{ const currentOut = usingGain?gainNode.gain.value:audio.volume; if(currentOut>0){ lastVolume=clamp(Number(volumeSlider.value)); applyVolumeToOutput(0); updateVolumeUI(0); volumeSlider.value=0; } else{ applyVolumeToOutput(lastVolume); updateVolumeUI(lastVolume); volumeSlider.value=lastVolume; } });
+
+// ========================
+// Auto-next & scenarios
+// ========================
+let voicelines = {};
+let scenarios = {};
+let inScenario = false;
+let scenarioInterrupted = false;
+
+async function loadStationVoicelines() {
+  try{
+    const res = await fetch(`tracklists/${station}_voicelines.json`);
+    const data = await res.json();
+    voicelines = data.voicelines || {};
+    scenarios = data.scenarios || {};
+    stationIntermission = data.intermission || null; // <--- assign intermission metadata from JSON
+    console.log("Loaded station voicelines:", station);
+  }catch(err){ console.log("No voicelines for station:", station); }
 }
-progressSlider.addEventListener("mouseup", finishDrag);
-progressSlider.addEventListener("touchend", finishDrag);
 
-// ========================
-// Volume Control
-// ========================
-function clamp(n, min = 0, max = 100) { return Math.max(min, Math.min(max, n)); }
-function applyVolumeToOutput(vol) {
-  const v = clamp(Number(vol)) / 100;
-  if (usingGain) gainNode.gain.value = v;
-  else audio.volume = v;
+async function runScenario(id=null, autoNext=true){
+  if(!Object.keys(scenarios).length) return;
+  if(!id){ const keys=Object.keys(scenarios); id=keys[Math.floor(Math.random()*keys.length)]; }
+  const sequence=scenarios[id];
+  if(!sequence) return;
+
+  inScenario=true; scenarioInterrupted=false;
+  pauseTrack();
+  audio.removeEventListener("ended", handleAudioEnded);
+
+const intermissionMeta = stationIntermission || {
+  title: "Intermission",
+  artist: "DJ Three Dog",
+  cover: "images/intermission.jpg"
+};
+
+trackTitleEl.textContent = intermissionMeta.title;
+artistNameEl.textContent = intermissionMeta.artist;
+albumCoverEl.src = intermissionMeta.cover;
+
+
+  try{
+    for(const folder of sequence){
+      if(scenarioInterrupted) break;
+      const pool = voicelines[folder];
+      if(!pool?.length) continue;
+      const choice = pool[Math.floor(Math.random()*pool.length)];
+      audio.src = `voicelines/${station}/${folder}/${choice}`;
+      await new Promise((resolve,reject)=>{ audio.onended=resolve; audio.onerror=reject; playTrack(); });
+    }
+  }catch(e){ console.warn("Scenario interrupted", e); }
+  finally{
+    audio.onended=null;
+    if(!audio._hasHandler){ audio.addEventListener("ended", handleAudioEnded); audio._hasHandler=true; }
+    inScenario=false;
+    if(!scenarioInterrupted && autoNext) nextTrack(false);
+  }
 }
 
-function updateVolumeUI(vol) {
-  vol = clamp(Math.round(Number(vol)));
-  if (String(volumeSlider.value) !== String(vol)) volumeSlider.value = vol;
-  setVolumeFill(vol);
-  volumeDisplay.textContent = `${vol}%`;
-  if (vol === 0) volumeIcon.src = "images/mute.svg";
-  else if (vol <= 40) volumeIcon.src = "images/min.svg";
-  else volumeIcon.src = "images/max.svg";
-}
+function handleAudioEnded() {
+  if (inScenario) return; // scenario controls itself
 
-volumeSlider.addEventListener("input", e => { const vol = Number(e.target.value); applyVolumeToOutput(vol); updateVolumeUI(vol); if (vol>0) lastVolume=vol; });
-volumeIcon.addEventListener("click", () => {
-  ensureAudioContextResumed();
-  const currentOut = usingGain ? gainNode.gain.value : audio.volume;
-  if (currentOut>0) { lastVolume=clamp(Number(volumeSlider.value)); applyVolumeToOutput(0); updateVolumeUI(0); volumeSlider.value=0; }
-  else { applyVolumeToOutput(lastVolume); updateVolumeUI(lastVolume); volumeSlider.value=lastVolume; }
-});
-
-// Keyboard volume
-volumeSlider.addEventListener("keydown", e => {
-  const cur = clamp(Number(volumeSlider.value));
-  let next = cur;
-  if (["ArrowLeft","ArrowDown"].includes(e.key)) { e.preventDefault(); next = clamp(cur-1); }
-  else if (["ArrowRight","ArrowUp"].includes(e.key)) { e.preventDefault(); next = clamp(cur+1); }
-  else if (e.key==="PageDown") { e.preventDefault(); next = clamp(cur-10); }
-  else if (e.key==="PageUp") { e.preventDefault(); next = clamp(cur+10); }
-  if(next!==cur){ volumeSlider.value=next; applyVolumeToOutput(next); updateVolumeUI(next); if(next>0) lastVolume=next;}
-});
-
-// ========================
-// Auto-next track
-// ========================
-// ========================
-// Auto-next track + scenarios
-// ========================
-audio.addEventListener("ended", () => {
-  if (!inScenario) {
-    runScenario(); // still defaults to autoNext = true
+  if (station === "newvegas" && Object.keys(scenarios).length > 0) {
+    runScenario();
   } else {
     nextTrack(false);
   }
-});
-
-
-
-
-// ========================
-// Mobile unlock for AudioContext
-// ========================
-function unlockAudioContext() {
-  if (audioCtx && audioCtx.state === "suspended") {
-    audioCtx.resume().then(() => {
-      console.log("AudioContext resumed successfully");
-      document.removeEventListener("touchend", unlockAudioContext);
-      document.removeEventListener("click", unlockAudioContext);
-    }).catch(err => console.warn("Failed to resume AudioContext:", err));
-  }
 }
 
-// Listen for the first user gesture to unlock
-document.addEventListener("touchend", unlockAudioContext, { once: true });
-document.addEventListener("click", unlockAudioContext, { once: true });
+// Attach once on page load
+audio.onended = handleAudioEnded;
+audio._hasHandler = true;
+
 
 // ========================
 // Init
@@ -433,120 +452,5 @@ if(localStorage.getItem("theme")==="vegas"){ document.body.setAttribute("data-th
 updateThemeLabel();
 updateShuffleIconColor();
 updateLoopIcon();
-
-// ========================
-// Load playlist
-// ========================
-async function loadPlaylist() {
-  try {
-    const res = await fetch(`tracklists/${station}.json`);
-    tracks = await res.json();
-    buildTrackList();
-    loadTrack(0);
-    const initialVol = parseInt(volumeSlider.value, 10) || 100;
-    applyVolumeToOutput(initialVol);
-    updateVolumeUI(initialVol);
-    setProgressFill(progressSlider.value);
-    setVolumeFill(volumeSlider.value);
-  } catch (err) { console.error("Failed to load playlist:", err); }
-}
-
-function buildTrackList() {
-  trackListEl.innerHTML = "";
-  tracks.forEach((track, i) => {
-    const li = document.createElement("li");
-    li.textContent = `${track.artist} - ${track.title}`;
-    li.classList.add("track-item");
-    li.addEventListener("click", () => { loadTrack(i); playTrack(); });
-    trackListEl.appendChild(li);
-  });
-}
-
-// Kickoff
 loadPlaylist();
-
-// Highlight current radio station tile
-document.addEventListener("DOMContentLoaded", ()=>{
-  const stationLinks = document.querySelectorAll('.station-tile');
-  stationLinks.forEach(link=>{ if(link.pathname===window.location.pathname) link.classList.add('active'); });
-});
-
-// Toggle tracklist visibility
-document.querySelector(".tracklist .section-title")
-  .addEventListener("click", () => {
-    document.querySelector(".tracklist").classList.toggle("collapsed");
-  });
-
-
-//////////////////////////////Voicelines///////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-
-let voicelines = {};
-let scenarios = {};
-let inScenario = false;
-
-const voice = new Audio();
-voice.volume = audio.volume;
-
-// Load the combined JSON (voicelines + scenarios in one file)
-async function loadData() {
-  try {
-    const res = await fetch("tracklists/newvegas_voicelines.json");
-    const data = await res.json();
-
-    voicelines = data.voicelines || {};
-    scenarios = data.scenarios || {};
-    console.log("Loaded station:", data.station);
-    console.log("Probability:", data.probability);
-    console.log("Voicelines:", voicelines);
-    console.log("Scenarios:", scenarios);
-
-  } catch (err) {
-    console.error("Failed to load newvegas_voicelines.json:", err);
-  }
-}
-
-// Pick a random voiceline from a folder
-function playVoicelineFrom(folder) {
-  return new Promise((resolve) => {
-    const pool = voicelines[folder];
-    if (!pool || pool.length === 0) {
-      resolve();
-      return;
-    }
-    const choice = pool[Math.floor(Math.random() * pool.length)];
-    voice.src = `voicelines/newvegas/${folder}/${choice}`;
-    voice.onended = resolve;
-    voice.play();
-  });
-}
-
-// Run a scenario by ID (sequence of folders)
-async function runScenario(id, autoNext = true) {
-  // If no id passed, pick a random one
-  if (!id) {
-    const keys = Object.keys(scenarios);
-    id = keys[Math.floor(Math.random() * keys.length)];
-  }
-
-  const sequence = scenarios[id];
-  if (!sequence) {
-    console.warn(`Scenario '${id}' not found`);
-    return;
-  }
-
-  inScenario = true;
-  pauseTrack(); // stop music during DJ/news
-
-  for (const folder of sequence) {
-    await playVoicelineFrom(folder);
-  }
-
-  inScenario = false;
-  if (autoNext) nextTrack(false); // only auto-next if desired
-}
-
-
-
-// Load JSON on page start
-loadData();
+loadStationVoicelines();

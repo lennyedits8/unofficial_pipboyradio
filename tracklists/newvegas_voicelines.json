@@ -2,6 +2,12 @@
   "station": "newvegas",
   "probability": 1.0,
 
+    "intermission": {
+    "title": "Intermission",
+    "artist": "Mr New Vegas",
+    "cover": "./images/mrnewvegas.webp"
+  },
+
   "voicelines": {
   "musicintrogeneral": [
     "radionewve_rnvmusicintroge_0014dfc5_1.ogg",
