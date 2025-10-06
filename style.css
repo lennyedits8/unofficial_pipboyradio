@@ -1025,7 +1025,7 @@ body[data-theme="vegas"] {
   box-shadow: 2px 0 10px rgba(var(--color-primary-rgb), 0.3);
 
   /* Mobile screens */
-@media (max-width: 600px) {
+@media (max-width: 400px) {
   .side-nav {
     width: 200px;       /* smaller sidebar on mobile */
     left: -200px;       /* hide exactly by its width */
