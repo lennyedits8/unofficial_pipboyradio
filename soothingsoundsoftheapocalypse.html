@@ -13,22 +13,52 @@
   <div class="background">
 
 
-<div class="scenarios-toggle-wrapper">
-  <label class="theme-toggle">
-    <input type="checkbox" id="scenariosSwitch" checked>
-    <span class="slider"></span>
-    <span class="label-text" id="scenariosLabel">Scenarios: ON</span>
-  </label>
+<!-- Hamburger Button -->
+<div class="hamburger-wrapper">
+  <button id="hamburgerBtn" class="hamburger-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </div>
 
-    <!-- Theme Toggle at top of page, inline -->
-    <div class="theme-toggle-wrapper">
-      <label class="theme-toggle">
-        <input type="checkbox" id="themeSwitch">
-        <span class="slider"></span>
-        <span class="label-text" id="themeLabel">The Soothing Sounds of the Apocalyse</span>
-      </label>
-    </div>
+<!-- Side Navigation Sidebar -->
+<div id="sideNav" class="side-nav">
+  <!-- Close Button -->
+  <button id="sideNavClose" class="side-nav-close">&times;</button>
+
+  <h3>Settings</h3>
+
+  <!-- Scenarios Toggle -->
+  <div class="toggle-item">
+    <label class="theme-toggle">
+      <span class="label-text" id="scenariosLabel">Intermission: ON</span>
+      <input type="checkbox" id="scenariosSwitch" checked>
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <!-- Theme Toggle -->
+  <div class="toggle-item">
+    <label class="theme-toggle">
+      <span class="label-text" id="themeLabel">Fallout 4</span>
+      <input type="checkbox" id="themeSwitch">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <!-- Additional toggles -->
+  <!-- <div class="toggle-item">
+    <label class="theme-toggle">
+      <span class="label-text">Another Option</span>
+      <input type="checkbox">
+      <span class="slider"></span>
+    </label>
+  </div> -->
+</div>
+
+<!-- Overlay -->
+<div id="sideNavOverlay" class="side-nav-overlay"></div>
 
     <header class="system-header">
       <h1 class="main-title">THE SOOTHING SOUNDS OF THE APOCALYPSE</h1>

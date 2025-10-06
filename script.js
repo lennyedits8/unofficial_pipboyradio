@@ -630,3 +630,17 @@ function toggleSideNav() {
 // Open / Close events
 hamburgerBtn.addEventListener("click", toggleSideNav);
 sideNavOverlay.addEventListener("click", toggleSideNav);
+
+
+const sideNavClose = document.getElementById('sideNavClose');
+
+sideNavClose.addEventListener('click', () => {
+  sideNav.classList.remove('open');
+  sideNavOverlay.classList.remove('open');
+});
+
+sideNavOverlay.addEventListener('click', () => {
+  sideNav.classList.remove('open');
+  sideNavOverlay.classList.remove('open');
+});
+

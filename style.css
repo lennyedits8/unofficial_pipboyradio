@@ -9,6 +9,10 @@
   /* Backgrounds */
   --color-bg: #10150c;             /* very dark, slightly greenish-black */
   --color-bg-alt: rgba(16, 21, 12, 0.9); /* overlay panels / secondary background */
+  --color-bg-sidebar: rgba(16, 21, 12, 1.0); /* overlay panels / secondary background */
+  
+ 
+
 
   /* Text & UI colors */
   --color-primary: #7CFC00;        /* bright neon green text */
@@ -35,6 +39,8 @@ body[data-theme="vegas"] {
   /* Backgrounds */
   --color-bg: #3b2912;           /* rich brown base */
   --color-bg-alt: rgba(59, 41, 18, 0.9); /* overlay / panels */
+  --color-bg-sidebar: rgba(59, 41, 18, 1.0); /* overlay / panels */
+
 
   /* Text and primary UI */
   --color-primary: #f5c13d;       /* bright amber text */
@@ -640,15 +646,33 @@ body {
 }
 
 /* Theme Toggle Switch */
+/* =========================
+   Toggle Row Layout
+========================= */
+.toggle-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;               /* use full sidebar width */
+  padding: 6px 0;
+}
+
+/* Label styling */
+.toggle-item .label-text {
+  flex: 1;                   /* take remaining space */
+  min-width: 100px;          /* consistent width */
+  text-align: left;
+  white-space: nowrap;
+}
+
+/* Switch itself */
 .theme-toggle {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.9rem;
-  color: var(--color-primary);
-  cursor: pointer;
-  user-select: none;
+  justify-content: space-between;
+  width: 100%;
 }
+
 
 .theme-toggle input { display: none; }
 
@@ -679,7 +703,7 @@ body {
 
 .theme-toggle .label-text {
   color: var(--color-primary);
-  font-size: 0.85rem;
+  font-size: 1.0rem; /*sidebar text size*/
 }
 
 .theme-toggle-wrapper {
@@ -859,26 +883,54 @@ body[data-theme="vegas"] {
   z-index: 999;
 }
 
+
+
+/* =========================
+   Scenarios Toggle - Stable Label
+========================= */
+#scenariosLabel {
+  display: inline-block;
+  min-width: 100px;       /* reserve enough space for longer text */
+  text-align: left;       /* align consistently */
+  white-space: nowrap;    /* prevent wrapping */
+}
+
+/* =========================
+   Toggle Labels (Consistent Width)
+========================= */
+.toggle-item .label-text {
+  display: inline-block;
+  min-width: 100px;       /* consistent label width for both toggles */
+  text-align: left;
+  white-space: nowrap;
+}
+
+
+
+
 /* =========================
    Hamburger Button
+========================= */
+/* =========================
+   Hamburger Button (Refined)
 ========================= */
 .hamburger-wrapper {
   position: absolute;
   top: 15px;
-  left: 60px; /* move right so it doesn't overlap scenarios toggle */
+  left: 15px;
   z-index: 1000;
-  border: 2px solid var(--color-primary); /* box around hamburger like buttons */
   border-radius: 6px;
   padding: 6px;
-  background: var(--color-bg-alt);
+  background: transparent;
 }
 
 .hamburger-btn {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 24px; /* slightly smaller */
-  height: 18px; /* slightly thinner */
+  align-items: center;        /* keep bars perfectly centered */
+  width: 26px;                /* slightly narrower */
+  height: 18px;               /* balanced height */
   background: transparent;
   border: none;
   cursor: pointer;
@@ -887,17 +939,18 @@ body[data-theme="vegas"] {
 
 .hamburger-btn span {
   display: block;
-  height: 3px; /* thinner */
   width: 100%;
+  height: 2px;                /* thinner lines */
   background-color: var(--color-primary);
-  border-radius: 2px;
-  transition: all 0.3s ease;
+  border-radius: 1px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-/* Hamburger active animation */
-.hamburger-btn.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
-.hamburger-btn.active span:nth-child(2) { opacity: 0; }
-.hamburger-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+/* Optional: Add a smooth press effect */
+.hamburger-btn:active span {
+  transform: scale(0.96);
+}
+
 
 /* =========================
    Slide-in Sidebar
@@ -905,19 +958,21 @@ body[data-theme="vegas"] {
 .side-nav {
   position: fixed;
   top: 0;
-  left: -250px;
-  width: 250px;
+  left: -450px;
+  width: 450px;
   height: 100%;
-  background: var(--color-bg-alt);
+  background: var(--color-bg-sidebar);
   border-right: 2px solid var(--color-primary);
   padding: 20px;
-  box-shadow: 2px 0 10px rgba(var(--color-primary-rgb), 0.3);
-  transition: left 0.3s ease;
-  z-index: 999;
+  /* remove box-shadow here */
+  transition: left 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
+
+
 
 .side-nav h3 {
   color: var(--color-primary);
@@ -935,7 +990,7 @@ body[data-theme="vegas"] {
 }
 
 .side-nav .toggle-item label {
-  font-size: 14px;
+  font-size: 18px !important;
   font-weight: 500;
 }
 
@@ -963,5 +1018,30 @@ body[data-theme="vegas"] {
 }
 
 /* Open state */
-.side-nav.open { left: 0; }
+/* Only add glow when open */
+.side-nav.open {
+  left: 0;
+  box-shadow: 2px 0 10px rgba(var(--color-primary-rgb), 0.3);
+}
 .side-nav-overlay.open { opacity: 1; pointer-events: all; }
+
+
+.side-nav-close {
+  position: absolute;
+  top: 16px;           /* lower to align with "Settings" header */
+  right: 15px;         /* move slightly left to align with toggles */
+  background: transparent;
+  border: none;
+  color: var(--color-primary);
+  font-size: 1.5rem;   /* adjust size as needed */
+  cursor: pointer;
+  z-index: 1001;       /* above other sidebar content */
+  padding: 4px;
+  line-height: 1;
+  text-shadow: none;   /* remove neon glow */
+}
+
+.side-nav-close:hover {
+  color: var(--color-primary); /* keep same color on hover */
+  text-shadow: none;           /* remove hover glow */
+}
