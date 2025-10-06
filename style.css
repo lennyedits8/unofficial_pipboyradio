@@ -847,3 +847,11 @@ body[data-theme="vegas"] {
     display: none !important;
   }
 }
+
+
+.scenarios-toggle-wrapper {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 999;
+}

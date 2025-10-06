@@ -71,6 +71,33 @@ function slugify(str) {
     .trim();
 }
 
+//////////////////// scenarios toggle //////////////////////
+// === Scenario Toggle (Global) ===
+
+// Get elements
+const scenariosSwitch = document.getElementById('scenariosSwitch');
+const scenariosLabel = document.getElementById('scenariosLabel');
+
+// Load previous setting or default to true (ON)
+let scenariosEnabled = localStorage.getItem('scenariosEnabled');
+if (scenariosEnabled === null) {
+  scenariosEnabled = 'true'; // default ON
+  localStorage.setItem('scenariosEnabled', 'true');
+}
+scenariosEnabled = scenariosEnabled === 'true';
+
+// Reflect state in UI
+scenariosSwitch.checked = scenariosEnabled;
+scenariosLabel.textContent = `Intermission: ${scenariosEnabled ? 'ON' : 'OFF'}`;
+
+// Update on toggle
+scenariosSwitch.addEventListener('change', () => {
+  const enabled = scenariosSwitch.checked;
+  localStorage.setItem('scenariosEnabled', enabled);
+  scenariosLabel.textContent = `Intermission: ${enabled ? 'ON' : 'OFF'}`;
+});
+
+
 // ========================
 // Theme
 // ========================
@@ -420,7 +447,7 @@ async function loadStationVoicelines() {
     voicelines = data.voicelines || {};
     scenarios = data.scenarios || {};
     stationIntermission = data.intermission || null;
-    stationProbability = data.probability || 1.0; // 👈 NEW
+    stationProbability = data.probability || 1.0;
     console.log(`Loaded voicelines for ${station}, probability=${stationProbability}`);
   } catch (err) {
     console.log("No voicelines for station:", station);
@@ -428,11 +455,43 @@ async function loadStationVoicelines() {
     scenarios = {};
     stationProbability = 0; // no voicelines = never trigger scenarios
   }
+
+  // === Disable or enable the intermission toggle depending on availability ===
+  const toggleContainer = scenariosSwitch?.closest(".toggle") || scenariosSwitch?.parentElement;
+  const hasScenarios = Object.keys(scenarios).length > 0;
+
+  if (!hasScenarios) {
+    scenariosSwitch.checked = false;
+    scenariosSwitch.disabled = true;
+    localStorage.setItem('scenariosEnabled', 'false');
+    scenariosLabel.textContent = "Intermission: OFF";
+
+    // Grey out (keeps visible)
+    toggleContainer.style.opacity = "0.5";
+    toggleContainer.style.pointerEvents = "none";
+  } else {
+    scenariosSwitch.disabled = false;
+    toggleContainer.style.opacity = "1";
+    toggleContainer.style.pointerEvents = "auto";
+    const enabled = localStorage.getItem('scenariosEnabled') === 'true';
+    scenariosSwitch.checked = enabled;
+    scenariosLabel.textContent = `Intermission: ${enabled ? 'ON' : 'OFF'}`;
+  }
 }
+
 
 
 async function runScenario(id=null, autoNext=true){
   if(!Object.keys(scenarios).length) return;
+
+  // === Check if scenarios are disabled ===
+  const scenariosEnabled = localStorage.getItem('scenariosEnabled') === 'true';
+  if (!scenariosEnabled) {
+    console.log("Scenarios disabled by user — skipping scenario playback.");
+    nextTrack(false); // continue normal playback
+    return;
+  }
+
   
   if(!id){
     const keys = Object.keys(scenarios);
