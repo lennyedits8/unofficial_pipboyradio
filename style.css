@@ -1024,20 +1024,21 @@ body[data-theme="vegas"] {
   left: 0;
   box-shadow: 2px 0 10px rgba(var(--color-primary-rgb), 0.3);
 
+}
+.side-nav-overlay.open { opacity: 1; pointer-events: all; }
+
   /* Mobile screens */
+
 @media (max-width: 600px) {
   .side-nav {
-    width: 50px;       /* smaller sidebar on mobile */
-    left: -50px;       /* hide exactly by its width */
+    width: 300px;       /* smaller sidebar on mobile */
+    left: -300px;       /* hide exactly by its width */
   }
 
   .side-nav.open {
     left: 0;            /* slides in partially/full */
   }
 }
-
-}
-.side-nav-overlay.open { opacity: 1; pointer-events: all; }
 
 
 .side-nav-close {
