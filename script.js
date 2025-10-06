@@ -497,15 +497,25 @@ if (folder === "musicintrospecific") {
     }
   } catch(e) {
     console.warn("Scenario interrupted", e);
-  } finally {
-    audio.onended = null;
-    if(!audio._hasHandler){
-      audio.addEventListener("ended", handleAudioEnded);
-      audio._hasHandler=true;
-    }
-    inScenario=false;
-    if(!scenarioInterrupted && autoNext) nextTrack(false);
+} finally {
+  audio.onended = null;
+  if(!audio._hasHandler){
+    audio.addEventListener("ended", handleAudioEnded);
+    audio._hasHandler = true;
   }
+
+  // ✅ New fix — fallback if scenario did nothing
+  if (!scenarioInterrupted && audio.paused && !audio.src.includes('voicelines/')) {
+    console.warn("Scenario produced no valid clips — skipping to next track");
+    inScenario = false;
+    nextTrack(false);
+    return;
+  }
+
+  inScenario = false;
+  if (!scenarioInterrupted && autoNext) nextTrack(false);
+}
+
 }
 
 
