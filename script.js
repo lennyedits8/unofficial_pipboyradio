@@ -616,3 +616,17 @@ document.querySelector(".tracklist .section-title")
   .addEventListener("click", () => {
     document.querySelector(".tracklist").classList.toggle("collapsed");
   });
+
+  const hamburgerBtn = document.getElementById("hamburgerBtn");
+const sideNav = document.getElementById("sideNav");
+const sideNavOverlay = document.getElementById("sideNavOverlay");
+
+function toggleSideNav() {
+  hamburgerBtn.classList.toggle("active");
+  sideNav.classList.toggle("open");
+  sideNavOverlay.classList.toggle("open");
+}
+
+// Open / Close events
+hamburgerBtn.addEventListener("click", toggleSideNav);
+sideNavOverlay.addEventListener("click", toggleSideNav);

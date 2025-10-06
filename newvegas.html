@@ -12,24 +12,51 @@
 <body data-station="newvegas">
   <div class="background">
 
-    <!-- Scenarios Toggle at top-left -->
-<div class="scenarios-toggle-wrapper">
-  <label class="theme-toggle">
-    <input type="checkbox" id="scenariosSwitch" checked>
-    <span class="slider"></span>
-    <span class="label-text" id="scenariosLabel">Scenarios: ON</span>
-  </label>
+<!-- Hamburger Button -->
+<div class="hamburger-wrapper">
+  <button id="hamburgerBtn" class="hamburger-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </div>
 
+<!-- Side Navigation Sidebar -->
+<div id="sideNav" class="side-nav">
+  <h3>Settings</h3>
 
-    <!-- Theme Toggle at top of page, inline -->
-    <div class="theme-toggle-wrapper">
-      <label class="theme-toggle">
-        <input type="checkbox" id="themeSwitch">
-        <span class="slider"></span>
-        <span class="label-text" id="themeLabel">Fallout New Vegas</span>
-      </label>
-    </div>
+  <!-- Scenarios Toggle -->
+  <div class="toggle-item">
+    <label class="theme-toggle">
+      <span class="label-text" id="scenariosLabel">Intermission: ON</span>
+      <input type="checkbox" id="scenariosSwitch" checked>
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <!-- Theme Toggle -->
+  <div class="toggle-item">
+    <label class="theme-toggle">
+      <span class="label-text" id="themeLabel">Fallout 4</span>
+      <input type="checkbox" id="themeSwitch">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <!-- Additional toggles -->
+  <!-- <div class="toggle-item">
+    <label class="theme-toggle">
+      <span class="label-text">Another Option</span>
+      <input type="checkbox">
+      <span class="slider"></span>
+    </label>
+  </div> -->
+</div>
+
+<!-- Overlay -->
+<div id="sideNavOverlay" class="side-nav-overlay"></div>
+
+
 
     <header class="system-header">
       <h1 class="main-title">FALLOUT NEW VEGAS</h1>
