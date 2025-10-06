@@ -440,21 +440,37 @@ let inScenario = false;
 let scenarioInterrupted = false;
 let stationProbability = 1.0; // default always trigger scenarios
 
+// NEW: Preloaded scenario audio pool
+const preloadedScenarios = {};
+
 async function loadStationVoicelines() {
   try {
-    const res = await fetch(`tracklists/${station}_voicelines.json`);
-    const data = await res.json();
-    voicelines = data.voicelines || {};
-    scenarios = data.scenarios || {};
-    stationIntermission = data.intermission || null;
-    stationProbability = data.probability || 1.0;
-    console.log(`Loaded voicelines for ${station}, probability=${stationProbability}`);
-  } catch (err) {
-    console.log("No voicelines for station:", station);
-    voicelines = {};
-    scenarios = {};
-    stationProbability = 0; // no voicelines = never trigger scenarios
+  const res = await fetch(`tracklists/${station}_voicelines.json`);
+  const data = await res.json();
+  voicelines = data.voicelines || {};
+  scenarios = data.scenarios || {};
+  stationIntermission = data.intermission || null;
+  stationProbability = data.probability || 1.0;
+  console.log(`Loaded voicelines for ${station}, probability=${stationProbability}`);
+
+  // NEW: Preload all scenario audio
+  for (const folder in voicelines) {
+    preloadedScenarios[folder] = [];
+    for (const file of voicelines[folder]) {
+      const audioEl = new Audio(`voicelines/${station}/${folder}/${file}`);
+      audioEl.preload = "auto";
+      preloadedScenarios[folder].push(audioEl);
+    }
   }
+  console.log("Preloaded all scenario clips.");
+
+} catch (err) {
+  console.log("No voicelines for station:", station);
+  voicelines = {};
+  scenarios = {};
+  stationProbability = 0; // no voicelines = never trigger scenarios
+}
+
 
   // === Disable or enable the intermission toggle depending on availability ===
   const toggleContainer = scenariosSwitch?.closest(".toggle") || scenariosSwitch?.parentElement;
@@ -546,13 +562,27 @@ if (folder === "musicintrospecific") {
 
 
 
-      const choice = pool[Math.floor(Math.random() * pool.length)];
-      audio.src = `voicelines/${station}/${folder}/${choice}`;
-      await new Promise((resolve, reject) => {
-        audio.onended = resolve;
-        audio.onerror = reject;
-        playTrack();
-      });
+// Pick random clip from pool
+const choice = pool[Math.floor(Math.random() * pool.length)];
+
+// Find the preloaded Audio element
+const audioEl = preloadedScenarios[folder].find(a => a.src.endsWith(choice));
+if (!audioEl) continue; // safety: skip if not found
+
+// Play scenario clip from preloaded audio
+await new Promise((resolve, reject) => {
+  inScenario = true;
+  scenarioInterrupted = false;
+  pauseTrack();
+
+  audioEl.currentTime = 0;
+  audioEl.play().catch(reject);
+
+  audioEl.onended = () => {
+    resolve();
+  };
+});
+
     }
   } catch(e) {
     console.warn("Scenario interrupted", e);
