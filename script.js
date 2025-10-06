@@ -321,9 +321,13 @@ nextBtn.addEventListener("click", async () => {
     inScenario = false;
     audio.pause();
 
-    // Reattach the normal ended handler
+    // Updated lines for lockscreen-safe scenarios
     audio.onended = handleAudioEnded;
     audio._hasHandler = true;
+
+    // Fix for lockscreen: ensure scenarios run even if JS is throttled
+    audio.addEventListener("ended", () => { if (!inScenario) Promise.resolve().then(handleAudioEnded); });
+
 
     // Move to next track, but don't trigger a new scenario immediately
     await nextTrack(true, false);
