@@ -1027,8 +1027,8 @@ body[data-theme="vegas"] {
   /* Mobile screens */
 @media (max-width: 600px) {
   .side-nav {
-    width: 300px;       /* smaller sidebar on mobile */
-    left: -300px;       /* hide exactly by its width */
+    width: 200px;       /* smaller sidebar on mobile */
+    left: -200px;       /* hide exactly by its width */
   }
 
   .side-nav.open {
