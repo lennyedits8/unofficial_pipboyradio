@@ -1,0 +1,390 @@
+{
+  "station": "fallout76",
+  "probability": 1.0,
+    "intermission": {
+    "title": "Intermission",
+    "artist": "DJ Julie",
+    "cover": "./images/mrnewvegas.webp"
+  },
+  "voicelines": {
+    "collectron": [
+      "collectron1.wav",
+      "collectron2.wav",
+      "collectron3.wav"
+    ],
+    "dradiog_juliescene01": [
+      "story1.wav",
+      "story10.wav",
+      "story11.wav",
+      "story12.wav",
+      "story2.wav",
+      "story3.wav",
+      "story4.wav",
+      "story5.wav",
+      "story6.wav",
+      "story7.wav",
+      "story8.wav",
+      "story9.wav"
+    ],
+    "radiog_andrewssisters_straightenupandflyright_intro": [
+      "0059c7e6_1.wav"
+    ],
+    "radiog_andrewssisters_straightenupandflyright_outro": [
+      "0059b454_1.wav",
+      "0059b479_1.wav",
+      "0059c7ef_1.wav"
+    ],
+    "radiog_appalachiaradioid01_general": [
+      "0059bf51_1.wav",
+      "0059bf52_1.wav",
+      "0059bf53_1.wav",
+      "0059bf54_1.wav",
+      "0059bf56_1.wav"
+    ],
+    "radiog_beachboys_wouldntitbenice_intro": [
+      "0059b4b6_1.wav",
+      "0059c7e5_1.wav"
+    ],
+    "radiog_beachboys_wouldntitbenice_outro": [
+      "0059b46d_1.wav"
+    ],
+    "radiog_benselvin_happydaysarehereagain_intro": [
+      "0059b4a6_1.wav"
+    ],
+    "radiog_benselvin_happydaysarehereagain_outro": [
+      "0059b464_1.wav",
+      "0059c7f4_1.wav"
+    ],
+    "radiog_billieholiday_crazyhecallsme_intro": [
+      "0059b45a_1.wav",
+      "0059c7ee_1.wav"
+    ],
+    "radiog_billieholiday_crazyhecallsme_outro": [
+      "0059b484_1.wav",
+      "0059c7f3_1.wav"
+    ],
+    "radiog_bingcrosbyandrewssisters_dontfencemein_intro": [
+      "0059b4b5_1.wav",
+      "0059c7e7_1.wav"
+    ],
+    "radiog_bingcrosbyandrewssisters_dontfencemein_outro": [
+      "0059b46c_1.wav"
+    ],
+    "radiog_bingcrosbyandrewssisters_pistolpackinmama_intro": [
+      "0059b4a5_1.wav",
+      "0059c7e9_1.wav"
+    ],
+    "radiog_bingcrosbyandrewssisters_pistolpackinmama_outro": [
+      "0059b463_1.wav",
+      "0059c7f7_1.wav"
+    ],
+    "radiog_blindwilliejohnson_nobodysfaultbutmine_intro": [
+      "0059b49a_1.wav",
+      "0059c7ec_1.wav"
+    ],
+    "radiog_blindwilliejohnson_nobodysfaultbutmine_outro": [
+      "0059b45e_1.wav",
+      "0059c7f5_1.wav"
+    ],
+    "radiog_bobcrosby_dearheartsandgentlepeople_intro": [
+      "0059b48b_1.wav",
+      "0059c7ed_1.wav"
+    ],
+    "radiog_bobcrosby_dearheartsandgentlepeople_outro": [
+      "0059b457_1.wav"
+    ],
+    "radiog_bobwills_bubblesinmybeer_intro": [
+      "0059b4bc_1.wav",
+      "0059b4bd_1.wav"
+    ],
+    "radiog_bobwills_bubblesinmybeer_outro": [
+      "0059b472_1.wav"
+    ],
+    "radiog_bobwills_steelguitarrag_intro": [
+      "0059b4ad_1.wav",
+      "0059c7f1_1.wav"
+    ],
+    "radiog_bobwills_steelguitarrag_outro": [
+      "0059b468_1.wav",
+      "0059c7e8_1.wav"
+    ],
+    "radiog_cassdaley_agoodmanishardtofind_intro": [
+      "0059c7f8_1.wav"
+    ],
+    "radiog_cassdaley_agoodmanishardtofind_outro": [
+      "0059b460_1.wav",
+      "0059b49f_1.wav",
+      "0059c7ea_1.wav"
+    ],
+    "radiog_chickwebb_icantdanceigotantsinmypants_intro": [
+      "0059b4a3_1.wav",
+      "0059c7f6_1.wav"
+    ],
+    "radiog_chickwebb_icantdanceigotantsinmypants_outro": [
+      "0059b46b_1.wav",
+      "0059c7f2_1.wav"
+    ],
+    "radiog_chickwebb_midniteinamadhouse_intro": [
+      "0059b4b2_1.wav"
+    ],
+    "radiog_chickwebb_midniteinamadhouse_outro": [
+      "0059b476_1.wav"
+    ],
+    "radiog_chickwebb_whenigetlowigethigh_intro": [
+      "0059b483_1.wav",
+      "0059b4c2_1.wav"
+    ],
+    "radiog_chickwebb_whenigetlowigethigh_outro": [
+      "0059b482_1.wav"
+    ],
+    "radiog_chordettes_mrsandman_intro": [
+      "0059b4c0_1.wav",
+      "0059b4c1_1.wav"
+    ],
+    "radiog_chordettes_mrsandman_outro": [
+      "0059b4c3_1.wav"
+    ],
+    "radiog_coleporter_anythinggoes_intro": [
+      "0059b493_1.wav"
+    ],
+    "radiog_coleporter_anythinggoes_outro": [
+      "0059b469_1.wav"
+    ],
+    "radiog_commodores_uranium_intro": [
+      "0059b4b1_1.wav"
+    ],
+    "radiog_commodores_uranium_outro": [
+      "0059b488_1.wav"
+    ],
+    "radiog_copilot_countryroads_intro": [
+      "0059b491_1.wav",
+      "0059b492_1.wav"
+    ],
+    "radiog_copilot_countryroads_outro": [
+      "0059b49c_1.wav"
+    ],
+    "radiog_copilot_ringoffire_intro": [
+      "0059b467_1.wav"
+    ],
+    "radiog_copilot_ringoffire_outro": [
+      "0059b4aa_1.wav"
+    ],
+    "radiog_countbasie_jumpinatthewoodside_intro": [
+      "0059bf4f_1.wav"
+    ],
+    "radiog_countbasie_jumpinatthewoodside_outro": [
+      "0059bf4d_1.wav"
+    ],
+    "radiog_dannykayeandrewssisters_civilization_intro": [
+      "0059b481_1.wav"
+    ],
+    "radiog_dannykayeandrewssisters_civilization_outro": [
+      "0059b46e_1.wav"
+    ],
+    "radiog_eddyduchin_olmanmose_intro": [
+      "0059b49b_1.wav",
+      "0059bf4e_1.wav"
+    ],
+    "radiog_eddyduchin_olmanmose_outro": [
+      "0059b45f_1.wav",
+      "0059bf50_1.wav"
+    ],
+    "radiog_ernesttubb_walkingtheflooroveryou_intro": [
+      "0059b45d_1.wav"
+    ],
+    "radiog_ernesttubb_walkingtheflooroveryou_outro": [
+      "0059b499_1.wav"
+    ],
+    "radiog_fatswaller_aintmisbehavin_intro": [
+      "0059b4a2_1.wav"
+    ],
+    "radiog_fatswaller_aintmisbehavin_outro": [
+      "0059b46a_1.wav",
+      "0059b4a1_1.wav"
+    ],
+    "radiog_fivestars_atombombbaby_intro": [
+      "0059b48e_1.wav"
+    ],
+    "radiog_fivestars_atombombbaby_outro": [
+      "0059b458_1.wav"
+    ],
+    "radiog_freddieslackandhisorchestra_misterfivebyfive_intro": [
+      "0059b4a7_1.wav"
+    ],
+    "radiog_freddieslackandhisorchestra_misterfivebyfive_outro": [
+      "0059b465_1.wav"
+    ],
+    "radiog_freddieslackandhisorchestra_pigfootpete_intro": [
+      "0059b4a8_1.wav"
+    ],
+    "radiog_freddieslackandhisorchestra_pigfootpete_outro": [
+      "0059b46f_1.wav",
+      "0059c974_1.wav"
+    ],
+    "radiog_freddieslackandhisorchestra_twolefthands_intro": [
+      "0059b462_1.wav",
+      "0059c978_1.wav"
+    ],
+    "radiog_freddieslackandhisorchestra_twolefthands_outro": [
+      "0059b494_1.wav"
+    ],
+    "radiog_glennmiller_jukeboxsaturdaynight_intro": [
+      "0059b495_1.wav"
+    ],
+    "radiog_glennmiller_jukeboxsaturdaynight_outro": [
+      "0059b461_1.wav"
+    ],
+    "radiog_henrykingorchestra_justafairweatherfriend_intro": [
+      "0059b48d_1.wav"
+    ],
+    "radiog_henrykingorchestra_justafairweatherfriend_outro": [
+      "0059b4ab_1.wav",
+      "0059b4ac_1.wav"
+    ],
+    "radiog_inkspots_idontwanttosettheworldonfire_intro": [
+      "0059b4b8_1.wav"
+    ],
+    "radiog_inkspots_idontwanttosettheworldonfire_outro": [
+      "0059b470_1.wav"
+    ],
+    "radiog_inkspots_itsalloverbutthecrying_intro": [
+      "0059b475_1.wav"
+    ],
+    "radiog_inkspots_itsalloverbutthecrying_outro": [
+      "0059b474_1.wav",
+      "0059b4bf_1.wav"
+    ],
+    "radiog_inkspots_maybe_intro": [
+      "0059b47b_1.wav",
+      "0059c975_1.wav"
+    ],
+    "radiog_inkspots_maybe_outro": [
+      "0059b455_1.wav"
+    ],
+    "radiog_inkspots_wethree_intro": [
+      "0059b4b0_1.wav"
+    ],
+    "radiog_inkspots_wethree_outro": [
+      "0059b487_1.wav",
+      "0059c976_1.wav"
+    ],
+    "radiog_ishamjones_dointheuptownlowdown_intro": [
+      "0059b4be_1.wav"
+    ],
+    "radiog_ishamjones_dointheuptownlowdown_outro": [
+      "0059b473_1.wav",
+      "0059c97a_1.wav"
+    ],
+    "radiog_jerryirby_answertodrivinnailsinmycoffin_intro": [
+      "0059b4ba_1.wav",
+      "0059b4bb_1.wav"
+    ],
+    "radiog_jerryirby_answertodrivinnailsinmycoffin_outro": [
+      "0059b47d_1.wav",
+      "0059b47e_1.wav"
+    ],
+    "radiog_johnnybond_headindownthewronghighway_intro": [
+      "0059b48a_1.wav"
+    ],
+    "radiog_johnnybond_headindownthewronghighway_outro": [
+      "0059b49d_1.wav",
+      "0059b49e_1.wav"
+    ],
+    "radiog_johnnylong_inashantyinoldshantytown_intro": [
+      "0059b48c_1.wav"
+    ],
+    "radiog_johnnylong_inashantyinoldshantytown_outro": [
+      "0059b47f_1.wav",
+      "0059b480_1.wav"
+    ],
+    "radiog_kaykyserorchestra praisethelordandpasstheammunition_intro": [
+      "0059b47c_1.wav"
+    ],
+    "radiog_kaykyserorchestra praisethelordandpasstheammunition_outro": [
+      "0059b456_1.wav"
+    ],
+    "radiog_louisjordan_saltporkwestvirginia_intro": [
+      "0059b45c_1.wav"
+    ],
+    "radiog_louisjordan_saltporkwestvirginia_outro": [
+      "0059b489_1.wav"
+    ],
+    "radiog_miltonbrown_keepknockingbutyoucantcomein_intro": [
+      "0059b498_1.wav"
+    ],
+    "radiog_miltonbrown_keepknockingbutyoucantcomein_outro": [
+      "0059b478_1.wav",
+      "0059c973_1.wav"
+    ],
+    "radiog_natkingcole_orangecoloredsky_intro": [
+      "0059b466_1.wav"
+    ],
+    "radiog_natkingcole_orangecoloredsky_outro": [
+      "0059b4a9_1.wav"
+    ],
+    "radiog_patsymontana_ididntknowthegunwasloaded_intro": [
+      "0059b477_1.wav",
+      "0059c97b_1.wav"
+    ],
+    "radiog_patsymontana_ididntknowthegunwasloaded_outro": [
+      "0059b4b3_1.wav",
+      "0059b4b4_1.wav"
+    ],
+    "radiog_roybrown_butcherpetepart1_intro": [
+      "0059b471_1.wav",
+      "0059c972_1.wav"
+    ],
+    "radiog_roybrown_butcherpetepart1_outro": [
+      "0059b4b9_1.wav",
+      "0059c979_1.wav"
+    ],
+    "radiog_sonsofthepioneers_ridersinthesky_intro": [
+      "0059b4a4_1.wav",
+      "0059c977_1.wav"
+    ],
+    "radiog_sonsofthepioneers_ridersinthesky_outro": [
+      "0059b496_1.wav",
+      "0059b497_1.wav"
+    ],
+    "radiog_tenneseeernieford_darkasadungeon_intro": [
+      "0059b47a_1.wav",
+      "0059c7eb_1.wav"
+    ],
+    "radiog_tenneseeernieford_darkasadungeon_outro": [
+      "0059b4b7_1.wav",
+      "0059c7f0_1.wav"
+    ],
+    "radiog_tenneseeernieford_shenandoah_intro": [
+      "0059b4ae_1.wav",
+      "0059b4af_1.wav"
+    ],
+    "radiog_tenneseeernieford_shenandoah_outro": [
+      "0059b4a0_1.wav"
+    ],
+    "radiog_tenneseeernieford_sixteentons_intro": [
+      "0059b48f_1.wav"
+    ],
+    "radiog_tenneseeernieford_sixteentons_outro": [
+      "0059b459_1.wav",
+      "0059b490_1.wav"
+    ],
+    "radiog_tommydorsey_opusno1_intro": [
+      "0059b485_1.wav"
+    ],
+    "radiog_tommydorsey_opusno1_outro": [
+      "0059b45b_1.wav",
+      "0059b486_1.wav"
+    ]
+  },
+  "scenarios": {
+"1": { "sequence": ["dradiog_juliescene01"], "probability": 0.05 },
+"2": { "sequence": ["collectron"], "probability": 0.1 },
+"3": { "sequence": ["radiog_appalachiaradioid01_general"], "probability": 0.2 },
+"4": { "sequence": ["radiog_*_intro"], "probability": 0.25 },
+"5": { "sequence": ["radiog_*_outro"], "probability": 0.25 },
+"6": { "sequence": ["radiog_appalachiaradioid01_general", "radiog_*_intro"], "probability": 0.15 },
+"7": { "sequence": ["radiog_appalachiaradioid01_general", "radiog_*_outro"], "probability": 0.15 }
+
+
+  }
+}
