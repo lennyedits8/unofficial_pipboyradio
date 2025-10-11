@@ -964,7 +964,7 @@ body[data-theme="vegas"] {
 
 .side-nav h3 {
   color: var(--color-primary);
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
 /* Vertical toggle items */
@@ -1124,3 +1124,9 @@ body[data-theme="vegas"] {
 .view-toggle-btn:active {
   box-shadow: 0 0 5px var(--color-shadow);
 }
+
+/*  ✅ Tighten only the space between Intermission and Theme toggles */
+.side-nav .toggle-item + .toggle-item {
+  margin-top: -20px; /* reduces gap between consecutive toggle items */
+}
+
