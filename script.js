@@ -28,6 +28,9 @@ let shuffleEnabled = false;
 let loopState = 0; // 0=no loop, 1=loop tracklist, 2=loop single track
 const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
+// Help quick swaps in background
+audio.preload = "auto";
+
 // ========================
 // Audio Context
 // ========================
@@ -63,40 +66,30 @@ function formatTime(sec) {
 
 function clamp(n, min = 0, max = 100) { return Math.max(min, Math.min(max, n)); }
 
-// Add slugify here
 function slugify(str) {
-  return str
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "") // remove spaces, punctuation, apostrophes, etc
-    .trim();
+  return str.toLowerCase().replace(/[^a-z0-9]+/g, "").trim();
 }
 
 //////////////////// scenarios toggle //////////////////////
 // === Scenario Toggle (Global) ===
-
-// Get elements
 const scenariosSwitch = document.getElementById('scenariosSwitch');
 const scenariosLabel = document.getElementById('scenariosLabel');
 
-// Load previous setting or default to true (ON)
 let scenariosEnabled = localStorage.getItem('scenariosEnabled');
 if (scenariosEnabled === null) {
-  scenariosEnabled = 'true'; // default ON
+  scenariosEnabled = 'true';
   localStorage.setItem('scenariosEnabled', 'true');
 }
 scenariosEnabled = scenariosEnabled === 'true';
 
-// Reflect state in UI
 scenariosSwitch.checked = scenariosEnabled;
 scenariosLabel.textContent = `Intermission: ${scenariosEnabled ? 'ON' : 'OFF'}`;
 
-// Update on toggle
 scenariosSwitch.addEventListener('change', () => {
   const enabled = scenariosSwitch.checked;
   localStorage.setItem('scenariosEnabled', enabled);
   scenariosLabel.textContent = `Intermission: ${enabled ? 'ON' : 'OFF'}`;
 });
-
 
 // ========================
 // Theme
@@ -115,7 +108,6 @@ themeSwitch.addEventListener("change", () => {
   updateShuffleIconColor();
   updateLoopIcon();
 });
-
 
 function getThemeColors() {
   const styles = getComputedStyle(document.body);
@@ -140,11 +132,12 @@ let currentTrack = 0;
 let trackHistory = [];
 let playedTracks = new Set();
 let pendingSeek = null;
+// iOS-safe pending seek (percent 0..100 until duration is known)
+let pendingSeekPercent = null;
 let isDragging = false;
 let lastVolume = 100;
 const station = document.body.dataset.station;
-let stationIntermission = null;  // This will hold intermission metadata from JSON
-
+let stationIntermission = null;  // intermission metadata from JSON
 
 // ========================
 // Load Playlist
@@ -182,6 +175,11 @@ function loadTrack(index, recordHistory = true) {
   currentTrack = index;
   const track = tracks[index];
   audio.src = track.file;
+
+  // reset any prior pending seek tied to previous track
+  pendingSeek = null;
+  pendingSeekPercent = null;
+
   trackTitleEl.textContent = track.title;
   artistNameEl.textContent = track.artist;
   albumCoverEl.src = track.cover || "album-cover.jpg";
@@ -191,43 +189,40 @@ function loadTrack(index, recordHistory = true) {
 }
 
 function playTrack() {
+  // apply pending percent seek if metadata already available
+  if (pendingSeekPercent != null && audio.duration && Number.isFinite(audio.duration)) {
+    const t = (pendingSeekPercent / 100) * audio.duration;
+    try { audio.currentTime = t; } catch(_) {}
+    pendingSeekPercent = null;
+  }
+  // apply seconds-based pending seek
+  if (pendingSeek !== null) {
+    try { audio.currentTime = pendingSeek; } catch(_) {}
+    pendingSeek = null;
+  }
   initAudioContext();
   ensureAudioContextResumed();
-
-  const startPlayback = audio.play();
-  if (startPlayback && typeof startPlayback.then === "function") {
-    startPlayback.then(() => {
-      // ✅ On mobile: wait for playback readiness before seeking
-      if (pendingSeek !== null) {
-        const seekTarget = pendingSeek;
-        const applySeek = () => {
-          try {
-            audio.currentTime = seekTarget;
-          } catch (e) {
-            console.warn("Seek failed, retrying...", e);
-          }
-          pendingSeek = null;
-          audio.removeEventListener("playing", applySeek);
-          audio.removeEventListener("canplay", applySeek);
-        };
-        // Run when the browser actually starts audio
-        audio.addEventListener("playing", applySeek, { once: true });
-        audio.addEventListener("canplay", applySeek, { once: true });
-      }
-
-      // Reattach ended handler if Safari stripped it
-      if (!audio._hasHandler) {
-        audio.addEventListener("ended", handleAudioEnded);
-        audio._hasHandler = true;
-      }
-    }).catch(e => console.warn("Playback error:", e));
-  }
-
+  audio.play();
   document.getElementById("playIcon").src = "images/pause.svg";
 }
 
+// apply pending seek when metadata becomes available
+audio.addEventListener("loadedmetadata", () => {
+  if (pendingSeekPercent != null && audio.duration && Number.isFinite(audio.duration)) {
+    const t = (pendingSeekPercent / 100) * audio.duration;
+    try { audio.currentTime = t; } catch(_) {}
+    pendingSeekPercent = null;
+  }
+});
 
-
+// some iOS builds only become seekable on canplay
+audio.addEventListener("canplay", () => {
+  if (pendingSeekPercent != null && audio.duration && Number.isFinite(audio.duration)) {
+    const t = (pendingSeekPercent / 100) * audio.duration;
+    try { audio.currentTime = t; } catch(_) {}
+    pendingSeekPercent = null;
+  }
+});
 
 function pauseTrack() {
   audio.pause();
@@ -245,17 +240,43 @@ function updateMediaSession(track) {
       album: "Pip-Boy Radio",
       artwork: [{ src: track.cover || "album-cover.jpg", sizes: "512x512", type: "image/jpeg" }]
     });
+
     navigator.mediaSession.setActionHandler("play", playTrack);
     navigator.mediaSession.setActionHandler("pause", pauseTrack);
-    navigator.mediaSession.setActionHandler("previoustrack", () => { prevTrack(); playTrack(); });
-    navigator.mediaSession.setActionHandler("nexttrack", async () => {
-  const shouldRunScenario = (Object.keys(scenarios).length > 0) && (Math.random() < stationProbability);
-  await nextTrack(true, shouldRunScenario);
-});
 
+    // Lock-screen Previous mirrors UI behavior
+    navigator.mediaSession.setActionHandler("previoustrack", () => {
+      if (inScenario) {
+        scenarioInterrupted = true;
+        audio.pause();
+        audio.onended = null;
+        inScenario = false;
+        if (!audio._hasHandler) {
+          audio.addEventListener("ended", handleAudioEnded);
+          audio._hasHandler = true;
+        }
+        prevTrack(true);
+        return;
+      }
+      prevTrack(true);
+    });
+
+    // Lock-screen Next triggers scenarios with same probability + toggle
+    navigator.mediaSession.setActionHandler("nexttrack", async () => {
+      if (inScenario) {
+        scenarioInterrupted = true;
+        inScenario = false;
+        audio.pause();
+        audio.onended = handleAudioEnded;
+        audio._hasHandler = true;
+      }
+      const hasScenarios = Object.keys(scenarios).length > 0;
+      const enabled = localStorage.getItem('scenariosEnabled') === 'true';
+      const shouldRunScenario = hasScenarios && enabled && (Math.random() < stationProbability);
+      await nextTrack(true, shouldRunScenario);
+    });
   }
 }
-
 
 // ========================
 // Controls
@@ -284,7 +305,6 @@ function updateLoopIcon() {
 function peekNextTrackIndex() {
   if (loopState === 2) return currentTrack; // loop single
   if (shuffleEnabled) {
-    // simulate shuffle choice without consuming it
     const available = tracks.map((_, i) => i)
       .filter(i => !playedTracks.has(i) || playedTracks.size === tracks.length);
     if (available.length === 0) return null;
@@ -333,9 +353,7 @@ async function nextTrack(manual=false, triggerScenario=false) {
 }
 
 function prevTrack(manual = true) {
-  // If we are inside a scenario OR last played track was a scenario clip
   if (inScenario || audio.src.includes(`voicelines/${station}/`)) {
-    // Jump to previous main track
     if (trackHistory.length > 0) {
       const lastIndex = trackHistory.pop();
       loadTrack(lastIndex, false);
@@ -348,7 +366,6 @@ function prevTrack(manual = true) {
     return;
   }
 
-  // Normal prev logic
   const restartThreshold = 3;
   const atStart = audio.currentTime < restartThreshold;
 
@@ -376,64 +393,54 @@ function prevTrack(manual = true) {
   playTrack();
 }
 
-
 nextBtn.addEventListener("click", async () => {
   if (inScenario) {
-    // Skip the entire scenario
     scenarioInterrupted = true;
     inScenario = false;
     audio.pause();
 
-    // Updated lines for lockscreen-safe scenarios
     audio.onended = handleAudioEnded;
     audio._hasHandler = true;
 
-    // Fix for lockscreen: ensure scenarios run even if JS is throttled
     audio.addEventListener("ended", () => { if (!inScenario) Promise.resolve().then(handleAudioEnded); });
 
-
-    // Move to next track, but don't trigger a new scenario immediately
     await nextTrack(true, false);
     return;
   }
 
-  // Normal skip — use probability like auto-next
   const shouldRunScenario = (Object.keys(scenarios).length > 0) && (Math.random() < stationProbability);
   await nextTrack(true, shouldRunScenario);
 });
 
-
-
 prevBtn.addEventListener("click", () => {
   if (inScenario) {
-    // Skip scenario immediately and go to previous main track
     scenarioInterrupted = true;
     audio.pause();
     audio.onended = null;
     inScenario = false;
 
-    // Reattach main ended handler if missing
     if (!audio._hasHandler) {
       audio.addEventListener("ended", handleAudioEnded);
       audio._hasHandler = true;
     }
 
-    // Jump to previous track in main playlist
     prevTrack(true);
     return;
   }
 
-  // Normal prev logic (unchanged for pages without scenarios)
   prevTrack(true);
 });
-
-
 
 // ========================
 // Progress
 // ========================
 function updateProgress(){
-  if(audio.duration && !isDragging){
+  // don't auto-update while a pre-play seek is pending or user is dragging
+  if ((pendingSeekPercent != null) || isDragging) {
+    requestAnimationFrame(updateProgress);
+    return;
+  }
+  if(audio.duration){
     const percent = (audio.currentTime/audio.duration)*100;
     progressSlider.value=percent;
     setProgressFill(percent);
@@ -446,25 +453,34 @@ requestAnimationFrame(updateProgress);
 
 progressSlider.addEventListener("mousedown", ()=>isDragging=true);
 progressSlider.addEventListener("touchstart", ()=>isDragging=true);
-progressSlider.addEventListener("input", ()=>{ 
-  const percent = progressSlider.value;
+progressSlider.addEventListener("input", () => { 
+  const percent = Number(progressSlider.value);
   setProgressFill(percent);
-  // Show preview time even if not playing
-  if (audio.duration) {
+
+  if (audio.duration && Number.isFinite(audio.duration)) {
     const newTime = (percent / 100) * audio.duration;
     currentTimeEl.textContent = formatTime(newTime);
-    if (!audio.paused) {
-      audio.currentTime = newTime;
-    } else {
-      // Store desired seek for when playback starts
-      pendingSeek = newTime;
-    }
+    try { audio.currentTime = newTime; } catch(_) {}
+    pendingSeekPercent = null;
+  } else {
+    // Metadata not ready yet (iOS before first play)
+    pendingSeekPercent = percent;
+    currentTimeEl.textContent = "0:00";
   }
 });
 
-function finishDrag(){ if(isDragging && audio.duration) audio.currentTime=(progressSlider.value/100)*audio.duration; isDragging=false; }
-progressSlider.addEventListener("mouseup",finishDrag);
-progressSlider.addEventListener("touchend",finishDrag);
+function finishDrag(){
+  if (isDragging && audio.duration && Number.isFinite(audio.duration)) {
+    audio.currentTime = (progressSlider.value / 100) * audio.duration;
+    pendingSeekPercent = null;
+  } else if (isDragging) {
+    // will apply on loadedmetadata/canplay/play
+    pendingSeekPercent = Number(progressSlider.value);
+  }
+  isDragging = false;
+}
+progressSlider.addEventListener("mouseup", finishDrag);
+progressSlider.addEventListener("touchend", finishDrag);
 
 // ========================
 // Volume
@@ -496,10 +512,9 @@ async function loadStationVoicelines() {
     console.log("No voicelines for station:", station);
     voicelines = {};
     scenarios = {};
-    stationProbability = 0; // no voicelines = never trigger scenarios
+    stationProbability = 0;
   }
 
-  // === Disable or enable the intermission toggle depending on availability ===
   const toggleContainer = scenariosSwitch?.closest(".toggle") || scenariosSwitch?.parentElement;
   const hasScenarios = Object.keys(scenarios).length > 0;
 
@@ -508,8 +523,6 @@ async function loadStationVoicelines() {
     scenariosSwitch.disabled = true;
     localStorage.setItem('scenariosEnabled', 'false');
     scenariosLabel.textContent = "Intermission: OFF";
-
-    // Grey out (keeps visible)
     toggleContainer.style.opacity = "0.5";
     toggleContainer.style.pointerEvents = "none";
   } else {
@@ -522,27 +535,21 @@ async function loadStationVoicelines() {
   }
 }
 
-
-
 async function runScenario(id=null, autoNext=true){
   if(!Object.keys(scenarios).length) return;
 
-  // === Check if scenarios are disabled ===
   const scenariosEnabled = localStorage.getItem('scenariosEnabled') === 'true';
   if (!scenariosEnabled) {
-    console.log("Scenarios disabled by user — skipping scenario playback.");
-    nextTrack(false); // continue normal playback
+    nextTrack(false);
     return;
   }
 
-  
   if(!id){
     const keys = Object.keys(scenarios);
-    // Weighted random selection
     let total = keys.reduce((sum,k)=>sum+(scenarios[k].probability||1),0);
     let r = Math.random()*total;
     for(const k of keys){
-      r -= scenarios[k].probability||1;
+      r -= (scenarios[k].probability||1);
       if(r <= 0){ id = k; break; }
     }
   }
@@ -573,21 +580,19 @@ async function runScenario(id=null, autoNext=true){
       let pool = voicelines[folder];
       if (!pool?.length) continue;
 
-if (folder === "musicintrospecific") {
-  const nextIndex = peekNextTrackIndex();
-  if (nextIndex !== null && tracks[nextIndex].slug) {
-    const nextSlug = tracks[nextIndex].slug;
-    pool = pool.filter(file => {
-      const base = file.replace(/\.[^/.]+$/, ""); // strip .ogg
-      return base === nextSlug;
-    });
-    if (!pool.length) continue; // no match, skip this folder
-  } else {
-    continue; // nothing coming up or missing slug
-  }
-}
-
-
+      if (folder === "musicintrospecific") {
+        const nextIndex = peekNextTrackIndex();
+        if (nextIndex !== null && tracks[nextIndex].slug) {
+          const nextSlug = tracks[nextIndex].slug;
+          pool = pool.filter(file => {
+            const base = file.replace(/\.[^/.]+$/, "");
+            return base === nextSlug;
+          });
+          if (!pool.length) continue;
+        } else {
+          continue;
+        }
+      }
 
       const choice = pool[Math.floor(Math.random() * pool.length)];
       audio.src = `voicelines/${station}/${folder}/${choice}`;
@@ -599,55 +604,47 @@ if (folder === "musicintrospecific") {
     }
   } catch(e) {
     console.warn("Scenario interrupted", e);
-} finally {
-  audio.onended = null;
-  if(!audio._hasHandler){
-    audio.addEventListener("ended", handleAudioEnded);
-    audio._hasHandler = true;
-  }
+  } finally {
+    audio.onended = null;
+    if(!audio._hasHandler){
+      audio.addEventListener("ended", handleAudioEnded);
+      audio._hasHandler = true;
+    }
 
-  // ✅ New fix — fallback if scenario did nothing
-  if (!scenarioInterrupted && audio.paused && !audio.src.includes('voicelines/')) {
-    console.warn("Scenario produced no valid clips — skipping to next track");
+    if (!scenarioInterrupted && audio.paused && !audio.src.includes('voicelines/')) {
+      inScenario = false;
+      nextTrack(false);
+      return;
+    }
+
     inScenario = false;
-    nextTrack(false);
-    return;
+    if (!scenarioInterrupted && autoNext) nextTrack(false);
   }
-
-  inScenario = false;
-  if (!scenarioInterrupted && autoNext) nextTrack(false);
 }
-
-}
-
-
 
 function handleAudioEnded() {
-  if (inScenario) return; // scenario controls itself
+  if (inScenario) return;
 
   if (Object.keys(scenarios).length > 0) {
     if (Math.random() < stationProbability) {
-      runScenario(); // only start scenario if probability hits
+      runScenario();
       return;
     }
   }
-
-  // Otherwise just go to next song normally
   nextTrack(false);
 }
-
-
 
 // Attach once on page load
 audio.onended = handleAudioEnded;
 audio._hasHandler = true;
 
-// ✅ Fallback for lockscreen / background playback
-audio.addEventListener("ended", () => {
-  if (!inScenario && !audio.src.includes("voicelines/")) {
-    Promise.resolve().then(handleAudioEnded);
-  }
-});
+// Background-safe 'ended' fallback so chaining works when page is hidden
+if (!audio._bgFallbackBound) {
+  audio.addEventListener("ended", () => {
+    if (!inScenario) Promise.resolve().then(handleAudioEnded);
+  }, { passive: true });
+  audio._bgFallbackBound = true;
+}
 
 // ========================
 // Init
@@ -665,13 +662,11 @@ loadStationVoicelines();
 const MAX_VISIBLE_TRACKS = 5;
 let showingAllTracks = false;
 
-// Create toggle button dynamically
 const viewToggleBtn = document.createElement("button");
 viewToggleBtn.className = "view-toggle-btn";
 viewToggleBtn.textContent = "View All";
 trackListEl.after(viewToggleBtn);
 
-// Update which tracks are visible
 function updateTrackListVisibility() {
   const items = trackListEl.querySelectorAll(".track-item");
   items.forEach((item, i) => {
@@ -680,26 +675,18 @@ function updateTrackListVisibility() {
   viewToggleBtn.textContent = showingAllTracks ? "View Less" : "View All";
 }
 
-// Toggle behavior
 viewToggleBtn.addEventListener("click", (e) => {
-  e.preventDefault();                 // prevent page jump
+  e.preventDefault();
   showingAllTracks = !showingAllTracks;
-  updateTrackListVisibility();        // toggle track visibility
-
-  // Smoothly scroll tracklist into view when toggling
+  updateTrackListVisibility();
   trackListEl.scrollIntoView({ behavior: "smooth" });
 });
 
-
-
-// Extend buildTrackList so it applies limit automatically
 const originalBuildTrackList = buildTrackList;
 buildTrackList = function() {
   originalBuildTrackList();
   updateTrackListVisibility();
 };
-
-
 
 /*// Toggle tracklist visibility
 document.querySelector(".tracklist .section-title")
@@ -707,7 +694,7 @@ document.querySelector(".tracklist .section-title")
     document.querySelector(".tracklist").classList.toggle("collapsed");
   });*/
 
-  const hamburgerBtn = document.getElementById("hamburgerBtn");
+const hamburgerBtn = document.getElementById("hamburgerBtn");
 const sideNav = document.getElementById("sideNav");
 const sideNavOverlay = document.getElementById("sideNavOverlay");
 
@@ -717,10 +704,8 @@ function toggleSideNav() {
   sideNavOverlay.classList.toggle("open");
 }
 
-// Open / Close events
 hamburgerBtn.addEventListener("click", toggleSideNav);
 sideNavOverlay.addEventListener("click", toggleSideNav);
-
 
 const sideNavClose = document.getElementById('sideNavClose');
 
