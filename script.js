@@ -194,21 +194,38 @@ function playTrack() {
   initAudioContext();
   ensureAudioContextResumed();
 
-  audio.play().then(() => {
-    if (pendingSeek !== null) {
-      audio.currentTime = pendingSeek;
-      pendingSeek = null;
-    }
+  const startPlayback = audio.play();
+  if (startPlayback && typeof startPlayback.then === "function") {
+    startPlayback.then(() => {
+      // ✅ On mobile: wait for playback readiness before seeking
+      if (pendingSeek !== null) {
+        const seekTarget = pendingSeek;
+        const applySeek = () => {
+          try {
+            audio.currentTime = seekTarget;
+          } catch (e) {
+            console.warn("Seek failed, retrying...", e);
+          }
+          pendingSeek = null;
+          audio.removeEventListener("playing", applySeek);
+          audio.removeEventListener("canplay", applySeek);
+        };
+        // Run when the browser actually starts audio
+        audio.addEventListener("playing", applySeek, { once: true });
+        audio.addEventListener("canplay", applySeek, { once: true });
+      }
 
-    // ✅ Reattach ended handler if Safari stripped it
-    if (!audio._hasHandler) {
-      audio.addEventListener("ended", handleAudioEnded);
-      audio._hasHandler = true;
-    }
-  }).catch(e => console.warn(e));
+      // Reattach ended handler if Safari stripped it
+      if (!audio._hasHandler) {
+        audio.addEventListener("ended", handleAudioEnded);
+        audio._hasHandler = true;
+      }
+    }).catch(e => console.warn("Playback error:", e));
+  }
 
   document.getElementById("playIcon").src = "images/pause.svg";
 }
+
 
 
 
