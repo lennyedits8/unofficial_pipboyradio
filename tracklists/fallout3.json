@@ -3,120 +3,140 @@
     "file": "./music/fallout3/mus_billieholiday_crazy.mp3",
     "title": "Crazy He Calls Me",
     "artist": "Billie Holiday",
-    "cover": "./covers/fallout3/mus_billieholiday_crazy.jpg"
+    "cover": "./covers/fallout3/mus_billieholiday_crazy.jpg",
+    "slug": "crazyhecallsme"
   },
   {
     "file": "./music/fallout3/mus_billieholiday_easy.mp3",
     "title": "Easy Living",
     "artist": "Billie Holiday",
-    "cover": "./covers/fallout3/mus_billieholiday_easy.jpg"
+    "cover": "./covers/fallout3/mus_billieholiday_easy.jpg",
+    "slug": "easyliving"
   },
   {
     "file": "./music/fallout3/mus_bobcrosby_happy.mp3",
     "title": "Happy Times",
     "artist": "Bob Crosby's Bobcats",
-    "cover": "./covers/fallout3/mus_bobcrosby_happy.jpg"
+    "cover": "./covers/fallout3/mus_bobcrosby_happy.jpg",
+    "slug": "happytimes"
   },
   {
     "file": "./music/fallout3/mus_bobcrosby_way.mp3",
     "title": "Way Back Home",
     "artist": "Bob Crosby's Bobcats",
-    "cover": "./covers/fallout3/mus_bobcrosby_way.jpg"
+    "cover": "./covers/fallout3/mus_bobcrosby_way.jpg",
+    "slug": "waybackhome"
   },
   {
     "file": "./music/fallout3/mus_coleporter_anything.mp3",
     "title": "Anything Goes",
     "artist": "Cole Porter",
-    "cover": "./covers/fallout3/mus_coleporter_anything.jpg"
+    "cover": "./covers/fallout3/mus_coleporter_anything.jpg",
+    "slug": "anythinggoes"
   },
   {
     "file": "./music/fallout3/mus_dannykaye_civilization.mp3",
     "title": "Civilization (Bongo, Bongo, Bongo)",
     "artist": "Danny Kaye - Andrews Sisters with Vic Schoen and His Orchestra",
-    "cover": "./covers/fallout3/mus_dannykaye_civilization.jpg"
+    "cover": "./covers/fallout3/mus_dannykaye_civilization.jpg",
+    "slug": "civilization"
   },
   {
     "file": "./music/fallout3/mus_ellafitzgerald_into.mp3",
     "title": "Into Each Life Some Rain Must Fall",
     "artist": "Ella Fitzgerald & The Ink Spots",
-    "cover": "./covers/fallout3/mus_ellafitzgerald_into.jpg"
+    "cover": "./covers/fallout3/mus_ellafitzgerald_into.jpg",
+    "slug": "intoeachlifesomerainmustfall"
   },
   {
     "file": "./music/fallout3/mus_generic_boogie.mp3",
     "title": "Boogie Man",
     "artist": "Sid Phillips & His Band",
-    "cover": "./covers/fallout3/mus_generic_boogie.jpg"
+    "cover": "./covers/fallout3/mus_generic_boogie.jpg",
+    "slug": "boogieman"
   },
   {
     "file": "./music/fallout3/mus_generic_fox.mp3",
     "title": "Fox Boogie",
     "artist": "Gerhard Trede",
-    "cover": "./covers/fallout3/mus_generic_fox.jpg"
+    "cover": "./covers/fallout3/mus_generic_fox.jpg",
+    "slug": "foxboogie"
   },
   {
     "file": "./music/fallout3/mus_generic_jazzy.mp3",
     "title": "Jazzy Interlude",
     "artist": "Billy Munn",
-    "cover": "./covers/fallout3/mus_generic_jazzy.jpg"
+    "cover": "./covers/fallout3/mus_generic_jazzy.jpg",
+    "slug": "jazzyinterlude"
   },
   {
     "file": "./music/fallout3/mus_generic_jolly.mp3",
     "title": "Jolly Days",
     "artist": "Gerhard Trede",
-    "cover": "./covers/fallout3/mus_generic_jolly.jpg"
+    "cover": "./covers/fallout3/mus_generic_jolly.jpg",
+    "slug": "jollydays"
   },
   {
     "file": "./music/fallout3/mus_generic_pink.mp3",
     "title": "I'm Tickled Pink",
     "artist": "Jack Shaindlin",
-    "cover": "./covers/fallout3/mus_generic_pink.jpg"
+    "cover": "./covers/fallout3/mus_generic_pink.jpg",
+    "slug": "imtickledpink"
   },
   {
     "file": "./music/fallout3/mus_generic_rhythmforyou.mp3",
     "title": "Rhythm for You",
     "artist": "Eduard Christiani & Frans Poptie",
-    "cover": "./covers/fallout3/mus_generic_rhythmforyou.jpg"
+    "cover": "./covers/fallout3/mus_generic_rhythmforyou.jpg",
+    "slug": "rhythmforyou"
   },
   {
     "file": "./music/fallout3/mus_generic_sunning.mp3",
     "title": "Let's Go Sunning",
     "artist": "Jack Shaindlin",
-    "cover": "./covers/fallout3/mus_generic_sunning.jpg"
+    "cover": "./covers/fallout3/mus_generic_sunning.jpg",
+    "slug": "letsgosunning"
   },
   {
     "file": "./music/fallout3/mus_generic_swingdoors.mp3",
     "title": "Swing Doors",
     "artist": "Allan Gray",
-    "cover": "./covers/fallout3/mus_generic_swingdoors.jpg"
+    "cover": "./covers/fallout3/mus_generic_swingdoors.jpg",
+    "slug": "swingdoors"
   },
   {
     "file": "./music/fallout3/mus_inkspots_idont.mp3",
     "title": "I Don't Want to Set the World on Fire",
     "artist": "The Ink Spots",
-    "cover": "./covers/fallout3/mus_inkspots_idont.jpg"
+    "cover": "./covers/fallout3/mus_inkspots_idont.jpg",
+    "slug": "idontwanttosettheworldonfire"
   },
   {
     "file": "./music/fallout3/mus_inkspots_maybe.mp3",
     "title": "Maybe",
     "artist": "The Ink Spots",
-    "cover": "./covers/fallout3/mus_inkspots_maybe.jpg"
+    "cover": "./covers/fallout3/mus_inkspots_maybe.jpg",
+    "slug": "maybe"
   },
   {
     "file": "./music/fallout3/mus_roybrown_butcher.mp3",
     "title": "Butcher Pete, Part 1",
     "artist": "Roy Brown",
-    "cover": "./covers/fallout3/mus_roybrown_butcher.jpg"
+    "cover": "./covers/fallout3/mus_roybrown_butcher.jpg",
+    "slug": "butcherpete"
   },
   {
     "file": "./music/fallout3/mus_roybrown_mighty.mp3",
     "title": "Mighty, Mighty Man",
     "artist": "Roy Brown with Earl M. Barnes & His Orchestra",
-    "cover": "./covers/fallout3/mus_roybrown_mighty.jpg"
+    "cover": "./covers/fallout3/mus_roybrown_mighty.jpg",
+    "slug": "mightymightyman"
   },
   {
     "file": "./music/fallout3/mus_texbeneke_guy.mp3",
     "title": "(I'm In Love With) A Wonderful Guy",
     "artist": "Tex Beneke & Margaret Whiting",
-    "cover": "./covers/fallout3/texbeneke.jpg"
+    "cover": "./covers/fallout3/texbeneke.jpg",
+    "slug": "awonderfulguy"
   }
 ]

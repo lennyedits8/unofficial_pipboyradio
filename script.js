@@ -191,12 +191,17 @@ function loadTrack(index, recordHistory = true) {
 }
 
 function playTrack() {
-  if (pendingSeek !== null) { audio.currentTime = pendingSeek; pendingSeek = null; }
   initAudioContext();
   ensureAudioContextResumed();
-  audio.play();
+  audio.play().then(() => {
+    if (pendingSeek !== null) {
+      audio.currentTime = pendingSeek;
+      pendingSeek = null;
+    }
+  }).catch(e => console.warn(e));
   document.getElementById("playIcon").src = "images/pause.svg";
 }
+
 
 function pauseTrack() {
   audio.pause();
@@ -412,14 +417,21 @@ requestAnimationFrame(updateProgress);
 progressSlider.addEventListener("mousedown", ()=>isDragging=true);
 progressSlider.addEventListener("touchstart", ()=>isDragging=true);
 progressSlider.addEventListener("input", ()=>{ 
-  if(audio.duration){ 
-    const percent=progressSlider.value;
-    setProgressFill(percent);
-    const newTime=(percent/100)*audio.duration;
-    currentTimeEl.textContent=formatTime(newTime);
-    audio.currentTime=newTime;
+  const percent = progressSlider.value;
+  setProgressFill(percent);
+  // Show preview time even if not playing
+  if (audio.duration) {
+    const newTime = (percent / 100) * audio.duration;
+    currentTimeEl.textContent = formatTime(newTime);
+    if (!audio.paused) {
+      audio.currentTime = newTime;
+    } else {
+      // Store desired seek for when playback starts
+      pendingSeek = newTime;
+    }
   }
 });
+
 function finishDrag(){ if(isDragging && audio.duration) audio.currentTime=(progressSlider.value/100)*audio.duration; isDragging=false; }
 progressSlider.addEventListener("mouseup",finishDrag);
 progressSlider.addEventListener("touchend",finishDrag);
