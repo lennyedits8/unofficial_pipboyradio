@@ -1,6 +1,6 @@
 {
   "station": "newvegas",
-  "probability": 0.4,
+  "probability": 1.0,
 
     "intermission": {
     "title": "Intermission",
@@ -210,13 +210,13 @@
   "1":  {"sequence": ["radiohello","newsintro","newsstory1","newstransition","newsstory2","newsoutro"], "probability": 0.10},
   "2":  {"sequence": ["radiohello","newsintro","newsstory1","newsoutro"], "probability": 0.10},
   "3":  {"sequence": ["radiohello","musicintrogeneral"], "probability": 0.20},
-  "4":  {"sequence": ["radiohello","musicintrospecific"], "probability": 0.20},
+  "4":  {"sequence": ["radiohello","musicintrospecific"], "probability": 0.90},
   "5":  {"sequence": ["radiohello","newsintro","newsstory1","newstransition","newsstory2","newsoutro","musicintrogeneral"], "probability": 0.05},
   "6":  {"sequence": ["radiohello","newsintro","newsstory1","newstransition","newsstory2","newsoutro","musicintrospecific"], "probability": 0.05},
   "7":  {"sequence": ["radiohello","musicintrogeneral","newsintro","newsstory1","newstransition","newsstory2","newsoutro"], "probability": 0.05},
   "8":  {"sequence": ["radiohello","musicintrospecific","newsintro","newsstory1","newstransition","newsstory2","newsoutro"], "probability": 0.05},
   "9":  {"sequence": ["musicintrogeneral"], "probability": 0.10},
-  "10": {"sequence": ["musicintrospecific"], "probability": 0.10}
+  "10": {"sequence": ["musicintrospecific"], "probability": 0.90}
 }
 
 
