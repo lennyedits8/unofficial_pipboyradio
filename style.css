@@ -956,22 +956,27 @@ body[data-theme="vegas"] {
 /* =========================
    Slide-in Sidebar
 ========================= */
+/* Sidebar - GPU Optimized Slide */
 .side-nav {
   position: fixed;
   top: 0;
-  left: -450px;
-  width: 450px;
+  left: 0; /* keep at 0 for transform offset */
+  width: 450px; /* same as before */
   height: 100%;
   background: var(--color-bg-sidebar);
   border-right: 2px solid var(--color-primary);
   padding: 20px;
-  /* remove box-shadow here */
-  transition: left 0.3s ease, box-shadow 0.3s ease;
-  z-index: 1000;
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  /* Transform for smooth GPU animation */
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  will-change: transform; /* hint browser to optimize */
 }
+
 
 
 
@@ -1018,10 +1023,12 @@ body[data-theme="vegas"] {
   z-index: 998;
 }
 
+
+
 /* Open state */
 /* Only add glow when open */
 .side-nav.open {
-  left: 0;
+  transform: translateX(0);
   box-shadow: 2px 0 10px rgba(var(--color-primary-rgb), 0.3);
 
 }
@@ -1029,14 +1036,16 @@ body[data-theme="vegas"] {
 
   /* Mobile screens */
 
+
+
+/* Mobile adjustments */
 @media (max-width: 600px) {
   .side-nav {
-    width: 300px;       /* smaller sidebar on mobile */
-    left: -300px;       /* hide exactly by its width */
+    width: 300px;
+    transform: translateX(-100%);
   }
-
   .side-nav.open {
-    left: 0;            /* slides in partially/full */
+    transform: translateX(0);
   }
 }
 
@@ -1059,4 +1068,38 @@ body[data-theme="vegas"] {
 .side-nav-close:hover {
   color: var(--color-primary); /* keep same color on hover */
   text-shadow: none;           /* remove hover glow */
+}
+
+
+/* =========================
+   SideNav - Stations Section
+========================= */
+
+.side-section-title {
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+  text-shadow: 0 0 6px var(--color-shadow);
+  letter-spacing: 1px;
+}
+
+.station-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.station-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 6px 0;
+  transition: color 0.2s ease, text-shadow 0.3s ease;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 15px 0;
+  opacity: 0.5;
 }

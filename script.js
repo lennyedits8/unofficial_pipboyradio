@@ -102,7 +102,7 @@ scenariosSwitch.addEventListener('change', () => {
 // Theme
 // ========================
 function updateThemeLabel() {
-  themeLabel.textContent = document.body.getAttribute("data-theme") === "vegas" ? "New Vegas" : "Fallout 4";
+  themeLabel.textContent = "Theme: " + (document.body.getAttribute("data-theme") === "vegas" ? "New Vegas" : "Fallout 4");
 }
 updateThemeLabel();
 
@@ -115,6 +115,7 @@ themeSwitch.addEventListener("change", () => {
   updateShuffleIconColor();
   updateLoopIcon();
 });
+
 
 function getThemeColors() {
   const styles = getComputedStyle(document.body);

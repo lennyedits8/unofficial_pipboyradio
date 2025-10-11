@@ -14,71 +14,71 @@ Form ID	Editor ID	Type	Response Text
 0059bf51	RadioG_AppalachiaRadioID01	normal	You're listening to Appalachia Radio, an enduring source of happiness in a sometimes unbelievable world.
 0059bf52	RadioG_AppalachiaRadioID02	normal	One of the few things left in this world that hasn't been pulled apart for loose screws and circuit boards, this is Appalachia Radio!
 0059bf53	RadioG_AppalachiaRadioID03	normal	Held together by duct tape, willpower, and a near-crippling fear of silence, this is Appalachia Radio.
-0059bf54	RadioG_AppalachiaRadioID04	outro	From Clarksburg to Welch, from Flatwoods to Watoga, and everywhere in between, you're listening to Appalachia Radio!
+0059bf54	RadioG_AppalachiaRadioID04	normal	From Clarksburg to Welch, from Flatwoods to Watoga, and everywhere in between, you're listening to Appalachia Radio!
 0059bf55_1	RadioG_AppalachiaRadioID05	normal	Here at Appalachia Radio, I've recently gotten my hands on a Collectron. He is absolutely adorable, but has zero respect for personal boundaries.
 0059bf55_2	RadioG_AppalachiaRadioID06	normal	[robot voice] Can I interest you in a block of concrete?
 0059bf55_3	RadioG_AppalachiaRadioID07	normal	Oh my gosh, get OUT of here you big goofball!
 0059bf56	RadioG_AppalachiaRadioID08	normal	You're listening to Appalachia Radio: It's like a Super Stimpak... for the soul. Hmm. That sounded better in my head.
-0059b454	RadioG_AndrewsSisters_StraightenUpAndFlyRight	normal	The Andrews Sisters here have a great message for us all. Maybe some more'n others, if we're bein' honest... Lookin' at you, Crater!
-0059b479	RadioG_AndrewsSisters_StraightenUpAndFlyRight	normal	Alright, can you imagine, three sisters all able to get along well enough to sing together? I wouldn't make it through a single song with my brother. No way! [laughs]
+0059b454	RadioG_AndrewsSisters_StraightenUpAndFlyRight	outro	The Andrews Sisters here have a great message for us all. Maybe some more'n others, if we're bein' honest... Lookin' at you, Crater!
+0059b479	RadioG_AndrewsSisters_StraightenUpAndFlyRight	outro	Alright, can you imagine, three sisters all able to get along well enough to sing together? I wouldn't make it through a single song with my brother. No way! [laughs]
 0059c7e6	RadioG_AndrewsSisters_StraightenUpAndFlyRight	intro	"And now, here are the very prolific Andrews Sisters with ""Straighten Up and Fly Right."""
-0059c7ef	RadioG_AndrewsSisters_StraightenUpAndFlyRight	normal	I feel like we're missing some pretty crucial information in that story. Why on earth would the monkey agree to that ride in the first place? That's what I want to know!
-0059b46d	RadioG_BeachBoys_WouldntItBeNice	normal	As soon as I hear that harp playing, I get all excited, because I know what I'm in for. It's really just kind of a perfect song, isn't it?
+0059c7ef	RadioG_AndrewsSisters_StraightenUpAndFlyRight	outro	I feel like we're missing some pretty crucial information in that story. Why on earth would the monkey agree to that ride in the first place? That's what I want to know!
+0059b46d	RadioG_BeachBoys_WouldntItBeNice	outro	As soon as I hear that harp playing, I get all excited, because I know what I'm in for. It's really just kind of a perfect song, isn't it?
 0059b4b6	RadioG_BeachBoys_WouldntItBeNice	intro	Next we've got Wouldn't It Be Nice... now isn't that a phrase we all say in our heads about a dozen times a day?
-0059c7e5	RadioG_BeachBoys_WouldntItBeNice	normal	"Break out your surfboards because here come the Beach Boys with ""Wouldn't It Be Nice""."
+0059c7e5	RadioG_BeachBoys_WouldntItBeNice	outro	"Break out your surfboards because here come the Beach Boys with ""Wouldn't It Be Nice""."
 0059b464	RadioG_BenSelvin_HappyDaysAreHereAgain	outro	"That was ""Happy Days Are Here Again"", which... well, hey. You're alive, ain'tcha? Pretty decent reason to be happy."
 0059b4a6	RadioG_BenSelvin_HappyDaysAreHereAgain	intro	Here's one that might cheer you up on a rad-stormy day. Or serve as an excellent background for watching someone fall down repeatedly.
-0059c7f4}	RadioG_BenSelvin_HappyDaysAreHereAgain	normal	In my humble opinion, if you're in the right frame of mind then they're all happy days.
+0059c7f4}	RadioG_BenSelvin_HappyDaysAreHereAgain	outro	In my humble opinion, if you're in the right frame of mind then they're all happy days.
 0059b45a	RadioG_BillieHoliday_CrazyHeCallsMe	intro	Oh, now this next song is one of my favorites. Just a sweet reminder that there are things out there that are worth livin' for.
-0059b484	RadioG_BillieHoliday_CrazyHeCallsMe	normal	Doesn't Billie Holiday just have the most beautiful voice? Every time I've heard that song, since I was a little girl, just been carried away by it.
+0059b484	RadioG_BillieHoliday_CrazyHeCallsMe	outro	Doesn't Billie Holiday just have the most beautiful voice? Every time I've heard that song, since I was a little girl, just been carried away by it.
 0059c7ee	RadioG_BillieHoliday_CrazyHeCallsMe	intro	"Coming up next is ""Crazy He Calls Me"". If you ask me, the only thing crazy about Billie Holiday is how amazing her voice is!"
 0059c7f3	RadioG_BillieHoliday_CrazyHeCallsMe	outro	Take a page from Billie Holiday, and believe you can do the impossible. It can make all the difference.
-0059b46c	RadioG_BingCrosbyAndrewsSisters_DontFenceMeIn	normal	Well Mr. Bing Crosby, you would have loved Appalachia. More wide open land than you can shake a...mildly irradiated stick at.
+0059b46c	RadioG_BingCrosbyAndrewsSisters_DontFenceMeIn	outro	Well Mr. Bing Crosby, you would have loved Appalachia. More wide open land than you can shake a...mildly irradiated stick at.
 0059b4b5	RadioG_BingCrosbyAndrewsSisters_DontFenceMeIn	intro	"Well this one pretty much sums it up for me. Here's Bing Crosby backed up by the Andrews Sisters with ""Don't Fence Me In""."
-0059c7e7	RadioG_BingCrosbyAndrewsSisters_DontFenceMeIn	normal	"This next one goes out to all you Dwellers looking for the perfect, and I mean perfect, spot for your camp. It's Bing Crosby, singing ""Don't Fence Me In""."
-0059b463	RadioG_BingCrosbyAndrewsSisters_PistolPackinMama	normal	Remember, ladies: just 'cause Bing Crosby tells you to put down the gun, doesn't mean you have to!
+0059c7e7	RadioG_BingCrosbyAndrewsSisters_DontFenceMeIn	outro	"This next one goes out to all you Dwellers looking for the perfect, and I mean perfect, spot for your camp. It's Bing Crosby, singing ""Don't Fence Me In""."
+0059b463	RadioG_BingCrosbyAndrewsSisters_PistolPackinMama	outro	Remember, ladies: just 'cause Bing Crosby tells you to put down the gun, doesn't mean you have to!
 0059b4a5	RadioG_BingCrosbyAndrewsSisters_PistolPackinMama	intro	There's been a few times in my life I needed to pick up a gun, and every single one of 'em, this next song went through my head.
-0059c7e9	RadioG_BingCrosbyAndrewsSisters_PistolPackinMama	normal	"The Andrews Sisters and Bing Crosby are back again! This time with ""Pistol Packin' Mama""."
-0059c7f7	RadioG_BingCrosbyAndrewsSisters_PistolPackinMama	normal	These days, you're likely to run across a Pistol, Combat Shotgun, Super Sledge, Gauss Rifle, Gatling Gun Packin' Mama. You can never be too prepared!
-0059b45e	RadioG_BlindWillieJohnson_NobodysFaultButMine	normal	Mr. Johnson lays it out pretty clear doesn't he? Regardless of circumstances, the choices we make are what really matter.
+0059c7e9	RadioG_BingCrosbyAndrewsSisters_PistolPackinMama	outro	"The Andrews Sisters and Bing Crosby are back again! This time with ""Pistol Packin' Mama""."
+0059c7f7	RadioG_BingCrosbyAndrewsSisters_PistolPackinMama	outro	These days, you're likely to run across a Pistol, Combat Shotgun, Super Sledge, Gauss Rifle, Gatling Gun Packin' Mama. You can never be too prepared!
+0059b45e	RadioG_BlindWillieJohnson_NobodysFaultButMine	outro	Mr. Johnson lays it out pretty clear doesn't he? Regardless of circumstances, the choices we make are what really matter.
 0059b49a	RadioG_BlindWillieJohnson_NobodysFaultButMine	intro	"Here's the best lesson about personal responsibility set to slide guitar that you'll ever hear. ""Nobody's Fault But Mine"" by Blind Willie Johnson."
-0059c7ec	RadioG_BlindWillieJohnson_NobodysFaultButMine	normal	"Next, Blind Willie Johnson struggles with accountability in ""Nobody's Fault But Mine""."
-0059c7f5	RadioG_BlindWillieJohnson_NobodysFaultButMine	normal	I really like this song, but sometimes I'm reminded that this idea goes both ways. You can be presented with the worst of circumstances but still make the right choice. It's up to you!
-0059b457	RadioG_BobCrosby_DearHeartsAndGentlePeople	normal	"Those ""dear hearts"" and ""gentle people"" are out there, everyone. And wherever they are, that's where home is. Don't forget that, okay?"
+0059c7ec	RadioG_BlindWillieJohnson_NobodysFaultButMine	outro	"Next, Blind Willie Johnson struggles with accountability in ""Nobody's Fault But Mine""."
+0059c7f5	RadioG_BlindWillieJohnson_NobodysFaultButMine	outro	I really like this song, but sometimes I'm reminded that this idea goes both ways. You can be presented with the worst of circumstances but still make the right choice. It's up to you!
+0059b457	RadioG_BobCrosby_DearHeartsAndGentlePeople	outro	"Those ""dear hearts"" and ""gentle people"" are out there, everyone. And wherever they are, that's where home is. Don't forget that, okay?"
 0059b48b	RadioG_BobCrosby_DearHeartsAndGentlePeople	intro	Dear Hearts and Gentle People is coming up next. This one always makes me smile. Thinking about the people in my life who fit that description.
 0059c7ed	RadioG_BobCrosby_DearHeartsAndGentlePeople	intro	Whether Appalachia has always been your home, or you're a more recent arrival, this next song is for you.
-0059b472	RadioG_BobWills_BubblesInMyBeer	normal	That, my friends, was Bob Wills. Don't be a Bob, and sit around feeling sorry. Get back out there. Do something! Build a camp! Start a trading business! You can do it! I believe in you!
+0059b472	RadioG_BobWills_BubblesInMyBeer	outro	That, my friends, was Bob Wills. Don't be a Bob, and sit around feeling sorry. Get back out there. Do something! Build a camp! Start a trading business! You can do it! I believe in you!
 0059b4bc	RadioG_BobWills_BubblesInMyBeer	intro	"Hey there! Would you like to weirdly feel happy AND sad at the same time? Well here's your chance - it's ""Bubbles In My Beer""."
 0059b4bd	RadioG_BobWills_BubblesInMyBeer	intro	"Here's a nice happy sounding song, as long as you don't listen to the lyrics. It's Bob Wills singing ""Bubbles In My Beer""."
-0059b468	RadioG_BobWills_SteelGuitarRag	normal	...I really wish I knew how to play steel guitar. I'm working on the tuba, but that's... well, let's just say it's coming along, but very slowly. And loudly.
+0059b468	RadioG_BobWills_SteelGuitarRag	outro	...I really wish I knew how to play steel guitar. I'm working on the tuba, but that's... well, let's just say it's coming along, but very slowly. And loudly.
 0059b4ad	RadioG_BobWills_SteelGuitarRag	intro	"I hope you weren't doing anything important because it's time to dance! Here's ""Steel Guitar Rag"" by Bob Wills."
-0059c7e8	RadioG_BobWills_SteelGuitarRag	normal	I hope that song is some good inspiration for any of you out there playing the steel guitar. It's got such a great sound.
+0059c7e8	RadioG_BobWills_SteelGuitarRag	outro	I hope that song is some good inspiration for any of you out there playing the steel guitar. It's got such a great sound.
 0059c7f1	RadioG_BobWills_SteelGuitarRag	intro	"Here's ""Steel Guitar Rag"". Like Bob Wills says, ""Kick it off, Leon!"""
-0059b460	RadioG_CassDaley_AGoodManIsHardToFind	normal	Oh Cass, sweetie, raise your standards just a little bit! You're worth it! Well, it's a fun tune anyway.
-0059b49f	RadioG_CassDaley_AGoodManIsHardToFind	normal	So... I can't say I totally agree with Cass Daley on this, but let's just say if you find good people out there in the world, do what you can to stick with them.
-0059c7ea	RadioG_CassDaley_AGoodManIsHardToFind	normal	Is a good man hard to find? I haven't been looking. You know what IS hard to find? Ballistic fiber! Oh my gosh.
+0059b460	RadioG_CassDaley_AGoodManIsHardToFind	outro	Oh Cass, sweetie, raise your standards just a little bit! You're worth it! Well, it's a fun tune anyway.
+0059b49f	RadioG_CassDaley_AGoodManIsHardToFind	outro	So... I can't say I totally agree with Cass Daley on this, but let's just say if you find good people out there in the world, do what you can to stick with them.
+0059c7ea	RadioG_CassDaley_AGoodManIsHardToFind	outro	Is a good man hard to find? I haven't been looking. You know what IS hard to find? Ballistic fiber! Oh my gosh.
 0059c7f8	RadioG_CassDaley_AGoodManIsHardToFind	intro	"Now we've got Cass Daley, with ""A Good Man Is Hard to Find""."
-0059b46b	RadioG_ChickWebb_ICantDanceIGotAntsInMyPants	normal	I love that one because it sounds like a bunch of friends just hanging out and having a good time. Insect phobias aside, of course.
-0059b4a3	RadioG_ChickWebb_ICantDanceIGotAntsInMyPants	normal	Dad always used to ask if I had ants in my pants when I couldn't sit still. I guess maybe Chick Webb's dad did the same thing, since here he is singing about it.
+0059b46b	RadioG_ChickWebb_ICantDanceIGotAntsInMyPants	outro	I love that one because it sounds like a bunch of friends just hanging out and having a good time. Insect phobias aside, of course.
+0059b4a3	RadioG_ChickWebb_ICantDanceIGotAntsInMyPants	outro	Dad always used to ask if I had ants in my pants when I couldn't sit still. I guess maybe Chick Webb's dad did the same thing, since here he is singing about it.
 0059c7f2	RadioG_ChickWebb_ICantDanceIGotAntsInMyPants	outro	You know that song is from a long time ago, because these days you couldn't fit more than one ant in your pants. And you definitely wouldn't want the pants back afterwards.
-0059c7f6	RadioG_ChickWebb_ICantDanceIGotAntsInMyPants	normal	"If you've been looking for a good groove so you can get up and move, here it is! It's ""I Can't Dance, I Got Ants In My Pants"" by Chick Webb."
-0059b476	RadioG_ChickWebb_MidniteInAMadhouse	normal	"I have been some places that would probably quality as ""madhouses"" and they are nowhere near as entertaining as that song. Just saying."
-0059b4b2	RadioG_ChickWebb_MidniteInAMadhouse	normal	"Here comes Chick Webb with a really fun instrumental called ""Midnite in a Madhouse""."
-0059b482	RadioG_ChickWebb_WhenIGetLowIGetHigh	normal	"I bet we've all known at least a few friends who have lived life by the motto of ""When I Get Low, I Get High"", right?"
-0059b483	RadioG_ChickWebb_WhenIGetLowIGetHigh	normal	Given the state of things, this song can be a convenient excuse to, shall we say, over-indulge. Moderation, friends! It's all about moderation!
+0059c7f6	RadioG_ChickWebb_ICantDanceIGotAntsInMyPants	outro	"If you've been looking for a good groove so you can get up and move, here it is! It's ""I Can't Dance, I Got Ants In My Pants"" by Chick Webb."
+0059b476	RadioG_ChickWebb_MidniteInAMadhouse	outro	"I have been some places that would probably quality as ""madhouses"" and they are nowhere near as entertaining as that song. Just saying."
+0059b4b2	RadioG_ChickWebb_MidniteInAMadhouse	outro	"Here comes Chick Webb with a really fun instrumental called ""Midnite in a Madhouse""."
+0059b482	RadioG_ChickWebb_WhenIGetLowIGetHigh	outro	"I bet we've all known at least a few friends who have lived life by the motto of ""When I Get Low, I Get High"", right?"
+0059b483	RadioG_ChickWebb_WhenIGetLowIGetHigh	outro	Given the state of things, this song can be a convenient excuse to, shall we say, over-indulge. Moderation, friends! It's all about moderation!
 0059b4c2	RadioG_ChickWebb_WhenIGetLowIGetHigh	intro	"I am in no way suggesting you take this song completely literally. But well, do what you got to do friends. Huh, here's ""When I Get Low I Get High""."
 0059b4c0	RadioG_Chordettes_MrSandman	intro	Bet you ten caps you can guess this next song within the first three seconds!
 0059b4c1	RadioG_Chordettes_MrSandman	intro	"Coming up next is ""Mr. Sandman"" by the Chordettes. I guess I'd wish for someone, too... if I didn't have to worry about radiation, disease, ticks the size of my head, Scorchbeasts... you get the idea. Anyway, fun song!"
-0059b4c3	RadioG_Chordettes_MrSandman	normal	Isn't that one a classic? I feel like everyone knows the first few lines then after that they're um and just mumbling along, not knowing the rest of the words. Huh, always fun to see.
-0059b469	RadioG_ColePorter_AnythingGoes	normal	"You think Cole Porter would be surprised by where the world ended up since writing that song? Hmm, I figure he'd shrug his shoulders and say ""Yeah, why not."""
+0059b4c3	RadioG_Chordettes_MrSandman	outro	Isn't that one a classic? I feel like everyone knows the first few lines then after that they're um and just mumbling along, not knowing the rest of the words. Huh, always fun to see.
+0059b469	RadioG_ColePorter_AnythingGoes	outro	"You think Cole Porter would be surprised by where the world ended up since writing that song? Hmm, I figure he'd shrug his shoulders and say ""Yeah, why not."""
 0059b493	RadioG_ColePorter_AnythingGoes	outro	I'm not saying you all owe me, but when I got here the equipment was days away from breaking down. You were all saved from hearing this song, and only this song, repeating endlessly forever.
-0059b488	RadioG_Commodores_Uranium	normal	"Do you think at any point those guys said ""hey, this is kind of a weird thing to write a song about"", because I wonder about it all the time."
-0059b4b1	RadioG_Commodores_Uranium	normal	"Next up, looks like the Commodores with ""Uranium."" Bop along if you like."
-0059b491	RadioG_Copilot_CountryRoads	normal	Okay everyone. Here it comes! Grab your pals, maybe a banjo, and belt it out along with the radio. I know you've been waiting for this one.
-0059b492	RadioG_Copilot_CountryRoads	normal	"Terminals here in the station say this was the most popular song pre-war. I can't take a real survey, but I'm betting it's still true today. Here is ""Country Roads""."
-0059b49c	RadioG_Copilot_CountryRoads	normal	I still get goosebumps, every time I hear it. You do too, don't you? Aww, I know you do.
-0059b467	RadioG_Copilot_RingOfFire	normal	"Stimpaks won't heal these burns. Here comes the ""Ring of Fire""."
-0059b4aa	RadioG_Copilot_RingOfFire	normal	Is there anybody out there who hasn't been burned by love? Maybe if you've been locked in a Vault by yourself... Gosh, now that I think about it, which is worse?
+0059b488	RadioG_Commodores_Uranium	outro	"Do you think at any point those guys said ""hey, this is kind of a weird thing to write a song about"", because I wonder about it all the time."
+0059b4b1	RadioG_Commodores_Uranium	outro	"Next up, looks like the Commodores with ""Uranium."" Bop along if you like."
+0059b491	RadioG_Copilot_CountryRoads	outro	Okay everyone. Here it comes! Grab your pals, maybe a banjo, and belt it out along with the radio. I know you've been waiting for this one.
+0059b492	RadioG_Copilot_CountryRoads	outro	"Terminals here in the station say this was the most popular song pre-war. I can't take a real survey, but I'm betting it's still true today. Here is ""Country Roads""."
+0059b49c	RadioG_Copilot_CountryRoads	outro	I still get goosebumps, every time I hear it. You do too, don't you? Aww, I know you do.
+0059b467	RadioG_Copilot_RingOfFire	intro	"Stimpaks won't heal these burns. Here comes the ""Ring of Fire""."
+0059b4aa	RadioG_Copilot_RingOfFire	outro	Is there anybody out there who hasn't been burned by love? Maybe if you've been locked in a Vault by yourself... Gosh, now that I think about it, which is worse?
 0059bf4d	RadioG_CountBasie_JumpinAtTheWoodside	normal	I feel like that could have gone on for another twenty minutes of solos, and it sure sounds like everyone playing would have loved doing it.
 0059bf4f	RadioG_CountBasie_JumpinAtTheWoodside	normal	"Get ready, because here comes Count Basie with ""Jumpin' At the Woodside""."
 0059b46e	RadioG_DannyKayeAndrewsSisters_Civilization	normal	"I just love that someone somewhere decided that the phrase ""Bingo, Bango, Bongo"" was worth using as a lyric. I hope it makes you smile too."
