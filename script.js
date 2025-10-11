@@ -193,14 +193,23 @@ function loadTrack(index, recordHistory = true) {
 function playTrack() {
   initAudioContext();
   ensureAudioContextResumed();
+
   audio.play().then(() => {
     if (pendingSeek !== null) {
       audio.currentTime = pendingSeek;
       pendingSeek = null;
     }
+
+    // ✅ Reattach ended handler if Safari stripped it
+    if (!audio._hasHandler) {
+      audio.addEventListener("ended", handleAudioEnded);
+      audio._hasHandler = true;
+    }
   }).catch(e => console.warn(e));
+
   document.getElementById("playIcon").src = "images/pause.svg";
 }
+
 
 
 function pauseTrack() {
@@ -222,7 +231,11 @@ function updateMediaSession(track) {
     navigator.mediaSession.setActionHandler("play", playTrack);
     navigator.mediaSession.setActionHandler("pause", pauseTrack);
     navigator.mediaSession.setActionHandler("previoustrack", () => { prevTrack(); playTrack(); });
-    navigator.mediaSession.setActionHandler("nexttrack", () => { nextTrack(); playTrack(); });
+    navigator.mediaSession.setActionHandler("nexttrack", async () => {
+  const shouldRunScenario = (Object.keys(scenarios).length > 0) && (Math.random() < stationProbability);
+  await nextTrack(true, shouldRunScenario);
+});
+
   }
 }
 
@@ -612,6 +625,12 @@ function handleAudioEnded() {
 audio.onended = handleAudioEnded;
 audio._hasHandler = true;
 
+// ✅ Fallback for lockscreen / background playback
+audio.addEventListener("ended", () => {
+  if (!inScenario && !audio.src.includes("voicelines/")) {
+    Promise.resolve().then(handleAudioEnded);
+  }
+});
 
 // ========================
 // Init
