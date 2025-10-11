@@ -565,30 +565,9 @@ body {
 
 /* Section title styling */
 .tracklist .section-title {
-  cursor: pointer;
-  user-select: none;
   display: inline-flex;
   align-items: center;
 }
-
-/* Rotating > */
-.tracklist .section-title::before {
-  content: ">";
-  display: inline-block;
-  margin-right: 6px;
-  font-size: inherit;
-  transition: transform 0.35s ease;
-  transform-origin: center;
-}
-
-.tracklist.collapsed .section-title::before {
-  transform: rotate(0deg);       /* points right */
-}
-
-.tracklist:not(.collapsed) .section-title::before {
-  transform: rotate(90deg);      /* points down */
-}
-
 
 
 .track-item {
@@ -1115,4 +1094,33 @@ body[data-theme="vegas"] {
   border-top: 1px solid var(--color-border);
   margin: 15px 0;
   opacity: 0.5;
+}
+
+
+/* =========================
+   Tracklist Toggle Button - Centered
+========================= */
+.view-toggle-btn {
+  display: block;              /* make it block-level for auto margin */
+  margin: 10px auto 20px;      /* top, horizontal center, bottom */
+  padding: 8px 16px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.95rem;
+  color: var(--color-primary);
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 5px var(--color-shadow);
+}
+
+.view-toggle-btn:hover {
+  background: rgba(var(--color-primary-rgb), 0.1);
+  box-shadow: 0 0 10px var(--color-shadow);
+}
+
+.view-toggle-btn:active {
+  box-shadow: 0 0 5px var(--color-shadow);
 }

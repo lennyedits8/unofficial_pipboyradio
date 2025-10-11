@@ -611,12 +611,53 @@ updateLoopIcon();
 loadPlaylist();
 loadStationVoicelines();
 
+// ========================
+// Tracklist View All / View Less
+// ========================
+const MAX_VISIBLE_TRACKS = 5;
+let showingAllTracks = false;
 
-// Toggle tracklist visibility
+// Create toggle button dynamically
+const viewToggleBtn = document.createElement("button");
+viewToggleBtn.className = "view-toggle-btn";
+viewToggleBtn.textContent = "View All";
+trackListEl.after(viewToggleBtn);
+
+// Update which tracks are visible
+function updateTrackListVisibility() {
+  const items = trackListEl.querySelectorAll(".track-item");
+  items.forEach((item, i) => {
+    item.style.display = showingAllTracks || i < MAX_VISIBLE_TRACKS ? "list-item" : "none";
+  });
+  viewToggleBtn.textContent = showingAllTracks ? "View Less" : "View All";
+}
+
+// Toggle behavior
+viewToggleBtn.addEventListener("click", (e) => {
+  e.preventDefault();                 // prevent page jump
+  showingAllTracks = !showingAllTracks;
+  updateTrackListVisibility();        // toggle track visibility
+
+  // Smoothly scroll tracklist into view when toggling
+  trackListEl.scrollIntoView({ behavior: "smooth" });
+});
+
+
+
+// Extend buildTrackList so it applies limit automatically
+const originalBuildTrackList = buildTrackList;
+buildTrackList = function() {
+  originalBuildTrackList();
+  updateTrackListVisibility();
+};
+
+
+
+/*// Toggle tracklist visibility
 document.querySelector(".tracklist .section-title")
   .addEventListener("click", () => {
     document.querySelector(".tracklist").classList.toggle("collapsed");
-  });
+  });*/
 
   const hamburgerBtn = document.getElementById("hamburgerBtn");
 const sideNav = document.getElementById("sideNav");
